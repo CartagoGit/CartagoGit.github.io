@@ -17,10 +17,11 @@
     <link rel="stylesheet" href="styles.css">
     <script>
       // Applied before the first paint so the page never flashes the wrong theme.
+      // Dark is the default: the palette was designed for it. The light theme is
+      // opt-in and remembered once the visitor picks it.
       (function () {
         try {
-          var stored = localStorage.getItem("cartago-theme");
-          var theme = stored || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          var theme = localStorage.getItem("cartago-theme") || "dark";
           document.documentElement.dataset.theme = theme;
           var lang = localStorage.getItem("cartago-lang") || "es";
           document.documentElement.lang = lang;
