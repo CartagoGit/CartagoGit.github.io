@@ -438,7 +438,7 @@ def build():
     <meta property="og:description" content="Angular, SCSS and Ionic for operational applications, plus the tooling, CI and infrastructure to ship them.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cartagogit.github.io/">
-    <meta property="og:image" content="https://cartagogit.github.io/assets/banner-03-neon.png">
+    <meta property="og:image" content="https://cartagogit.github.io/assets/cartago-banner.png">
     <link rel="icon" type="image/svg+xml" href="assets/cartago.svg">
     <link rel="apple-touch-icon" href="assets/cartago.svg">
     <link rel="stylesheet" href="styles.css">
@@ -494,8 +494,13 @@ def build():
             <p class="eyebrow">{i18n(*T["eyebrow_hero"])}</p>
 
             <h1 class="hero__name">
-              <span class="hero__first">Mario</span>
-              <span class="hero__last">Cabrero Volarich</span>
+              <span class="hero__mark">
+                <img src="assets/cartago.svg" alt="" width="104" height="104">
+              </span>
+              <span class="hero__words">
+                <span class="hero__first">Mario</span>
+                <span class="hero__last">Cabrero Volarich</span>
+              </span>
             </h1>
 
             <p class="hero__rule"><span></span></p>

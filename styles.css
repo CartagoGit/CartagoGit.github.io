@@ -175,6 +175,18 @@ html[lang="en"] [data-lang="es"] { display: none; }
   z-index: 80;
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
+/* A faint trace of the banner keeps the header from feeling detached from
+   the artwork below it. */
+.site-header::before {
+  background:
+    linear-gradient(180deg, rgb(9 38 161 / .16), transparent),
+    url("assets/cartago-banner.png") center 30% / 720px auto no-repeat;
+  content: "";
+  inset: 0;
+  opacity: .3;
+  pointer-events: none;
+  position: absolute;
+}
 
 .site-header__inner {
   align-items: center;
@@ -279,9 +291,13 @@ html[lang="en"] [data-lang="es"] { display: none; }
 /* ============================================================== hero === */
 
 .hero {
+  /* The banner is the page's own artwork: it sits behind the content, and a
+     vertical scrim fades it into the page background so the two never meet
+     as two different images. */
   background:
-    radial-gradient(900px 460px at 80% -16%, var(--glow-hero), transparent 64%),
-    radial-gradient(720px 420px at 0% 8%, var(--glow-work), transparent 62%),
+    radial-gradient(760px 420px at 82% -12%, var(--glow-hero), transparent 66%),
+    linear-gradient(180deg, rgb(6 11 24 / .1) 0%, rgb(6 11 24 / .45) 48%, rgb(6 11 24 / .9) 88%, var(--bg-alt) 100%),
+    url("assets/cartago-banner.png") center top / 100% auto no-repeat,
     var(--bg-alt);
   overflow: hidden;
   position: relative;
@@ -320,28 +336,46 @@ html[lang="en"] [data-lang="es"] { display: none; }
 }
 .hero .eyebrow { color: var(--accent-hero); }
 
-/* ---- the name lockup ---- */
+/* ---- the name lockup: the mark and the name read as one ---- */
 .hero__name {
+  align-items: center;
+  display: flex;
+  font-family: var(--font-display);
+  gap: clamp(var(--s4), 2.4vw, var(--s6));
+  line-height: .96;
+  margin-bottom: var(--s6);
+}
+.hero__mark {
+  display: block;
+  flex: 0 0 auto;
+}
+.hero__mark img {
+  /* The mark carries its own blue; a soft halo of the page accent keeps it
+     from floating off the background. */
+  filter: drop-shadow(0 0 26px var(--glow-hero));
+  height: auto;
+  width: clamp(64px, 9vw, 104px);
+}
+.hero__words {
   display: flex;
   flex-direction: column;
-  font-family: var(--font-display);
-  line-height: .96;
-  margin-bottom: var(--s5);
 }
 .hero__first {
-  color: var(--text);
-  font-size: clamp(2rem, 4.4vw, 3.4rem);
-  font-weight: 400;
-  letter-spacing: .01em;
+  color: var(--text-muted);
+  font-size: clamp(.95rem, 1.5vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: .22em;
+  margin-bottom: .35rem;
+  text-transform: uppercase;
 }
 .hero__last {
-  background: linear-gradient(94deg, var(--accent-hero) 0%, var(--accent-work) 46%, var(--accent-projects) 100%);
+  background: linear-gradient(94deg, var(--text) 0%, var(--accent-hero) 58%, var(--accent-work) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: clamp(2.9rem, 6.6vw, 5.4rem);
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
   font-weight: 700;
-  letter-spacing: -.035em;
+  letter-spacing: -.03em;
 }
 
 /* A short gradient rule under the name. */
@@ -640,6 +674,18 @@ html[lang="en"] [data-lang="es"] { display: none; }
 .link-pill:hover img { opacity: 1; }
 html[data-theme="light"] .link-pill img { filter: none; }
 
+/* In the light theme the banner becomes a texture under a light veil: the
+   artwork is still there, but it does not turn the hero into a dark hole. */
+html[data-theme="light"] .hero {
+  background:
+    radial-gradient(760px 420px at 82% -12%, var(--glow-hero), transparent 66%),
+    linear-gradient(180deg, rgb(242 245 251 / .62) 0%, rgb(242 245 251 / .84) 52%, var(--bg-alt) 100%),
+    url("assets/cartago-banner.png") center top / 100% auto no-repeat,
+    var(--bg-alt);
+}
+
+html[data-theme="light"] .site-header::before { opacity: .18; }
+
 /* ============================================================= stack === */
 
 .section--stack {
@@ -794,8 +840,10 @@ html[data-theme="light"] .social-links img { filter: none; }
   .header-tools .icon-link:not(:first-of-type) { display: none; }
   .header-tools { gap: var(--s1); }
 
-  .hero__first { font-size: clamp(1.7rem, 8vw, 2.4rem); }
-  .hero__last { font-size: clamp(2.3rem, 11vw, 3.2rem); }
+  .hero__name { align-items: flex-start; flex-direction: column; gap: var(--s4); }
+  .hero__mark img { width: 72px; }
+  .hero__first { font-size: .8rem; letter-spacing: .2em; }
+  .hero__last { font-size: clamp(1.9rem, 9vw, 2.6rem); }
   .hero__role { font-size: 1.02rem; }
   .hero__lead { font-size: .98rem; }
   .hero__actions { align-items: stretch; flex-direction: column; }
