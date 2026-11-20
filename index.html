@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mario Cabrero Volarich — Frontend engineer · Angular, Ionic &amp; SCSS</title>
-    <meta name="description" content="Mario Cabrero Volarich is a frontend engineer building operational applications with Angular, Ionic and SCSS, and the developer tooling and infrastructure to ship them.">
+    <title>Mario Cabrero Volarich — Frontend engineer · Angular + SCSS</title>
+    <meta name="description" content="Mario Cabrero Volarich is a frontend engineer: Angular, SCSS and Ionic for operational applications, plus the tooling, CI and infrastructure to ship them.">
     <meta name="author" content="Mario Cabrero Volarich">
     <meta name="theme-color" content="#070d1c">
     <meta property="og:title" content="Mario Cabrero Volarich — Frontend engineer">
-    <meta property="og:description" content="Operational front-ends with Angular, Ionic and SCSS — plus the tooling, the gates and the containers to ship them.">
+    <meta property="og:description" content="Angular, SCSS and Ionic for operational applications, plus the tooling, CI and infrastructure to ship them.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cartagogit.github.io/">
     <meta property="og:image" content="https://cartagogit.github.io/assets/banner-03-neon.png">
@@ -16,15 +16,18 @@
     <link rel="apple-touch-icon" href="assets/cartago.svg">
     <link rel="stylesheet" href="styles.css">
     <script>
-      // Applied before the first paint so the page never flashes the wrong theme.
-      // Dark is the default: the palette was designed for it. The light theme is
-      // opt-in and remembered once the visitor picks it.
+      // Applied before the first paint so the page never flashes the wrong
+      // theme or language. The visitor's own system settings decide, unless
+      // they have already chosen here.
       (function () {
         try {
-          var theme = localStorage.getItem("cartago-theme") || "dark";
-          document.documentElement.dataset.theme = theme;
-          var lang = localStorage.getItem("cartago-lang") || "es";
-          document.documentElement.lang = lang;
+          var storedTheme = localStorage.getItem("cartago-theme");
+          var prefersLight = matchMedia("(prefers-color-scheme: light)").matches;
+          document.documentElement.dataset.theme = storedTheme || (prefersLight ? "light" : "dark");
+
+          var storedLang = localStorage.getItem("cartago-lang");
+          var browserLang = (navigator.language || "en").toLowerCase();
+          document.documentElement.lang = storedLang || (browserLang.indexOf("es") === 0 ? "es" : "en");
         } catch (error) {}
       })();
     </script>
@@ -43,7 +46,7 @@
           <a href="#work"><span data-lang="es">Qué hago</span><span data-lang="en">What I do</span></a>
           <a href="#evidence"><span data-lang="es">Evidencia</span><span data-lang="en">Evidence</span></a>
           <a href="#projects"><span data-lang="es">Proyectos</span><span data-lang="en">Projects</span></a>
-          <a href="#stack"><span data-lang="es">Stack</span><span data-lang="en">Stack</span></a>
+          <a href="#stack"><span data-lang="es">Con qué</span><span data-lang="en">Tools</span></a>
           <a href="#contact"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
         </nav>
 
@@ -57,16 +60,16 @@
             <button type="button" data-set-theme="light" aria-pressed="false">&#9788;</button>
           </div>
           <a class="icon-link" href="https://github.com/CartagoGit" target="_blank" rel="noreferrer" aria-label="GitHub profile">
-            <img src="assets/brand/github.svg" alt="" width="17" height="17">
+            <img src="assets/brand/github.svg?v=2" alt="" width="17" height="17">
           </a>
           <a class="icon-link" href="https://www.linkedin.com/in/mario-cabrero-volarich" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
-            <img src="assets/brand/linkedin.svg" alt="" width="17" height="17">
+            <img src="assets/brand/linkedin.svg?v=2" alt="" width="17" height="17">
           </a>
           <a class="icon-link" href="https://www.npmjs.com/~cartago-git" target="_blank" rel="noreferrer" aria-label="npm packages">
-            <img src="assets/brand/npm.svg" alt="" width="17" height="17">
+            <img src="assets/brand/npm.svg?v=2" alt="" width="17" height="17">
           </a>
           <a class="icon-link" href="https://hub.docker.com/u/cartagodocker" target="_blank" rel="noreferrer" aria-label="Docker Hub images">
-            <img src="assets/brand/docker.svg" alt="" width="17" height="17">
+            <img src="assets/brand/docker.svg?v=2" alt="" width="17" height="17">
           </a>
         </div>
       </div>
@@ -76,10 +79,19 @@
       <section class="hero" id="top">
         <div class="shell hero__inner">
           <div class="hero__copy reveal">
-            <p class="eyebrow"><span data-lang="es">Frontend engineer · Sevilla, España</span><span data-lang="en">Frontend engineer · Seville, Spain</span></p>
-            <h1>Mario Cabrero<br><span class="hero__accent">Volarich</span></h1>
-            <p class="hero__lead"><span data-lang="es">Construyo <strong>front-ends operativos</strong>: aplicaciones de negocio que se usan todo el día, con los estados, permisos y reglas de negocio que tienen que seguir funcionando el trimestre que viene. Mi base es <strong>Angular con SCSS</strong>, Ionic para móvil y Material para el sistema de diseño.</span><span data-lang="en">I build <strong>operational front-ends</strong> — business applications people use all day, with the states, permissions and long-lived rules that have to keep working next quarter. My base is <strong>Angular with SCSS</strong>, Ionic for mobile and Material for the design system.</span></p>
-            <p class="hero__secondary"><span data-lang="es">Alrededor de esa base, mentorizo al equipo, tomo las decisiones de arquitectura, pongo las puertas de calidad y dockerizo lo que entregamos. En mi tiempo libre construyo herramientas de desarrollo, que es donde todavía puedo profundizar en lo que me importa.</span><span data-lang="en">Around that base I mentor the team, take the architecture decisions, set the quality gates and containerise what we ship. In my own time I build developer tooling, which is where I can still go deep on the parts I care about.</span></p>
+            <p class="eyebrow"><span data-lang="es">Frontend engineer · Angular + SCSS</span><span data-lang="en">Frontend engineer · Angular + SCSS</span></p>
+
+            <h1 class="hero__name">
+              <span class="hero__first">Mario</span>
+              <span class="hero__last">Cabrero Volarich</span>
+            </h1>
+
+            <p class="hero__rule"><span></span></p>
+
+            <p class="hero__role"><span data-lang="es">Interfaces para sistemas que no se pueden romper</span><span data-lang="en">Interfaces for systems that must not break</span></p>
+            <p class="hero__lead"><span data-lang="es">ERP, logística, inventario, personal: las mismas pantallas ocho horas al día, con permisos que cambian según el rol y reglas que tienen que sobrevivir al trimestre. <strong>Angular con SCSS</strong>, Ionic cuando hace falta Android, Material para el sistema de diseño.</span><span data-lang="en">ERP, logistics, inventory, workforce: the same screens eight hours a day, with permissions that shift by role and rules that have to survive the quarter. <strong>Angular with SCSS</strong>, Ionic when Android is needed, Material for the design system.</span></p>
+            <p class="hero__secondary"><span data-lang="es">Alrededor, la parte que casi nadie documenta: mentoría, decisiones de arquitectura, CI, contenedores y las herramientas que me faltaban. Lo que hay en GitHub es el trabajo de las horas que no son de cliente.</span><span data-lang="en">Around it, the part almost nobody documents: mentoring, architecture decisions, CI, containers, and the tools I was missing. What is on GitHub is the work of the hours that are not client work.</span></p>
+
             <div class="hero__actions">
               <a class="button button--primary" href="#projects"><span data-lang="es">Ver el trabajo</span><span data-lang="en">See the work</span></a>
               <a class="button button--ghost" href="#work"><span data-lang="es">Qué hago</span><span data-lang="en">What I do</span></a>
@@ -87,55 +99,55 @@
           </div>
 
           <aside class="hero__panel reveal" aria-label="At a glance">
-            <p class="hero__panel-title"><span data-lang="es">De un vistazo</span><span data-lang="en">At a glance</span></p>
+            <p class="hero__panel-title"><span data-lang="es">En una línea</span><span data-lang="en">In one line</span></p>
             <dl class="facts">
               <div><dt><span data-lang="es">Base</span><span data-lang="en">Base</span></dt><dd>Angular · SCSS · Ionic · Material</dd></div>
-              <div><dt><span data-lang="es">También</span><span data-lang="en">Also</span></dt><dd>NestJS · Bun · Node · SQLite</dd></div>
-              <div><dt><span data-lang="es">Entrega</span><span data-lang="en">Delivery</span></dt><dd>Docker · GitLab CI · GitHub Actions</dd></div>
-              <div><dt><span data-lang="es">Rol</span><span data-lang="en">Role</span></dt><dd>Mentor · Decisiones · Front-end</dd></div>
-              <div><dt><span data-lang="es">Propio</span><span data-lang="en">Independent</span></dt><dd>Runtime MCP · Tooling · Librerías</dd></div>
+              <div><dt><span data-lang="es">Detrás</span><span data-lang="en">Behind</span></dt><dd>NestJS · Bun · SQLite</dd></div>
+              <div><dt><span data-lang="es">Entrega</span><span data-lang="en">Delivery</span></dt><dd>Docker · GitLab CI · Actions</dd></div>
+              <div><dt><span data-lang="es">Rol</span><span data-lang="en">Role</span></dt><dd>Mentor · Decisiones técnicas</dd></div>
+              <div><dt><span data-lang="es">En GitHub</span><span data-lang="en">On GitHub</span></dt><dd>25 repos · 3 paquetes</dd></div>
             </dl>
           </aside>
         </div>
       </section>
 
-      <section class="section" id="work" aria-labelledby="work-title">
+      <section class="section section--work" id="work" aria-labelledby="work-title">
         <div class="shell">
           <div class="section__heading reveal">
             <p class="eyebrow"><span data-lang="es">Qué hago</span><span data-lang="en">What I do</span></p>
-            <h2 id="work-title"><span data-lang="es">Front-ends operativos, y todo lo necesario para entregarlos.</span><span data-lang="en">Operational front-ends, and everything it takes to ship them.</span></h2>
+            <h2 id="work-title"><span data-lang="es">Seis cosas que hago, y por qué.</span><span data-lang="en">Six things I do, and why.</span></h2>
           </div>
 
           <div class="pillar-grid">
             <article class="pillar reveal">
-              <span class="pillar__index">01</span>
-              <h3><span data-lang="es">Entrega de front-end operativo</span><span data-lang="en">Operational front-end delivery</span></h3>
-              <p><span data-lang="es">Aplicaciones de negocio para procesos comerciales, financieros, de inventario, logística y de personal. Estados complejos, permisos, informes y reglas de producto que tienen que sobrevivir a la siguiente release: no pantallas de demo.</span><span data-lang="en">Business applications for commercial, financial, inventory, logistics and workforce processes. Complex states, permissions, reporting and product rules that have to survive the next release — not demo screens.</span></p>
+              <p class="pillar__kicker"><span data-lang="es">01 · Front-end operativo</span><span data-lang="en">01 · Operational front-end</span></p>
+              <h3><span data-lang="es">Las pantallas que se usan ocho horas al día</span><span data-lang="en">The screens people use eight hours a day</span></h3>
+              <p><span data-lang="es">Comercial, financiero, inventario, logística, personal. Estados que dependen del rol, informes que no cuadran si el estado se desincroniza, y permisos que hay que cambiar sin tocar el resto.</span><span data-lang="en">Commercial, financial, inventory, logistics, workforce. States that depend on the role, reports that stop adding up when a state desynchronises, and permissions that change without touching everything else.</span></p>
             </article>
             <article class="pillar reveal">
-              <span class="pillar__index">02</span>
-              <h3><span data-lang="es">Web y Android</span><span data-lang="en">Web and Android</span></h3>
-              <p><span data-lang="es">Aplicaciones Angular e Ionic, empaquetadas para Android con Capacitor. Interfaces diseñadas para un uso repetido y con mucho contexto, no para interacciones sueltas.</span><span data-lang="en">Angular and Ionic applications, packaged for Android with Capacitor. Interfaces designed for repeated, high-context use rather than one-off interactions.</span></p>
+              <p class="pillar__kicker"><span data-lang="es">02 · Web y Android</span><span data-lang="en">02 · Web and Android</span></p>
+              <h3><span data-lang="es">El mismo código, en el navegador y en el bolsillo</span><span data-lang="en">The same code, in the browser and in the pocket</span></h3>
+              <p><span data-lang="es">Angular e Ionic, empaquetado con Capacitor. La decisión importante no es la tecnología: es diseñar para uso repetido, donde cada clic de más se paga treinta veces al día.</span><span data-lang="en">Angular and Ionic, packaged with Capacitor. The important decision is not the stack: it is designing for repeated use, where every extra click is paid for thirty times a day.</span></p>
             </article>
             <article class="pillar reveal">
-              <span class="pillar__index">03</span>
-              <h3><span data-lang="es">Mentoría y decisiones técnicas</span><span data-lang="en">Mentoring & technical decisions</span></h3>
-              <p><span data-lang="es">Mentorizo al equipo y resuelvo los trade-offs: qué se queda en el front, qué pasa a un servicio, qué lleva una puerta de calidad y qué lleva una decisión escrita.</span><span data-lang="en">I mentor the team and settle the trade-offs: what stays in the front-end, what moves to a service, what gets a gate and what gets a written decision.</span></p>
+              <p class="pillar__kicker"><span data-lang="es">03 · Decisiones y mentoría</span><span data-lang="en">03 · Decisions and mentoring</span></p>
+              <h3><span data-lang="es">Lo que hay que decidir antes de escribir código</span><span data-lang="en">What has to be decided before any code is written</span></h3>
+              <p><span data-lang="es">Qué se queda en el front y qué baja a un servicio. Qué lleva una puerta de calidad y qué lleva una decisión escrita. Y el código del equipo cuando la feature aprieta y ya no da tiempo a hacerlo bien.</span><span data-lang="en">What stays in the front-end and what moves to a service. What gets a quality gate and what gets a written decision. And the team's code when the feature is tight and there is no time to do it properly.</span></p>
             </article>
             <article class="pillar reveal">
-              <span class="pillar__index">04</span>
-              <h3><span data-lang="es">Bases de entrega</span><span data-lang="en">Delivery foundations</span></h3>
-              <p><span data-lang="es">Entornos de desarrollo dockerizados, pipelines de GitLab CI y GitHub Actions, imágenes de contenedor y cobertura de tests donde de verdad se rompe algo.</span><span data-lang="en">Dockerised development environments, GitLab CI and GitHub Actions pipelines, container images, and focused test coverage on the parts that actually break.</span></p>
+              <p class="pillar__kicker"><span data-lang="es">04 · CI y contenedores</span><span data-lang="en">04 · CI and containers</span></p>
+              <h3><span data-lang="es">El mismo entorno en el portátil y en el runner</span><span data-lang="en">The same environment on the laptop and on the runner</span></h3>
+              <p><span data-lang="es">GitLab CI para el producto, GitHub Actions para lo propio. Imágenes de Node/Bun, Angular, Ionic y NestJS con las versiones fijadas, porque un «latest» que cambia un martes es un incidente el miércoles.</span><span data-lang="en">GitLab CI for the product, GitHub Actions for my own work. Images for Node/Bun, Angular, Ionic and NestJS with pinned versions, because a 'latest' that moves on a Tuesday is an incident on Wednesday.</span></p>
             </article>
             <article class="pillar reveal">
-              <span class="pillar__index">05</span>
-              <h3><span data-lang="es">Herramientas de desarrollo</span><span data-lang="en">Developer tooling</span></h3>
-              <p><span data-lang="es">Un runtime MCP, una librería de serialización de modelos y un motor de análisis estático: construidos porque las herramientas que quería todavía no existían.</span><span data-lang="en">An MCP runtime, a model serialization library and a static analysis engine — built because the tools I wanted did not exist yet.</span></p>
+              <p class="pillar__kicker"><span data-lang="es">05 · Herramientas propias</span><span data-lang="en">05 · Own tooling</span></p>
+              <h3><span data-lang="es">Construidas porque me faltaban</span><span data-lang="en">Built because I was missing them</span></h3>
+              <p><span data-lang="es">Un runtime MCP, un análisis estático de APIs, una librería de serialización, un gestor de secretos. Ninguno salió de una hoja de ruta: salieron todos de un problema mío de un martes por la tarde.</span><span data-lang="en">An MCP runtime, a static analysis engine for APIs, a serialization library, a secret manager. None of them came off a roadmap: all of them came from one of my problems on a Tuesday afternoon.</span></p>
             </article>
             <article class="pillar reveal">
-              <span class="pillar__index">06</span>
-              <h3><span data-lang="es">Backend y runtime</span><span data-lang="en">Backend & runtime</span></h3>
-              <p><span data-lang="es">NestJS, Bun y Node para los servicios que hay detrás de las interfaces; SQLite y PostgreSQL para los datos. Suficiente para ownsar el camino entero.</span><span data-lang="en">NestJS, Bun and Node for the services behind the interfaces; SQLite and PostgreSQL for the data. Enough to own the whole path.</span></p>
+              <p class="pillar__kicker"><span data-lang="es">06 · Lo que hay detrás</span><span data-lang="en">06 · What sits behind</span></p>
+              <h3><span data-lang="es">Backend suficiente para no delegarlo</span><span data-lang="en">Enough backend to not delegate it away</span></h3>
+              <p><span data-lang="es">NestJS y Bun para lo que necesita servidor. SQLite cuando el dato es local y PostgreSQL cuando no. Lo justo para poder tocar el circuito entero sin tener que pedir permiso a otro equipo.</span><span data-lang="en">NestJS and Bun for whatever needs a server. SQLite when the data is local and PostgreSQL when it is not. Just enough to touch the whole circuit without asking another team for permission.</span></p>
             </article>
           </div>
         </div>
@@ -145,15 +157,15 @@
         <div class="shell">
           <div class="section__heading reveal">
             <p class="eyebrow"><span data-lang="es">Evidencia</span><span data-lang="en">Evidence</span></p>
-            <h2 id="evidence-title"><span data-lang="es">Medido sobre los repositorios públicos, no estimado.</span><span data-lang="en">Measured on the public repositories, not estimated.</span></h2>
+            <h2 id="evidence-title"><span data-lang="es">Lo que se puede medir, medido.</span><span data-lang="en">What can be measured, measured.</span></h2>
           </div>
           <dl class="evidence-grid">
-            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Commits</span><span data-lang="en">Commits</span></dt><dd><span data-lang="es">17.484</span><span data-lang="en">17,484</span></dd><p>MCP runtime core</p></div>
-            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Líneas de código</span><span data-lang="en">Source lines</span></dt><dd><span data-lang="es">628.712</span><span data-lang="en">628,712</span></dd><p>Runtime core, sin tests</p></div>
-            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Líneas de test</span><span data-lang="en">Test lines</span></dt><dd><span data-lang="es">460.854</span><span data-lang="en">460,854</span></dd><p>2.709 ficheros de test</p></div>
-            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Frameworks</span><span data-lang="en">Frameworks</span></dt><dd><span data-lang="es">25</span><span data-lang="en">25</span></dd><p>Detectados desde el código</p></div>
-            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Pulls de Docker</span><span data-lang="en">Docker pulls</span></dt><dd><span data-lang="es">4.833</span><span data-lang="en">4,833</span></dd><p>Cinco imágenes publicadas</p></div>
-            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Workflows de CI</span><span data-lang="en">CI workflows</span></dt><dd><span data-lang="es">18</span><span data-lang="en">18</span></dd><p>Puertas de calidad del runtime core</p></div>
+            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Commits</span><span data-lang="en">Commits</span></dt><dd><span data-lang="es">17.484</span><span data-lang="en">17,484</span></dd><p>en el runtime MCP</p></div>
+            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Líneas de fuente</span><span data-lang="en">Source lines</span></dt><dd><span data-lang="es">628.712</span><span data-lang="en">628,712</span></dd><p>sin contar los tests</p></div>
+            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Líneas de test</span><span data-lang="en">Test lines</span></dt><dd><span data-lang="es">460.854</span><span data-lang="en">460,854</span></dd><p>el 42% del repositorio</p></div>
+            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Paquetes</span><span data-lang="en">Packages</span></dt><dd><span data-lang="es">84</span><span data-lang="en">84</span></dd><p>en un solo monorepo</p></div>
+            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Workflows de CI</span><span data-lang="en">CI workflows</span></dt><dd><span data-lang="es">18</span><span data-lang="en">18</span></dd><p>en el runtime</p></div>
+            <div class="evidence-grid__item reveal"><dt><span data-lang="es">Frameworks</span><span data-lang="en">Frameworks</span></dt><dd><span data-lang="es">25</span><span data-lang="en">25</span></dd><p>detectados desde el código</p></div>
           </dl>
         </div>
       </section>
@@ -163,83 +175,92 @@
           <div class="section__heading section__heading--row reveal">
             <div>
               <p class="eyebrow"><span data-lang="es">Proyectos</span><span data-lang="en">Projects</span></p>
-              <h2 id="projects-title"><span data-lang="es">Trabajo independiente, hecho en mi tiempo libre.</span><span data-lang="en">Independent work, built in my own time.</span></h2>
+              <h2 id="projects-title"><span data-lang="es">Lo que está en GitHub, y en qué estado.</span><span data-lang="en">What is on GitHub, and in which state.</span></h2>
             </div>
-            <a class="text-link" href="https://github.com/CartagoGit?tab=repositories"><span data-lang="es">Todos los repositorios</span><span data-lang="en">All repositories</span> →</a>
+            <a class="text-link" href="https://github.com/CartagoGit?tab=repositories"><span data-lang="es">Todos</span><span data-lang="en">All</span> →</a>
           </div>
 
           <div class="project-grid">
             <article class="project project--feature reveal">
               <img class="project__icon" src="assets/delendai.svg" alt="" width="56" height="56">
               <div class="project__body">
-                <p class="project__type"><span data-lang="es">Runtime MCP</span><span data-lang="en">MCP runtime core</span></p>
+                <p class="project__type"><span data-lang="es">Runtime MCP</span><span data-lang="en">MCP runtime</span></p>
                 <h3 class="project__title">DelendAI</h3>
-                <p class="project__text"><span data-lang="es">Un núcleo agnóstico para construir servidores MCP y el cargador de plugins que los alimenta: capacidades nombradas resueltas en tiempo de ejecución, superficie perezosa, errores públicos y datos privados — envuelto en un pipeline completo de propuesta a release.</span><span data-lang="en">A project-agnostic core for building MCP servers, and the plugin loader that feeds them: named capabilities resolved at runtime, a lazy surface, public errors, private data — wrapped in a full proposal-to-release pipeline.</span></p>
+                <p class="project__text"><span data-lang="es">Núcleo agnóstico para montar servidores MCP y el cargador de plugins que los alimenta. Superficie perezosa, errores públicos, datos privados y un ciclo de propuesta a release alrededor.</span><span data-lang="en">An agnostic core for building MCP servers and the plugin loader that feeds them. A lazy surface, public errors, private data, and a proposal-to-release cycle around it.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/DelendAI"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a><a href="https://github.com/CartagoGit/DelendAI/releases"><span data-lang="es">Releases</span><span data-lang="en">Releases</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/DelendAI" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://github.com/CartagoGit/DelendAI/releases" target="_blank" rel="noreferrer" title="Releases / Releases"><img src="assets/brand/releases.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Releases</span><span data-lang="en">Releases</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon" src="assets/tanit.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Análisis estático</span><span data-lang="en">Static analysis</span></p>
                 <h3 class="project__title">API Source Tanit</h3>
-                <p class="project__text"><span data-lang="es">Detecta el framework desde el propio código, recupera los cuerpos de las peticiones de los esquemas de validación y exporta a Postman, Bruno, Insomnia, HAR, OpenAPI o cURL. CLI, builds de escritorio y contenedores.</span><span data-lang="en">Detects the framework from the code itself, recovers request bodies from validation schemas, and exports to Postman, Bruno, Insomnia, HAR, OpenAPI or cURL. CLI, desktop builds and containers.</span></p>
+                <p class="project__text"><span data-lang="es">Detecta el framework leyendo el código, recupera los cuerpos de las peticiones de los esquemas de validación y exporta a Postman, Bruno, Insomnia, HAR, OpenAPI o cURL. Sin levantar el servidor.</span><span data-lang="en">Detects the framework by reading the code, recovers request bodies from validation schemas, and exports to Postman, Bruno, Insomnia, HAR, OpenAPI or cURL. Without starting the server.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/api-source-tanit"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a><a href="https://github.com/CartagoGit/api-source-tanit/releases"><span data-lang="es">Releases</span><span data-lang="en">Releases</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/api-source-tanit" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://github.com/CartagoGit/api-source-tanit/releases" target="_blank" rel="noreferrer" title="Releases / Releases"><img src="assets/brand/releases.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Releases</span><span data-lang="en">Releases</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon project__icon--photo" src="assets/quickmodel.png" alt="" width="56" height="56">
               <div class="project__body">
-                <p class="project__type"><span data-lang="es">Librería TypeScript</span><span data-lang="en">TypeScript library</span></p>
+                <p class="project__type"><span data-lang="es">Librería</span><span data-lang="en">Library</span></p>
                 <h3 class="project__title">QuickModel</h3>
-                <p class="project__text"><span data-lang="es">Transformación automática de tipos, adaptadores de validación, tests de seguridad y benchmarks, publicado como librería con un servidor MCP encima. El suite de tests es más grande que el código fuente a propósito.</span><span data-lang="en">Automatic type transformation, validation adapters, security tests and benchmarks, published as a library with an MCP server on top. The test suite is larger than the source on purpose.</span></p>
+                <p class="project__text"><span data-lang="es">Transformación automática de tipos y adaptadores de validación sobre una base SOLID. Los tests pesan más que el código fuente, y es a propósito.</span><span data-lang="en">Automatic type transformation and validation adapters over a SOLID base. The tests weigh more than the source, on purpose.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/quickmodel"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a><a href="https://cartagogit.github.io/quickmodel/"><span data-lang="es">Documentación</span><span data-lang="en">Documentation</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/quickmodel" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://cartagogit.github.io/quickmodel/" target="_blank" rel="noreferrer" title="Documentación / Documentation"><img src="assets/brand/docs.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Documentación</span><span data-lang="en">Documentation</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon" src="assets/keyer.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Paquete publicado</span><span data-lang="en">Published package</span></p>
                 <h3 class="project__title">Keyer</h3>
-                <p class="project__text"><span data-lang="es">Cifra claves, API keys y ficheros <code>.env</code> desde la línea de comandos. Publicado en npm y usado para que las credenciales reales no acaben en los repositorios ni en las imágenes.</span><span data-lang="en">Encrypts keys, API keys and <code>.env</code> files from the command line. Published on npm and used to keep real credentials out of the repositories and the images.</span></p>
+                <p class="project__text"><span data-lang="es">Cifra claves y ficheros de entorno desde la terminal. Publicado en npm y usado para que ninguna credencial real acabe en un repositorio o en una imagen.</span><span data-lang="en">Encrypts keys and environment files from the terminal. Published on npm and used so that no real credential ends up in a repository or an image.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/Keyer"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a><a href="https://www.npmjs.com/package/@cartago-git/keyer"><span data-lang="es">Paquete npm</span><span data-lang="en">npm package</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/Keyer" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://www.npmjs.com/package/@cartago-git/keyer" target="_blank" rel="noreferrer" title="npm / npm package"><img src="assets/brand/package.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">npm</span><span data-lang="en">npm package</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon" src="assets/print-cv.svg" alt="" width="56" height="56">
               <div class="project__body">
-                <p class="project__type"><span data-lang="es">CV para imprimir</span><span data-lang="en">Print-ready CV</span></p>
+                <p class="project__type"><span data-lang="es">Aplicación</span><span data-lang="en">Application</span></p>
                 <h3 class="project__title">Print CV</h3>
-                <p class="project__text"><span data-lang="es">Vue 3 y TypeScript, con el currículum modelado como datos validados, internacionalizado en inglés y español, y un modo de impresión diseñado alrededor del papel real.</span><span data-lang="en">Vue 3 and TypeScript, with the curriculum modelled as validated data, internationalised in English and Spanish, and a print mode designed around real paper.</span></p>
+                <p class="project__text"><span data-lang="es">El currículum como datos validados, en dos idiomas, con un modo de impresión diseñado alrededor del papel real. Es la aplicación que vive en cartagogit.github.io.</span><span data-lang="en">A CV modelled as validated data, in two languages, with a print mode designed around real paper. This is the application that lives at cartagogit.github.io.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/print-cv"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a><a href="https://cartagogit.github.io/print-cv/"><span data-lang="es">App en vivo</span><span data-lang="en">Live app</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/print-cv" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://cartagogit.github.io/print-cv/" target="_blank" rel="noreferrer" title="En vivo / Live"><img src="assets/brand/live.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">En vivo</span><span data-lang="en">Live</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon" src="assets/cartago.svg" alt="" width="56" height="56">
               <div class="project__body">
-                <p class="project__type"><span data-lang="es">Ingeniería de producto</span><span data-lang="en">Product engineering</span></p>
-                <h3 class="project__title">Angular 22 zoneless SSR</h3>
-                <p class="project__text"><span data-lang="es">La aplicación Angular que hay detrás de este perfil: sin zone.js, con render en servidor, con tests unitarios y de integración y con un servidor MCP integrado en el build.</span><span data-lang="en">The Angular application behind this profile: zoneless, server-rendered, with unit and integration tests, and an MCP server wired into the build.</span></p>
+                <p class="project__type"><span data-lang="es">Sitio</span><span data-lang="en">Site</span></p>
+                <h3 class="project__title">Portfolio</h3>
+                <p class="project__text"><span data-lang="es">Este sitio: Angular zoneless, render en servidor, bilingüe y con el tema del sistema. El generador de la página está en el propio repositorio.</span><span data-lang="en">This site: zoneless Angular, server-rendered, bilingual and following the system theme. The page generator lives in the repository itself.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/portfolio"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/portfolio" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://cartagogit.github.io" target="_blank" rel="noreferrer" title="En vivo / Live"><img src="assets/brand/live.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">En vivo</span><span data-lang="en">Live</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon" src="assets/docker.svg" alt="" width="56" height="56">
               <div class="project__body">
-                <p class="project__type"><span data-lang="es">Contenedores</span><span data-lang="en">Containers</span></p>
+                <p class="project__type"><span data-lang="es">Infraestructura</span><span data-lang="en">Infrastructure</span></p>
                 <h3 class="project__title">Imágenes de desarrollo</h3>
-                <p class="project__text"><span data-lang="es">Entornos Docker para Angular, Ionic, NestJS, Node/Bun y Zsh, publicados con matrices de versiones fijadas.</span><span data-lang="en">Docker environments for Angular, Ionic, NestJS, Node/Bun and Zsh workflows, published with pinned version matrices.</span></p>
+                <p class="project__text"><span data-lang="es">Node/Bun, Angular, Ionic, NestJS y Zsh, con las versiones fijadas. El mismo entorno en el portátil y en el runner, que es de donde salen casi todos los problemas de «en mi máquina funciona».</span><span data-lang="en">Node/Bun, Angular, Ionic, NestJS and Zsh, with pinned versions. The same environment on the laptop and on the runner, which is where most 'works on my machine' problems come from.</span></p>
               </div>
-              <div class="project__links"><a href="https://hub.docker.com/u/cartagodocker"><span data-lang="es">Docker Hub</span><span data-lang="en">Docker Hub</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/DockerNodeBun" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://hub.docker.com/u/cartagodocker" target="_blank" rel="noreferrer" title="En vivo / Live"><img src="assets/brand/live.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">En vivo</span><span data-lang="en">Live</span></span></a></div>
+            </article>
+            <article class="project reveal">
+              <img class="project__icon" src="assets/brand/steam-keys.svg" alt="" width="56" height="56">
+              <div class="project__body">
+                <p class="project__type"><span data-lang="es">Escritorio</span><span data-lang="en">Desktop</span></p>
+                <h3 class="project__title">Gestor local de claves</h3>
+                <p class="project__text"><span data-lang="es">Una aplicación de escritorio, Tauri y SQLite, donde las claves no salen del equipo. El mismo criterio local-first que el resto de mis herramientas.</span><span data-lang="en">A desktop application, Tauri and SQLite, where the keys never leave the machine. The same local-first rule as the rest of my tooling.</span></p>
+              </div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/steam-keys" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a></div>
             </article>
             <article class="project reveal">
               <img class="project__icon" src="assets/tanit.svg" alt="" width="56" height="56">
               <div class="project__body">
-                <p class="project__type"><span data-lang="es">Contenido de juegos</span><span data-lang="en">Game content</span></p>
-                <h3 class="project__title">Fábrica de campañas históricas</h3>
-                <p class="project__text"><span data-lang="es">Contenido de campañas validado por esquema para Age of Empires II, escrito en inglés y localizado para España con un pipeline de TypeScript y Python.</span><span data-lang="en">Schema-validated campaign content for Age of Empires II, authored in English and localised for Spain through a TypeScript and Python pipeline.</span></p>
+                <p class="project__type"><span data-lang="es">Mods y contenido</span><span data-lang="en">Mods and content</span></p>
+                <h3 class="project__title">Fabricación de mods</h3>
+                <p class="project__text"><span data-lang="es">Herramientas y contenido para modificar juegos: formatos binarios, localización y automatización. Un terreno abierto, con proyectos que van y vienen.</span><span data-lang="en">Tools and content for modding games: binary formats, localisation and automation. An open field, with projects that come and go.</span></p>
               </div>
-              <div class="project__links"><a href="https://github.com/CartagoGit/aoe2-mods"><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></a></div>
+              <div class="project__links"><a class="link-pill" href="https://github.com/CartagoGit/aoe2-mods" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a><a class="link-pill" href="https://github.com/CartagoGit/pcfutbol6-mod" target="_blank" rel="noreferrer" title="Repositorio / Repository"><img src="assets/brand/github.svg?v=2" alt="" width="15" height="15" loading="lazy"><span><span data-lang="es">Repositorio</span><span data-lang="en">Repository</span></span></a></div>
             </article>
           </div>
         </div>
@@ -248,34 +269,35 @@
       <section class="section section--stack" id="stack" aria-labelledby="stack-title">
         <div class="shell">
           <div class="section__heading reveal">
-            <p class="eyebrow"><span data-lang="es">Stack principal</span><span data-lang="en">Core stack</span></p>
-            <h2 id="stack-title"><span data-lang="es">Las herramientas que uso, con el front-end primero.</span><span data-lang="en">The tools I reach for, with the front-end first.</span></h2>
+            <p class="eyebrow"><span data-lang="es">Con qué trabajo</span><span data-lang="en">What I work with</span></p>
+            <h2 id="stack-title"><span data-lang="es">El stack, por capas y no por logotipo.</span><span data-lang="en">The stack, by layer and not by logo.</span></h2>
+            <p class="section__note"><span data-lang="es">La capa de arriba es la que uso cada día. Las de abajo están porque en algún momento hizo falta.</span><span data-lang="en">The top layer is what I use every day. The ones below are there because at some point they were needed.</span></p>
           </div>
           <div class="stack-grid">
             <article class="stack-group reveal">
-              <p class="stack-group__label"><span data-lang="es">Front-end — mi base</span><span data-lang="en">Front-end — my base</span></p>
-              <h3><span data-lang="es">Operaciones con estado predecible</span><span data-lang="en">Operational applications with predictable state</span></h3>
-              <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg" alt="" width="16" height="16" loading="lazy">Angular</span><span class="chip"><img src="assets/brand/ionic.svg" alt="" width="16" height="16" loading="lazy">Ionic</span><span class="chip"><img src="assets/brand/angular.svg" alt="" width="16" height="16" loading="lazy">Material</span><span class="chip"><img src="assets/brand/sass.svg" alt="" width="16" height="16" loading="lazy">Sass</span><span class="chip"><img src="assets/brand/typescript.svg" alt="" width="16" height="16" loading="lazy">TypeScript</span><span class="chip"><img src="assets/brand/rxjs.svg" alt="" width="16" height="16" loading="lazy">RxJS</span><span class="chip"><img src="assets/brand/capacitor.svg" alt="" width="16" height="16" loading="lazy">Capacitor</span><span class="chip"><img src="assets/brand/tailwindcss.svg" alt="" width="16" height="16" loading="lazy">Tailwind</span><span class="chip"><img src="assets/brand/vue.svg" alt="" width="16" height="16" loading="lazy">Vue</span><span class="chip"><img src="assets/brand/react.svg" alt="" width="16" height="16" loading="lazy">React</span></div>
+              <p class="stack-group__label"><span data-lang="es">Front-end — a diario</span><span data-lang="en">Front-end — daily</span></p>
+              <h3><span data-lang="es">Angular, SCSS, Ionic y el diseño</span><span data-lang="en">Angular, SCSS, Ionic and the design</span></h3>
+              <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=2" alt="" width="16" height="16" loading="lazy">Angular</span><span class="chip"><img src="assets/brand/sass.svg?v=2" alt="" width="16" height="16" loading="lazy">Sass</span><span class="chip"><img src="assets/brand/ionic.svg?v=2" alt="" width="16" height="16" loading="lazy">Ionic</span><span class="chip"><img src="assets/brand/typescript.svg?v=2" alt="" width="16" height="16" loading="lazy">TypeScript</span><span class="chip"><img src="assets/brand/rxjs.svg?v=2" alt="" width="16" height="16" loading="lazy">RxJS</span><span class="chip"><img src="assets/brand/angular.svg?v=2" alt="" width="16" height="16" loading="lazy">Material</span><span class="chip"><img src="assets/brand/capacitor.svg?v=2" alt="" width="16" height="16" loading="lazy">Capacitor</span><span class="chip"><img src="assets/brand/tailwindcss.svg?v=2" alt="" width="16" height="16" loading="lazy">Tailwind</span><span class="chip"><img src="assets/brand/vue.svg?v=2" alt="" width="16" height="16" loading="lazy">Vue</span><span class="chip"><img src="assets/brand/react.svg?v=2" alt="" width="16" height="16" loading="lazy">React</span></div>
             </article>
             <article class="stack-group reveal">
-              <p class="stack-group__label"><span data-lang="es">Servicios, datos y runtime</span><span data-lang="en">Services, data & runtime</span></p>
-              <h3><span data-lang="es">Suficiente backend para ownsar el camino</span><span data-lang="en">Enough backend to own the whole path</span></h3>
-              <div class="chip-list"><span class="chip"><img src="assets/brand/nestjs.svg" alt="" width="16" height="16" loading="lazy">NestJS</span><span class="chip"><img src="assets/brand/bun.svg" alt="" width="16" height="16" loading="lazy">Bun</span><span class="chip"><img src="assets/brand/nodejs.svg" alt="" width="16" height="16" loading="lazy">Node.js</span><span class="chip"><img src="assets/brand/postgresql.svg" alt="" width="16" height="16" loading="lazy">PostgreSQL</span><span class="chip"><img src="assets/brand/sqlite.svg" alt="" width="16" height="16" loading="lazy">SQLite</span><span class="chip"><img src="assets/brand/mongodb.svg" alt="" width="16" height="16" loading="lazy">MongoDB</span><span class="chip"><img src="assets/brand/zod.svg" alt="" width="16" height="16" loading="lazy">Zod</span><span class="chip"><img src="assets/brand/openapi.svg" alt="" width="16" height="16" loading="lazy">OpenAPI</span></div>
+              <p class="stack-group__label"><span data-lang="es">Cuando hace falta servidor</span><span data-lang="en">When a server is needed</span></p>
+              <h3><span data-lang="es">Servicios, datos y contratos</span><span data-lang="en">Services, data and contracts</span></h3>
+              <div class="chip-list"><span class="chip"><img src="assets/brand/nestjs.svg?v=2" alt="" width="16" height="16" loading="lazy">NestJS</span><span class="chip"><img src="assets/brand/bun.svg?v=2" alt="" width="16" height="16" loading="lazy">Bun</span><span class="chip"><img src="assets/brand/nodejs.svg?v=2" alt="" width="16" height="16" loading="lazy">Node.js</span><span class="chip"><img src="assets/brand/postgresql.svg?v=2" alt="" width="16" height="16" loading="lazy">PostgreSQL</span><span class="chip"><img src="assets/brand/sqlite.svg?v=2" alt="" width="16" height="16" loading="lazy">SQLite</span><span class="chip"><img src="assets/brand/mongodb.svg?v=2" alt="" width="16" height="16" loading="lazy">MongoDB</span><span class="chip"><img src="assets/brand/zod.svg?v=2" alt="" width="16" height="16" loading="lazy">Zod</span><span class="chip"><img src="assets/brand/openapi.svg?v=2" alt="" width="16" height="16" loading="lazy">OpenAPI</span></div>
             </article>
             <article class="stack-group reveal">
-              <p class="stack-group__label"><span data-lang="es">Tooling e infraestructura de IA</span><span data-lang="en">Tooling & AI infrastructure</span></p>
-              <h3><span data-lang="es">Lo que construyo cuando la herramienta no existe</span><span data-lang="en">What I build when the tool does not exist</span></h3>
-              <div class="chip-list"><span class="chip"><img src="assets/brand/model-context-protocol.svg" alt="" width="16" height="16" loading="lazy">MCP</span><span class="chip"><img src="assets/brand/tauri.svg" alt="" width="16" height="16" loading="lazy">Tauri</span><span class="chip"><img src="assets/brand/rust.svg" alt="" width="16" height="16" loading="lazy">Rust</span><span class="chip"><img src="assets/brand/godot.svg" alt="" width="16" height="16" loading="lazy">Godot</span><span class="chip"><img src="assets/brand/python.svg" alt="" width="16" height="16" loading="lazy">Python</span><span class="chip"><img src="assets/brand/storybook.svg" alt="" width="16" height="16" loading="lazy">Storybook</span><span class="chip"><img src="assets/brand/prime-ng.svg" alt="" width="16" height="16" loading="lazy">PrimeNG</span></div>
+              <p class="stack-group__label"><span data-lang="es">Herramientas que construyo</span><span data-lang="en">Tools I build</span></p>
+              <h3><span data-lang="es">Lo que sale de un problema mío</span><span data-lang="en">What comes out of one of my problems</span></h3>
+              <div class="chip-list"><span class="chip"><img src="assets/brand/model-context-protocol.svg?v=2" alt="" width="16" height="16" loading="lazy">MCP</span><span class="chip"><img src="assets/brand/tauri.svg?v=2" alt="" width="16" height="16" loading="lazy">Tauri</span><span class="chip"><img src="assets/brand/rust.svg?v=2" alt="" width="16" height="16" loading="lazy">Rust</span><span class="chip"><img src="assets/brand/godot.svg?v=2" alt="" width="16" height="16" loading="lazy">Godot</span><span class="chip"><img src="assets/brand/python.svg?v=2" alt="" width="16" height="16" loading="lazy">Python</span><span class="chip"><img src="assets/brand/storybook.svg?v=2" alt="" width="16" height="16" loading="lazy">Storybook</span><span class="chip"><img src="assets/brand/prime-ng.svg?v=2" alt="" width="16" height="16" loading="lazy">PrimeNG</span></div>
             </article>
             <article class="stack-group reveal">
-              <p class="stack-group__label"><span data-lang="es">Calidad y entrega</span><span data-lang="en">Quality & delivery</span></p>
-              <h3><span data-lang="es">Releases fiables, no solo builds locales</span><span data-lang="en">Reliable releases, not just local builds</span></h3>
-              <div class="chip-list"><span class="chip"><img src="assets/brand/vitest.svg" alt="" width="16" height="16" loading="lazy">Vitest</span><span class="chip"><img src="assets/brand/playwright.svg" alt="" width="16" height="16" loading="lazy">Playwright</span><span class="chip"><img src="assets/brand/eslint.svg" alt="" width="16" height="16" loading="lazy">ESLint</span><span class="chip"><img src="assets/brand/prettier.svg" alt="" width="16" height="16" loading="lazy">Prettier</span><span class="chip"><img src="assets/brand/docker.svg" alt="" width="16" height="16" loading="lazy">Docker</span><span class="chip"><img src="assets/brand/gitlab.svg" alt="" width="16" height="16" loading="lazy">GitLab CI</span><span class="chip"><img src="assets/brand/github-actions.svg" alt="" width="16" height="16" loading="lazy">GitHub Actions</span><span class="chip"><img src="assets/brand/linux.svg" alt="" width="16" height="16" loading="lazy">Linux</span></div>
+              <p class="stack-group__label"><span data-lang="es">Calidad y entrega</span><span data-lang="en">Quality and delivery</span></p>
+              <h3><span data-lang="es">Lo que impide que rompa</span><span data-lang="en">What stops it from breaking</span></h3>
+              <div class="chip-list"><span class="chip"><img src="assets/brand/vitest.svg?v=2" alt="" width="16" height="16" loading="lazy">Vitest</span><span class="chip"><img src="assets/brand/playwright.svg?v=2" alt="" width="16" height="16" loading="lazy">Playwright</span><span class="chip"><img src="assets/brand/eslint.svg?v=2" alt="" width="16" height="16" loading="lazy">ESLint</span><span class="chip"><img src="assets/brand/prettier.svg?v=2" alt="" width="16" height="16" loading="lazy">Prettier</span><span class="chip"><img src="assets/brand/docker.svg?v=2" alt="" width="16" height="16" loading="lazy">Docker</span><span class="chip"><img src="assets/brand/gitlab.svg?v=2" alt="" width="16" height="16" loading="lazy">GitLab CI</span><span class="chip"><img src="assets/brand/github-actions.svg?v=2" alt="" width="16" height="16" loading="lazy">GitHub Actions</span><span class="chip"><img src="assets/brand/linux.svg?v=2" alt="" width="16" height="16" loading="lazy">Linux</span></div>
             </article>
             <article class="stack-group reveal">
-              <p class="stack-group__label"><span data-lang="es">Cómo trabajo con la IA</span><span data-lang="en">How I work with AI</span></p>
-              <h3><span data-lang="es">Los agentes proponen, las puertas deciden</span><span data-lang="en">Agents propose, machine-checked gates decide</span></h3>
-              <div class="chip-list"><span class="chip"><img src="assets/brand/claude.svg" alt="" width="16" height="16" loading="lazy">Claude</span><span class="chip"><img src="assets/brand/openai.svg" alt="" width="16" height="16" loading="lazy">Codex</span><span class="chip"><img src="assets/brand/minimax.svg" alt="" width="16" height="16" loading="lazy">MiniMax</span><span class="chip"><img src="assets/brand/grok.svg" alt="" width="16" height="16" loading="lazy">Grok</span></div>
+              <p class="stack-group__label"><span data-lang="es">Con la IA</span><span data-lang="en">With AI</span></p>
+              <h3><span data-lang="es">Quien propone y quien decide</span><span data-lang="en">Who proposes and who decides</span></h3>
+              <div class="chip-list"><span class="chip"><img src="assets/brand/claude.svg?v=2" alt="" width="16" height="16" loading="lazy">Claude</span><span class="chip"><img src="assets/brand/openai.svg?v=2" alt="" width="16" height="16" loading="lazy">Codex</span><span class="chip"><img src="assets/brand/minimax.svg?v=2" alt="" width="16" height="16" loading="lazy">MiniMax</span><span class="chip"><img src="assets/brand/grok.svg?v=2" alt="" width="16" height="16" loading="lazy">Grok</span></div>
             </article>
           </div>
         </div>
@@ -287,30 +309,30 @@
             <div class="contact-card__copy">
               <p class="eyebrow"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></p>
               <h2 id="contact-title"><span data-lang="es">Mario Cabrero Volarich</span><span data-lang="en">Mario Cabrero Volarich</span></h2>
-              <p><span data-lang="es">El trabajo open source, el contexto técnico y los datos de contacto están disponibles en GitHub y LinkedIn.</span><span data-lang="en">Open-source work, technical context and contact details are available through GitHub and LinkedIn.</span></p>
+              <p><span data-lang="es">El código abierto, el contexto técnico y los datos de contacto están en GitHub y LinkedIn.</span><span data-lang="en">The open-source work, the technical context and the contact details are on GitHub and LinkedIn.</span></p>
             </div>
             <ul class="social-links">
             <li>
               <a href="https://github.com/CartagoGit" target="_blank" rel="noreferrer">
-                <img src="assets/brand/github.svg" alt="" width="18" height="18" loading="lazy">
+                <img src="assets/brand/github.svg?v=2" alt="" width="18" height="18" loading="lazy">
                 <span>GitHub</span>
               </a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/mario-cabrero-volarich" target="_blank" rel="noreferrer">
-                <img src="assets/brand/linkedin.svg" alt="" width="18" height="18" loading="lazy">
+                <img src="assets/brand/linkedin.svg?v=2" alt="" width="18" height="18" loading="lazy">
                 <span>LinkedIn</span>
               </a>
             </li>
             <li>
               <a href="https://www.npmjs.com/~cartago-git" target="_blank" rel="noreferrer">
-                <img src="assets/brand/npm.svg" alt="" width="18" height="18" loading="lazy">
+                <img src="assets/brand/npm.svg?v=2" alt="" width="18" height="18" loading="lazy">
                 <span>npm</span>
               </a>
             </li>
             <li>
               <a href="https://hub.docker.com/u/cartagodocker" target="_blank" rel="noreferrer">
-                <img src="assets/brand/docker.svg" alt="" width="18" height="18" loading="lazy">
+                <img src="assets/brand/docker.svg?v=2" alt="" width="18" height="18" loading="lazy">
                 <span>Docker Hub</span>
               </a>
             </li>
@@ -323,7 +345,7 @@
     <footer class="site-footer">
       <div class="shell site-footer__inner">
         <span>© Mario Cabrero Volarich</span>
-        <span class="site-footer__meta"><span data-lang="es">Front-end · Arquitectura · Entrega</span><span data-lang="en">Front-end · Architecture · Delivery</span></span>
+        <span class="site-footer__meta"><span data-lang="es">Front-end · Decisiones · Entrega</span><span data-lang="en">Front-end · Decisions · Delivery</span></span>
       </div>
     </footer>
 
@@ -346,9 +368,6 @@
           root.lang = lang;
           try { localStorage.setItem("cartago-lang", lang); } catch (error) {}
           syncToggles();
-          document.title = lang === "es"
-            ? "Mario Cabrero Volarich — Frontend engineer · Angular, Ionic & SCSS"
-            : "Mario Cabrero Volarich — Frontend Engineer · Angular, Ionic & SCSS";
         });
       });
 
@@ -359,11 +378,19 @@
         document.querySelectorAll("[data-set-lang]").forEach((button) => {
           button.setAttribute("aria-pressed", String(button.dataset.setLang === root.lang));
         });
-        // The browser chrome on mobile follows the theme.
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = root.dataset.theme === "light" ? "#f2f5fb" : "#070d1c";
+        if (meta) meta.content = root.dataset.theme === "light" ? "#eef1f8" : "#060b18";
       }
       syncToggles();
+
+      // A visitor who changes the system theme after loading gets it applied.
+      matchMedia("(prefers-color-scheme: light)").addEventListener("change", (event) => {
+        let stored = null;
+        try { stored = localStorage.getItem("cartago-theme"); } catch (error) {}
+        if (stored) return;
+        root.dataset.theme = event.matches ? "light" : "dark";
+        syncToggles();
+      });
 
       // ---- scroll reveal ------------------------------------------------------
       const revealables = document.querySelectorAll(".reveal");

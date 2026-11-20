@@ -2,7 +2,8 @@
 """Generate the static portfolio page.
 
 The page is generated rather than hand-edited so the two languages cannot
-drift apart and so every technology chip carries its real brand mark.
+drift apart, every technology chip carries its real brand mark, and every
+destination link carries the icon of what it is.
 """
 import pathlib
 
@@ -11,161 +12,315 @@ BRAND = SITE / "assets" / "brand"
 
 # Each entry: (es, en)
 T = {
-    "eyebrow_hero": ("Frontend engineer · Sevilla, España", "Frontend engineer · Seville, Spain"),
+    # ---- hero ----
+    "eyebrow_hero": ("Frontend engineer · Angular + SCSS", "Frontend engineer · Angular + SCSS"),
+    "hero_role": (
+        "Interfaces para sistemas que no se pueden romper",
+        "Interfaces for systems that must not break",
+    ),
     "hero_lead": (
-        'Construyo <strong>front-ends operativos</strong>: aplicaciones de negocio que se usan '
-        'todo el día, con los estados, permisos y reglas de negocio que tienen que seguir '
-        'funcionando el trimestre que viene. Mi base es <strong>Angular con SCSS</strong>, Ionic '
-        'para móvil y Material para el sistema de diseño.',
-        'I build <strong>operational front-ends</strong> — business applications people use all '
-        'day, with the states, permissions and long-lived rules that have to keep working next '
-        'quarter. My base is <strong>Angular with SCSS</strong>, Ionic for mobile and Material '
-        'for the design system.',
+        "ERP, logística, inventario, personal: las mismas pantallas ocho horas al día, con "
+        "permisos que cambian según el rol y reglas que tienen que sobrevivir al trimestre. "
+        "<strong>Angular con SCSS</strong>, Ionic cuando hace falta Android, Material para el "
+        "sistema de diseño.",
+        "ERP, logistics, inventory, workforce: the same screens eight hours a day, with "
+        "permissions that shift by role and rules that have to survive the quarter. "
+        "<strong>Angular with SCSS</strong>, Ionic when Android is needed, Material for the "
+        "design system.",
     ),
     "hero_secondary": (
-        "Alrededor de esa base, mentorizo al equipo, tomo las decisiones de arquitectura, pongo "
-        "las puertas de calidad y dockerizo lo que entregamos. En mi tiempo libre construyo "
-        "herramientas de desarrollo, que es donde todavía puedo profundizar en lo que me importa.",
-        "Around that base I mentor the team, take the architecture decisions, set the quality "
-        "gates and containerise what we ship. In my own time I build developer tooling, which is "
-        "where I can still go deep on the parts I care about.",
+        "Alrededor, la parte que casi nadie documenta: mentoría, decisiones de arquitectura, "
+        "CI, contenedores y las herramientas que me faltaban. Lo que hay en GitHub es el trabajo "
+        "de las horas que no son de cliente.",
+        "Around it, the part almost nobody documents: mentoring, architecture decisions, CI, "
+        "containers, and the tools I was missing. What is on GitHub is the work of the hours that "
+        "are not client work.",
     ),
     "cta_work": ("Ver el trabajo", "See the work"),
     "cta_what": ("Qué hago", "What I do"),
-    "at_a_glance": ("De un vistazo", "At a glance"),
+    "at_a_glance": ("En una línea", "In one line"),
     "facts": [
         ("Base", "Base", "Angular · SCSS · Ionic · Material"),
-        ("También", "Also", "NestJS · Bun · Node · SQLite"),
-        ("Entrega", "Delivery", "Docker · GitLab CI · GitHub Actions"),
-        ("Rol", "Role", "Mentor · Decisiones · Front-end"),
-        ("Propio", "Independent", "Runtime MCP · Tooling · Librerías"),
+        ("Detrás", "Behind", "NestJS · Bun · SQLite"),
+        ("Entrega", "Delivery", "Docker · GitLab CI · Actions"),
+        ("Rol", "Role", "Mentor · Decisiones técnicas"),
+        ("En GitHub", "On GitHub", "25 repos · 3 paquetes"),
     ],
+
+    # ---- work ----
     "eyebrow_work": ("Qué hago", "What I do"),
     "h_work": (
-        "Front-ends operativos, y todo lo necesario para entregarlos.",
-        "Operational front-ends, and everything it takes to ship them.",
+        "Seis cosas que hago, y por qué.",
+        "Six things I do, and why.",
     ),
     "pillars": [
         (
-            "Entrega de front-end operativo",
-            "Operational front-end delivery",
-            "Aplicaciones de negocio para procesos comerciales, financieros, de inventario, "
-            "logística y de personal. Estados complejos, permisos, informes y reglas de producto "
-            "que tienen que sobrevivir a la siguiente release: no pantallas de demo.",
-            "Business applications for commercial, financial, inventory, logistics and workforce "
-            "processes. Complex states, permissions, reporting and product rules that have to "
-            "survive the next release — not demo screens.",
+            "01 · Front-end operativo",
+            "01 · Operational front-end",
+            "Las pantallas que se usan ocho horas al día",
+            "The screens people use eight hours a day",
+            "Comercial, financiero, inventario, logística, personal. Estados que dependen del "
+            "rol, informes que no cuadran si el estado se desincroniza, y permisos que hay que "
+            "cambiar sin tocar el resto.",
+            "Commercial, financial, inventory, logistics, workforce. States that depend on the "
+            "role, reports that stop adding up when a state desynchronises, and permissions that "
+            "change without touching everything else.",
         ),
         (
-            "Web y Android",
-            "Web and Android",
-            "Aplicaciones Angular e Ionic, empaquetadas para Android con Capacitor. Interfaces "
-            "diseñadas para un uso repetido y con mucho contexto, no para interacciones sueltas.",
-            "Angular and Ionic applications, packaged for Android with Capacitor. Interfaces "
-            "designed for repeated, high-context use rather than one-off interactions.",
+            "02 · Web y Android",
+            "02 · Web and Android",
+            "El mismo código, en el navegador y en el bolsillo",
+            "The same code, in the browser and in the pocket",
+            "Angular e Ionic, empaquetado con Capacitor. La decisión importante no es la "
+            "tecnología: es diseñar para uso repetido, donde cada clic de más se paga treinta "
+            "veces al día.",
+            "Angular and Ionic, packaged with Capacitor. The important decision is not the "
+            "stack: it is designing for repeated use, where every extra click is paid for thirty "
+            "times a day.",
         ),
         (
-            "Mentoría y decisiones técnicas",
-            "Mentoring & technical decisions",
-            "Mentorizo al equipo y resuelvo los trade-offs: qué se queda en el front, qué pasa a "
-            "un servicio, qué lleva una puerta de calidad y qué lleva una decisión escrita.",
-            "I mentor the team and settle the trade-offs: what stays in the front-end, what moves "
-            "to a service, what gets a gate and what gets a written decision.",
+            "03 · Decisiones y mentoría",
+            "03 · Decisions and mentoring",
+            "Lo que hay que decidir antes de escribir código",
+            "What has to be decided before any code is written",
+            "Qué se queda en el front y qué baja a un servicio. Qué lleva una puerta de calidad "
+            "y qué lleva una decisión escrita. Y el código del equipo cuando la feature aprieta "
+            "y ya no da tiempo a hacerlo bien.",
+            "What stays in the front-end and what moves to a service. What gets a quality gate "
+            "and what gets a written decision. And the team's code when the feature is tight and "
+            "there is no time to do it properly.",
         ),
         (
-            "Bases de entrega",
-            "Delivery foundations",
-            "Entornos de desarrollo dockerizados, pipelines de GitLab CI y GitHub Actions, "
-            "imágenes de contenedor y cobertura de tests donde de verdad se rompe algo.",
-            "Dockerised development environments, GitLab CI and GitHub Actions pipelines, "
-            "container images, and focused test coverage on the parts that actually break.",
+            "04 · CI y contenedores",
+            "04 · CI and containers",
+            "El mismo entorno en el portátil y en el runner",
+            "The same environment on the laptop and on the runner",
+            "GitLab CI para el producto, GitHub Actions para lo propio. Imágenes de Node/Bun, "
+            "Angular, Ionic y NestJS con las versiones fijadas, porque un «latest» que cambia "
+            "un martes es un incidente el miércoles.",
+            "GitLab CI for the product, GitHub Actions for my own work. Images for Node/Bun, "
+            "Angular, Ionic and NestJS with pinned versions, because a 'latest' that moves on a "
+            "Tuesday is an incident on Wednesday.",
         ),
         (
-            "Herramientas de desarrollo",
-            "Developer tooling",
-            "Un runtime MCP, una librería de serialización de modelos y un motor de análisis "
-            "estático: construidos porque las herramientas que quería todavía no existían.",
-            "An MCP runtime, a model serialization library and a static analysis engine — built "
-            "because the tools I wanted did not exist yet.",
+            "05 · Herramientas propias",
+            "05 · Own tooling",
+            "Construidas porque me faltaban",
+            "Built because I was missing them",
+            "Un runtime MCP, un análisis estático de APIs, una librería de serialización, un "
+            "gestor de secretos. Ninguno salió de una hoja de ruta: salieron todos de un "
+            "problema mío de un martes por la tarde.",
+            "An MCP runtime, a static analysis engine for APIs, a serialization library, a secret "
+            "manager. None of them came off a roadmap: all of them came from one of my problems "
+            "on a Tuesday afternoon.",
         ),
         (
-            "Backend y runtime",
-            "Backend & runtime",
-            "NestJS, Bun y Node para los servicios que hay detrás de las interfaces; SQLite y "
-            "PostgreSQL para los datos. Suficiente para ownsar el camino entero.",
-            "NestJS, Bun and Node for the services behind the interfaces; SQLite and PostgreSQL "
-            "for the data. Enough to own the whole path.",
+            "06 · Lo que hay detrás",
+            "06 · What sits behind",
+            "Backend suficiente para no delegarlo",
+            "Enough backend to not delegate it away",
+            "NestJS y Bun para lo que necesita servidor. SQLite cuando el dato es local y "
+            "PostgreSQL cuando no. Lo justo para poder tocar el circuito entero sin tener que "
+            "pedir permiso a otro equipo.",
+            "NestJS and Bun for whatever needs a server. SQLite when the data is local and "
+            "PostgreSQL when it is not. Just enough to touch the whole circuit without asking "
+            "another team for permission.",
         ),
     ],
+
+    # ---- evidence ----
     "eyebrow_evidence": ("Evidencia", "Evidence"),
     "h_evidence": (
-        "Medido sobre los repositorios públicos, no estimado.",
-        "Measured on the public repositories, not estimated.",
+        "Lo que se puede medir, medido.",
+        "What can be measured, measured.",
     ),
     "evidence": [
-        ("Commits", "Commits", "17.484", "17,484", "MCP runtime core"),
-        ("Líneas de código", "Source lines", "628.712", "628,712", "Runtime core, sin tests"),
-        ("Líneas de test", "Test lines", "460.854", "460,854", "2.709 ficheros de test"),
-        ("Frameworks", "Frameworks", "25", "25", "Detectados desde el código"),
-        ("Pulls de Docker", "Docker pulls", "4.833", "4,833", "Cinco imágenes publicadas"),
-        ("Workflows de CI", "CI workflows", "18", "18", "Puertas de calidad del runtime core"),
+        ("Commits", "Commits", "17.484", "17,484", "en el runtime MCP"),
+        ("Líneas de fuente", "Source lines", "628.712", "628,712", "sin contar los tests"),
+        ("Líneas de test", "Test lines", "460.854", "460,854", "el 42% del repositorio"),
+        ("Paquetes", "Packages", "84", "84", "en un solo monorepo"),
+        ("Workflows de CI", "CI workflows", "18", "18", "en el runtime"),
+        ("Frameworks", "Frameworks", "25", "25", "detectados desde el código"),
     ],
+
+    # ---- projects ----
     "eyebrow_projects": ("Proyectos", "Projects"),
     "h_projects": (
-        "Trabajo independiente, hecho en mi tiempo libre.",
-        "Independent work, built in my own time.",
+        "Lo que está en GitHub, y en qué estado.",
+        "What is on GitHub, and in which state.",
     ),
-    "all_repos": ("Todos los repositorios", "All repositories"),
-    "eyebrow_stack": ("Stack principal", "Core stack"),
+    "all_repos": ("Todos", "All"),
+    "projects": [
+        (
+            "assets/delendai.svg", "Runtime MCP", "MCP runtime",
+            "DelendAI",
+            "Núcleo agnóstico para montar servidores MCP y el cargador de plugins que los "
+            "alimenta. Superficie perezosa, errores públicos, datos privados y un ciclo de "
+            "propuesta a release alrededor.",
+            "An agnostic core for building MCP servers and the plugin loader that feeds them. A "
+            "lazy surface, public errors, private data, and a proposal-to-release cycle around "
+            "it.",
+            [("repo", "https://github.com/CartagoGit/DelendAI"),
+             ("releases", "https://github.com/CartagoGit/DelendAI/releases")],
+        ),
+        (
+            "assets/tanit.svg", "Análisis estático", "Static analysis",
+            "API Source Tanit",
+            "Detecta el framework leyendo el código, recupera los cuerpos de las peticiones de "
+            "los esquemas de validación y exporta a Postman, Bruno, Insomnia, HAR, OpenAPI o "
+            "cURL. Sin levantar el servidor.",
+            "Detects the framework by reading the code, recovers request bodies from validation "
+            "schemas, and exports to Postman, Bruno, Insomnia, HAR, OpenAPI or cURL. Without "
+            "starting the server.",
+            [("repo", "https://github.com/CartagoGit/api-source-tanit"),
+             ("releases", "https://github.com/CartagoGit/api-source-tanit/releases")],
+        ),
+        (
+            "assets/quickmodel.png", "Librería", "Library",
+            "QuickModel",
+            "Transformación automática de tipos y adaptadores de validación sobre una base "
+            "SOLID. Los tests pesan más que el código fuente, y es a propósito.",
+            "Automatic type transformation and validation adapters over a SOLID base. The tests "
+            "weigh more than the source, on purpose.",
+            [("repo", "https://github.com/CartagoGit/quickmodel"),
+             ("docs", "https://cartagogit.github.io/quickmodel/")],
+        ),
+        (
+            "assets/keyer.svg", "Paquete publicado", "Published package",
+            "Keyer",
+            "Cifra claves y ficheros de entorno desde la terminal. Publicado en npm y usado para "
+            "que ninguna credencial real acabe en un repositorio o en una imagen.",
+            "Encrypts keys and environment files from the terminal. Published on npm and used so "
+            "that no real credential ends up in a repository or an image.",
+            [("repo", "https://github.com/CartagoGit/Keyer"),
+             ("package", "https://www.npmjs.com/package/@cartago-git/keyer")],
+        ),
+        (
+            "assets/print-cv.svg", "Aplicación", "Application",
+            "Print CV",
+            "El currículum como datos validados, en dos idiomas, con un modo de impresión "
+            "diseñado alrededor del papel real. Es la aplicación que vive en cartagogit.github.io.",
+            "A CV modelled as validated data, in two languages, with a print mode designed around "
+            "real paper. This is the application that lives at cartagogit.github.io.",
+            [("repo", "https://github.com/CartagoGit/print-cv"),
+             ("live", "https://cartagogit.github.io/print-cv/")],
+        ),
+        (
+            "assets/cartago.svg", "Sitio", "Site",
+            "Portfolio",
+            "Este sitio: Angular zoneless, render en servidor, bilingüe y con el tema del sistema. "
+            "El generador de la página está en el propio repositorio.",
+            "This site: zoneless Angular, server-rendered, bilingual and following the system "
+            "theme. The page generator lives in the repository itself.",
+            [("repo", "https://github.com/CartagoGit/portfolio"),
+             ("live", "https://cartagogit.github.io")],
+        ),
+        (
+            "assets/docker.svg", "Infraestructura", "Infrastructure",
+            "Imágenes de desarrollo",
+            "Node/Bun, Angular, Ionic, NestJS y Zsh, con las versiones fijadas. El mismo "
+            "entorno en el portátil y en el runner, que es de donde salen casi todos los "
+            "problemas de «en mi máquina funciona».",
+            "Node/Bun, Angular, Ionic, NestJS and Zsh, with pinned versions. The same environment "
+            "on the laptop and on the runner, which is where most 'works on my machine' problems "
+            "come from.",
+            [("repo", "https://github.com/CartagoGit/DockerNodeBun"),
+             ("live", "https://hub.docker.com/u/cartagodocker")],
+        ),
+        (
+            "assets/brand/steam-keys.svg", "Escritorio", "Desktop",
+            "Gestor local de claves",
+            "Una aplicación de escritorio, Tauri y SQLite, donde las claves no salen del equipo. "
+            "El mismo criterio local-first que el resto de mis herramientas.",
+            "A desktop application, Tauri and SQLite, where the keys never leave the machine. The "
+            "same local-first rule as the rest of my tooling.",
+            [("repo", "https://github.com/CartagoGit/steam-keys")],
+        ),
+        (
+            "assets/tanit.svg", "Mods y contenido", "Mods and content",
+            "Fabricación de mods",
+            "Herramientas y contenido para modificar juegos: formatos binarios, localización y "
+            "automatización. Un terreno abierto, con proyectos que van y vienen.",
+            "Tools and content for modding games: binary formats, localisation and automation. An "
+            "open field, with projects that come and go.",
+            [("repo", "https://github.com/CartagoGit/aoe2-mods"),
+             ("repo", "https://github.com/CartagoGit/pcfutbol6-mod")],
+        ),
+    ],
+
+    # ---- stack ----
+    "eyebrow_stack": ("Con qué trabajo", "What I work with"),
     "h_stack": (
-        "Las herramientas que uso, con el front-end primero.",
-        "The tools I reach for, with the front-end first.",
+        "El stack, por capas y no por logotipo.",
+        "The stack, by layer and not by logo.",
     ),
+    "stack_note": (
+        "La capa de arriba es la que uso cada día. Las de abajo están porque en algún momento "
+        "hizo falta.",
+        "The top layer is what I use every day. The ones below are there because at some point "
+        "they were needed.",
+    ),
+
+    # ---- contact ----
     "eyebrow_contact": ("Contacto", "Contact"),
     "h_contact": ("Mario Cabrero Volarich", "Mario Cabrero Volarich"),
     "contact_text": (
-        "El trabajo open source, el contexto técnico y los datos de contacto están disponibles "
-        "en GitHub y LinkedIn.",
-        "Open-source work, technical context and contact details are available through GitHub and "
+        "El código abierto, el contexto técnico y los datos de contacto están en GitHub y "
+        "LinkedIn.",
+        "The open-source work, the technical context and the contact details are on GitHub and "
         "LinkedIn.",
     ),
-    "footer_meta": ("Front-end · Arquitectura · Entrega", "Front-end · Architecture · Delivery"),
+    "footer_meta": (
+        "Front-end · Decisiones · Entrega",
+        "Front-end · Decisions · Delivery",
+    ),
+
+    # ---- nav (order matches the sections) ----
     "nav": [
         ("Qué hago", "What I do"),
         ("Evidencia", "Evidence"),
         ("Proyectos", "Projects"),
-        ("Stack", "Stack"),
+        ("Con qué", "Tools"),
         ("Contacto", "Contact"),
     ],
 }
 
 STACK_GROUPS = [
-    ("Front-end — mi base", "Front-end — my base", "Operaciones con estado predecible", "Operational applications with predictable state", [
-        ("angular", "Angular"), ("ionic", "Ionic"), ("angular", "Material"),
-        ("sass", "Sass"), ("typescript", "TypeScript"), ("rxjs", "RxJS"),
+    ("Front-end — a diario", "Front-end — daily", "Angular, SCSS, Ionic y el diseño", "Angular, SCSS, Ionic and the design", [
+        ("angular", "Angular"), ("sass", "Sass"), ("ionic", "Ionic"),
+        ("typescript", "TypeScript"), ("rxjs", "RxJS"), ("angular", "Material"),
         ("capacitor", "Capacitor"), ("tailwindcss", "Tailwind"),
         ("vue", "Vue"), ("react", "React"),
     ]),
-    ("Servicios, datos y runtime", "Services, data & runtime", "Suficiente backend para ownsar el camino", "Enough backend to own the whole path", [
+    ("Cuando hace falta servidor", "When a server is needed", "Servicios, datos y contratos", "Services, data and contracts", [
         ("nestjs", "NestJS"), ("bun", "Bun"), ("nodejs", "Node.js"),
         ("postgresql", "PostgreSQL"), ("sqlite", "SQLite"),
         ("mongodb", "MongoDB"), ("zod", "Zod"), ("openapi", "OpenAPI"),
     ]),
-    ("Tooling e infraestructura de IA", "Tooling & AI infrastructure", "Lo que construyo cuando la herramienta no existe", "What I build when the tool does not exist", [
+    ("Herramientas que construyo", "Tools I build", "Lo que sale de un problema mío", "What comes out of one of my problems", [
         ("model-context-protocol", "MCP"), ("tauri", "Tauri"), ("rust", "Rust"),
         ("godot", "Godot"), ("python", "Python"), ("storybook", "Storybook"),
         ("prime-ng", "PrimeNG"),
     ]),
-    ("Calidad y entrega", "Quality & delivery", "Releases fiables, no solo builds locales", "Reliable releases, not just local builds", [
+    ("Calidad y entrega", "Quality and delivery", "Lo que impide que rompa", "What stops it from breaking", [
         ("vitest", "Vitest"), ("playwright", "Playwright"), ("eslint", "ESLint"),
         ("prettier", "Prettier"), ("docker", "Docker"), ("gitlab", "GitLab CI"),
         ("github-actions", "GitHub Actions"), ("linux", "Linux"),
     ]),
-    ("Cómo trabajo con la IA", "How I work with AI", "Los agentes proponen, las puertas deciden", "Agents propose, machine-checked gates decide", [
+    ("Con la IA", "With AI", "Quien propone y quien decide", "Who proposes and who decides", [
         ("claude", "Claude"), ("openai", "Codex"), ("minimax", "MiniMax"),
         ("grok", "Grok"),
     ]),
 ]
+
+# The icon that says what each destination is.
+LINK_ICONS = {
+    "repo": ("github", "Repositorio", "Repository"),
+    "releases": ("releases", "Releases", "Releases"),
+    "docs": ("docs", "Documentación", "Documentation"),
+    "live": ("live", "En vivo", "Live"),
+    "package": ("package", "npm", "npm package"),
+}
 
 SOCIAL = [
     ("github", "GitHub", "https://github.com/CartagoGit", "GitHub profile"),
@@ -174,84 +329,29 @@ SOCIAL = [
     ("docker", "Docker Hub", "https://hub.docker.com/u/cartagodocker", "Docker Hub images"),
 ]
 
-PROJECTS = [
-    ("assets/delendai.svg", "Runtime MCP", "MCP runtime core", "DelendAI",
-     "Un núcleo agnóstico para construir servidores MCP y el cargador de plugins que los alimenta: "
-     "capacidades nombradas resueltas en tiempo de ejecución, superficie perezosa, errores "
-     "públicos y datos privados — envuelto en un pipeline completo de propuesta a release.",
-     "A project-agnostic core for building MCP servers, and the plugin loader that feeds them: "
-     "named capabilities resolved at runtime, a lazy surface, public errors, private data — "
-     "wrapped in a full proposal-to-release pipeline.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/DelendAI"),
-      ("Releases", "Releases", "https://github.com/CartagoGit/DelendAI/releases")]),
-    ("assets/tanit.svg", "Análisis estático", "Static analysis", "API Source Tanit",
-     "Detecta el framework desde el propio código, recupera los cuerpos de las peticiones de los "
-     "esquemas de validación y exporta a Postman, Bruno, Insomnia, HAR, OpenAPI o cURL. CLI, "
-     "builds de escritorio y contenedores.",
-     "Detects the framework from the code itself, recovers request bodies from validation "
-     "schemas, and exports to Postman, Bruno, Insomnia, HAR, OpenAPI or cURL. CLI, desktop "
-     "builds and containers.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/api-source-tanit"),
-      ("Releases", "Releases", "https://github.com/CartagoGit/api-source-tanit/releases")]),
-    ("assets/quickmodel.png", "Librería TypeScript", "TypeScript library", "QuickModel",
-     "Transformación automática de tipos, adaptadores de validación, tests de seguridad y "
-     "benchmarks, publicado como librería con un servidor MCP encima. El suite de tests es más "
-     "grande que el código fuente a propósito.",
-     "Automatic type transformation, validation adapters, security tests and benchmarks, "
-     "published as a library with an MCP server on top. The test suite is larger than the source "
-     "on purpose.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/quickmodel"),
-      ("Documentación", "Documentation", "https://cartagogit.github.io/quickmodel/")]),
-    ("assets/keyer.svg", "Paquete publicado", "Published package", "Keyer",
-     "Cifra claves, API keys y ficheros <code>.env</code> desde la línea de comandos. Publicado "
-     "en npm y usado para que las credenciales reales no acaben en los repositorios ni en las "
-     "imágenes.",
-     "Encrypts keys, API keys and <code>.env</code> files from the command line. Published on npm "
-     "and used to keep real credentials out of the repositories and the images.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/Keyer"),
-      ("Paquete npm", "npm package", "https://www.npmjs.com/package/@cartago-git/keyer")]),
-    ("assets/print-cv.svg", "CV para imprimir", "Print-ready CV", "Print CV",
-     "Vue 3 y TypeScript, con el currículum modelado como datos validados, internacionalizado en "
-     "inglés y español, y un modo de impresión diseñado alrededor del papel real.",
-     "Vue 3 and TypeScript, with the curriculum modelled as validated data, internationalised in "
-     "English and Spanish, and a print mode designed around real paper.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/print-cv"),
-      ("App en vivo", "Live app", "https://cartagogit.github.io/print-cv/")]),
-    ("assets/cartago.svg", "Ingeniería de producto", "Product engineering", "Angular 22 zoneless SSR",
-     "La aplicación Angular que hay detrás de este perfil: sin zone.js, con render en servidor, "
-     "con tests unitarios y de integración y con un servidor MCP integrado en el build.",
-     "The Angular application behind this profile: zoneless, server-rendered, with unit and "
-     "integration tests, and an MCP server wired into the build.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/portfolio")]),
-    ("assets/docker.svg", "Contenedores", "Containers", "Imágenes de desarrollo",
-     "Entornos Docker para Angular, Ionic, NestJS, Node/Bun y Zsh, publicados con matrices de "
-     "versiones fijadas.",
-     "Docker environments for Angular, Ionic, NestJS, Node/Bun and Zsh workflows, published with "
-     "pinned version matrices.",
-     [("Docker Hub", "Docker Hub", "https://hub.docker.com/u/cartagodocker")]),
-    ("assets/tanit.svg", "Contenido de juegos", "Game content", "Fábrica de campañas históricas",
-     "Contenido de campañas validado por esquema para Age of Empires II, escrito en inglés y "
-     "localizado para España con un pipeline de TypeScript y Python.",
-     "Schema-validated campaign content for Age of Empires II, authored in English and localised "
-     "for Spain through a TypeScript and Python pipeline.",
-     [("Repositorio", "Repository", "https://github.com/CartagoGit/aoe2-mods")]),
-]
-
 
 def i18n(es, en):
     """Both languages of one string, side by side, so the switch can swap them."""
-    return (
-        f'<span data-lang="es">{es}</span>'
-        f'<span data-lang="en">{en}</span>'
-    )
+    return f'<span data-lang="es">{es}</span><span data-lang="en">{en}</span>'
 
 
 def chip(slug, name):
     if not (BRAND / f"{slug}.svg").exists():
         return f"<span>{name}</span>"
     return (
-        f'<span class="chip"><img src="assets/brand/{slug}.svg" alt="" '
+        f'<span class="chip"><img src="assets/brand/{slug}.svg?v=2" alt="" '
         f'width="16" height="16" loading="lazy">{name}</span>'
+    )
+
+
+def link(kind, href):
+    slug, es, en = LINK_ICONS[kind]
+    return (
+        f'<a class="link-pill" href="{href}" target="_blank" rel="noreferrer" '
+        f'title="{es} / {en}">'
+        f'<img src="assets/brand/{slug}.svg?v=2" alt="" width="15" height="15" loading="lazy">'
+        f'<span>{i18n(es, en)}</span>'
+        f"</a>"
     )
 
 
@@ -263,11 +363,11 @@ def build():
 
     pillars = "\n".join(
         f'            <article class="pillar reveal">\n'
-        f'              <span class="pillar__index">{i:02d}</span>\n'
-        f"              <h3>{i18n(es_title, en_title)}</h3>\n"
+        f'              <p class="pillar__kicker">{i18n(es_k, en_k)}</p>\n'
+        f"              <h3>{i18n(es_t, en_t)}</h3>\n"
         f"              <p>{i18n(es, en)}</p>\n"
         f"            </article>"
-        for i, (es_title, en_title, es, en) in enumerate(T["pillars"], 1)
+        for es_k, en_k, es_t, en_t, es, en in T["pillars"]
     )
 
     evidence = "\n".join(
@@ -286,12 +386,10 @@ def build():
         f'                <p class="project__text">{i18n(es, en)}</p>\n'
         f"              </div>\n"
         f'              <div class="project__links">'
-        + "".join(
-            f'<a href="{href}">{i18n(es_l, en_l)}</a>' for es_l, en_l, href in links
-        )
+        + "".join(link(kind, href) for kind, href in links)
         + "</div>\n"
         f"            </article>"
-        for i, (icon, es_type, en_type, title, es, en, links) in enumerate(PROJECTS)
+        for i, (icon, es_type, en_type, title, es, en, links) in enumerate(T["projects"])
     )
 
     stack = "\n".join(
@@ -308,7 +406,7 @@ def build():
     social = "\n".join(
         f'            <li>\n'
         f'              <a href="{href}" target="_blank" rel="noreferrer">\n'
-        f'                <img src="assets/brand/{slug}.svg" alt="" width="18" height="18" loading="lazy">\n'
+        f'                <img src="assets/brand/{slug}.svg?v=2" alt="" width="18" height="18" loading="lazy">\n'
         f"                <span>{label}</span>\n"
         f"              </a>\n"
         f"            </li>"
@@ -317,7 +415,7 @@ def build():
 
     header_links = "\n".join(
         f'          <a class="icon-link" href="{href}" target="_blank" rel="noreferrer" aria-label="{aria}">\n'
-        f'            <img src="assets/brand/{slug}.svg" alt="" width="17" height="17">\n'
+        f'            <img src="assets/brand/{slug}.svg?v=2" alt="" width="17" height="17">\n'
         f"          </a>"
         for slug, _label, href, aria in SOCIAL
     )
@@ -332,12 +430,12 @@ def build():
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mario Cabrero Volarich — Frontend engineer · Angular, Ionic &amp; SCSS</title>
-    <meta name="description" content="Mario Cabrero Volarich is a frontend engineer building operational applications with Angular, Ionic and SCSS, and the developer tooling and infrastructure to ship them.">
+    <title>Mario Cabrero Volarich — Frontend engineer · Angular + SCSS</title>
+    <meta name="description" content="Mario Cabrero Volarich is a frontend engineer: Angular, SCSS and Ionic for operational applications, plus the tooling, CI and infrastructure to ship them.">
     <meta name="author" content="Mario Cabrero Volarich">
     <meta name="theme-color" content="#070d1c">
     <meta property="og:title" content="Mario Cabrero Volarich — Frontend engineer">
-    <meta property="og:description" content="Operational front-ends with Angular, Ionic and SCSS — plus the tooling, the gates and the containers to ship them.">
+    <meta property="og:description" content="Angular, SCSS and Ionic for operational applications, plus the tooling, CI and infrastructure to ship them.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cartagogit.github.io/">
     <meta property="og:image" content="https://cartagogit.github.io/assets/banner-03-neon.png">
@@ -345,15 +443,18 @@ def build():
     <link rel="apple-touch-icon" href="assets/cartago.svg">
     <link rel="stylesheet" href="styles.css">
     <script>
-      // Applied before the first paint so the page never flashes the wrong theme.
-      // Dark is the default: the palette was designed for it. The light theme is
-      // opt-in and remembered once the visitor picks it.
+      // Applied before the first paint so the page never flashes the wrong
+      // theme or language. The visitor's own system settings decide, unless
+      // they have already chosen here.
       (function () {{
         try {{
-          var theme = localStorage.getItem("cartago-theme") || "dark";
-          document.documentElement.dataset.theme = theme;
-          var lang = localStorage.getItem("cartago-lang") || "es";
-          document.documentElement.lang = lang;
+          var storedTheme = localStorage.getItem("cartago-theme");
+          var prefersLight = matchMedia("(prefers-color-scheme: light)").matches;
+          document.documentElement.dataset.theme = storedTheme || (prefersLight ? "light" : "dark");
+
+          var storedLang = localStorage.getItem("cartago-lang");
+          var browserLang = (navigator.language || "en").toLowerCase();
+          document.documentElement.lang = storedLang || (browserLang.indexOf("es") === 0 ? "es" : "en");
         }} catch (error) {{}}
       }})();
     </script>
@@ -391,9 +492,18 @@ def build():
         <div class="shell hero__inner">
           <div class="hero__copy reveal">
             <p class="eyebrow">{i18n(*T["eyebrow_hero"])}</p>
-            <h1>Mario Cabrero<br><span class="hero__accent">Volarich</span></h1>
+
+            <h1 class="hero__name">
+              <span class="hero__first">Mario</span>
+              <span class="hero__last">Cabrero Volarich</span>
+            </h1>
+
+            <p class="hero__rule"><span></span></p>
+
+            <p class="hero__role">{i18n(*T["hero_role"])}</p>
             <p class="hero__lead">{i18n(*T["hero_lead"])}</p>
             <p class="hero__secondary">{i18n(*T["hero_secondary"])}</p>
+
             <div class="hero__actions">
               <a class="button button--primary" href="#projects">{i18n(*T["cta_work"])}</a>
               <a class="button button--ghost" href="#work">{i18n(*T["cta_what"])}</a>
@@ -409,7 +519,7 @@ def build():
         </div>
       </section>
 
-      <section class="section" id="work" aria-labelledby="work-title">
+      <section class="section section--work" id="work" aria-labelledby="work-title">
         <div class="shell">
           <div class="section__heading reveal">
             <p class="eyebrow">{i18n(*T["eyebrow_work"])}</p>
@@ -455,6 +565,7 @@ def build():
           <div class="section__heading reveal">
             <p class="eyebrow">{i18n(*T["eyebrow_stack"])}</p>
             <h2 id="stack-title">{i18n(*T["h_stack"])}</h2>
+            <p class="section__note">{i18n(*T["stack_note"])}</p>
           </div>
           <div class="stack-grid">
 {stack}
@@ -504,9 +615,6 @@ def build():
           root.lang = lang;
           try {{ localStorage.setItem("cartago-lang", lang); }} catch (error) {{}}
           syncToggles();
-          document.title = lang === "es"
-            ? "Mario Cabrero Volarich — Frontend engineer · Angular, Ionic & SCSS"
-            : "Mario Cabrero Volarich — Frontend Engineer · Angular, Ionic & SCSS";
         }});
       }});
 
@@ -517,11 +625,19 @@ def build():
         document.querySelectorAll("[data-set-lang]").forEach((button) => {{
           button.setAttribute("aria-pressed", String(button.dataset.setLang === root.lang));
         }});
-        // The browser chrome on mobile follows the theme.
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = root.dataset.theme === "light" ? "#f2f5fb" : "#070d1c";
+        if (meta) meta.content = root.dataset.theme === "light" ? "#eef1f8" : "#060b18";
       }}
       syncToggles();
+
+      // A visitor who changes the system theme after loading gets it applied.
+      matchMedia("(prefers-color-scheme: light)").addEventListener("change", (event) => {{
+        let stored = null;
+        try {{ stored = localStorage.getItem("cartago-theme"); }} catch (error) {{}}
+        if (stored) return;
+        root.dataset.theme = event.matches ? "light" : "dark";
+        syncToggles();
+      }});
 
       // ---- scroll reveal ------------------------------------------------------
       const revealables = document.querySelectorAll(".reveal");
@@ -574,5 +690,5 @@ def build():
 page = build()
 (SITE / "index.html").write_text(page, encoding="utf-8")
 print("written", len(page), "bytes")
-print("reveal elements:", page.count('class="pillar reveal"') + page.count('project reveal"') + page.count('stack-group reveal"'))
 print("lang spans:", page.count('data-lang="es"'))
+print("link pills:", page.count('class="link-pill"'))
