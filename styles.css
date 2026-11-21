@@ -321,6 +321,7 @@ html[lang="en"] [data-lang="es"] { display: none; }
   position: relative;
 }
 .hero__banner {
+  border-radius: 14px;
   display: block;
   height: auto;
   margin-inline: auto;
@@ -331,11 +332,13 @@ html[lang="en"] [data-lang="es"] { display: none; }
   -webkit-mask-image: radial-gradient(ellipse 82% 92% at 54% 50%, #000 46%, transparent 100%);
   mask-image: radial-gradient(ellipse 82% 92% at 54% 50%, #000 46%, transparent 100%);
 }
-/* On a pale background the navy of the artwork would be a dark patch, so it
-   is multiplied: the navy sinks into the page and only the lit globe stays. */
+/* On a pale background the navy of the artwork would be a dark patch if it
+   were multiplied — it went silver. Instead the picture stays what it is:
+   a framed image, with the same fade around the edges as in the dark theme. */
 html[data-theme="light"] .hero__banner {
-  mix-blend-mode: multiply;
-  opacity: .55;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 14px 34px -20px rgb(12 24 48 / .5);
+  opacity: .85;
 }
 
 .hero__inner {
