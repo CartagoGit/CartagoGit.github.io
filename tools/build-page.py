@@ -92,9 +92,9 @@ T = {
             "03 · Architecture and mentoring",
             "Decidir antes de escribir, y que el equipo pueda seguir",
             "Decide before writing, and let the team carry on",
-            "Elijo el límite entre el front-end y el servicio, qué se valida en CI con un gate "
-            "automático y qué se documenta como decisión de arquitectura (ADR). Reviso el "
-            "código del equipo y mentorizo a quien se incorpora.",
+            "Elijo el límite entre el front-end y el servicio, qué se valida en CI con un "
+            "control automático y qué se documenta como decisión de arquitectura (ADR). Reviso "
+            "el código del equipo y mentorizo a quien se incorpora.",
             "I choose the boundary between the front-end and the service, what gets an "
             "automated CI gate and what gets written down as an architecture decision record. "
             "I review the team's code and mentor whoever joins.",
@@ -116,7 +116,7 @@ T = {
             "05 · Own tooling",
             "Construidas porque me faltaban",
             "Built because I was missing them",
-            "Un servidor MCP con 62 capacidades, un análisis estático de APIs, una librería de "
+            "Un servidor MCP con 62 capacidades, un análisis estático de APIs, una biblioteca de "
             "serialización, un gestor de secretos y un gestor de claves. Cada uno nació de una "
             "necesidad concreta de mi propio trabajo.",
             "An MCP server with 62 capabilities, a static analysis engine for APIs, a "
@@ -145,11 +145,11 @@ T = {
     ),
     "evidence": [
         ("Repositorios", "Repositories", "89", "89", "68 públicos y 21 privados", "68 public and 21 private"),
-        ("Repos activos", "Active repositories", "26", "26", "publicados y mantenidos ahora", "published and maintained now"),
+        ("Repositorios activos", "Active repositories", "26", "26", "publicados y mantenidos ahora", "published and maintained now"),
         ("Commits", "Commits", "22.638", "22,638", "en los repositorios públicos activos", "across the active public repositories"),
         ("Años en GitHub", "Years on GitHub", "5", "5", "publicando desde octubre de 2021", "publishing since October 2021"),
         ("Capacidades", "Capabilities", "62", "62", "plugins aislados en DelendAI", "isolated plugins in DelendAI"),
-        ("Puertas de CI", "CI gates", "18", "18", "cada una con su aserción", "each one with its own assertion"),
+        ("Controles de CI", "CI gates", "18", "18", "cada uno con su propia comprobación", "each one with its own check"),
     ],
 
     # ---- projects ----
@@ -164,9 +164,10 @@ T = {
             "assets/delendai.svg", "Plataforma", "Platform",
             "DelendAI",
             "Un servidor MCP al que apuntas a un proyecto y le da exactamente las capacidades "
-            "que ese proyecto necesita: 62 plugins aislados, una CLI, nueve presets y un ciclo "
-            "de propuesta → implementación → revisión → release detrás de 18 puertas de CI. No "
-            "sabe nada de tu stack, y se desarrolla con agentes usando el propio servidor.",
+            "que ese proyecto necesita: 62 plugins aislados, una CLI, nueve configuraciones "
+            "predefinidas y un ciclo de propuesta → implementación → revisión → publicación "
+            "detrás de 18 controles de CI. No sabe nada de tu stack, y se desarrolla con agentes "
+            "usando el propio servidor.",
             "An MCP server you point at a project, and it hands that project exactly the "
             "capabilities it needs: 62 isolated plugins, a CLI, nine presets and a proposal → "
             "implement → review → release cycle behind 18 CI gates. It knows nothing about your "
@@ -187,7 +188,7 @@ T = {
              ("releases", "https://github.com/CartagoGit/api-source-tanit/releases", "Releases")],
         ),
         (
-            "assets/quickmodel.png", "Librería", "Library",
+            "assets/quickmodel.png", "Biblioteca", "Library",
             "QuickModel",
             "Transformación automática de tipos y adaptadores de validación sobre una base "
             "SOLID, con un servidor MCP encima. La suite de tests es más grande que el código "
@@ -324,8 +325,8 @@ T = {
             "La firma del cliente, en el móvil",
             "The customer's signature, on the phone",
             "Aplicación web progresiva en Angular para recoger la firma de recepción de material "
-            "en la entrega, a pantalla completa en móvil o tablet, con la tienda y la entrega "
-            "pendiente elegidas a mano.",
+            "en la entrega, a pantalla completa en móvil o tablet, seleccionando la tienda y la "
+            "entrega pendiente.",
             "An Angular progressive web app to capture the material receipt signature on "
             "delivery, full screen on a phone or tablet, with the store and the pending delivery "
             "picked by hand.",
@@ -375,7 +376,7 @@ T = {
         (
             "assets/pro/erp.svg",
             "ERP", "ERP",
-            "La parte frontal de un ERP de servicios",
+            "La parte visual de un ERP de servicios",
             "The front-end of a services ERP",
             "Listados, formularios y flujos de trabajo de un ERP de servicios, con su "
             "integración en el backend y sus reglas de negocio en la interfaz.",
@@ -411,7 +412,7 @@ T = {
     ],
 
     # ---- stack ----
-    "eyebrow_stack": ("Con qué trabajo", "What I work with"),
+    "eyebrow_stack": ("Tecnologías", "Technologies"),
     "h_stack": (
         "Las tecnologías, agrupadas por uso.",
         "The technologies, grouped by use.",
@@ -442,7 +443,7 @@ T = {
         ("Trabajo", "Work"),
         ("Evidencia", "Evidence"),
         ("Proyectos", "Projects"),
-        ("Con qué", "Tools"),
+        ("Tecnologías", "Tools"),
         ("Contacto", "Contact"),
     ],
 }
@@ -471,7 +472,8 @@ STACK_GROUPS = [
     ]),
     ("Con la IA", "With AI", "Asistentes que uso a diario", "Assistants I use daily", [
         ("claude", "Claude"), ("openai", "Codex"), ("minimax", "MiniMax"),
-        ("grok", "Grok"),
+        ("grok", "Grok"), ("gemini", "Gemini"), ("qwen", "Qwen"),
+        ("glm", "GLM"), ("mimo", "MiMo"), ("mai", "MAI Code"),
     ]),
 ]
 
@@ -648,22 +650,65 @@ def build():
             f"              </div>\n"
         )
 
-    pro = "\n".join(
-        f'            <article class="project{" project--case" if mock else ""} reveal">\n'
-        f'              <img class="project__icon" src="{icon}" alt="" width="56" height="56">\n'
-        f'              <div class="project__body">\n'
-        f'                <p class="project__type">{i18n(es_kicker, en_kicker)}</p>\n'
-        f'                <h3 class="project__title">{i18n(es_title, en_title)}</h3>\n'
-        f'                <p class="project__text">{i18n(es, en)}</p>\n'
-        + case_block(mock, ch_es, ch_en, co_es, co_en)
-        + f'                <div class="chip-list">'
-        + "".join(chip(slug, name) for slug, name in stack_items)
-        + "</div>\n"
-        f"              </div>\n"
-        f"            </article>"
-        for icon, es_kicker, en_kicker, es_title, en_title, es, en, stack_items,
-        (mock, ch_es, ch_en, co_es, co_en) in T["pro"]
-    )
+    # Two featured cases are visible at once; the rest stay compact and
+    # open on demand, so the section fits a screen instead of four.
+    FEATURED_PRO = {"assets/pro/logistics.svg", "assets/pro/minigames.svg"}
+    order = [
+        "assets/pro/logistics.svg",
+        "assets/pro/minigames.svg",
+        "assets/pro/attendance.svg",
+        "assets/pro/signature.svg",
+        "assets/pro/screens.svg",
+        "assets/pro/candidates.svg",
+        "assets/pro/erp.svg",
+    ]
+
+    def pro_card(row):
+        (icon, es_kicker, en_kicker, es_title, en_title, es, en, stack_items,
+         (mock, ch_es, ch_en, co_es, co_en)) = row
+        featured = icon in FEATURED_PRO
+        if mock and not featured:
+            # Compact card: the case lives inside a native <details>, so it
+            # works without JS and stays one row tall until opened.
+            body = (
+                f'              <div class="project__body">\n'
+                f'                <p class="project__type">{i18n(es_kicker, en_kicker)}</p>\n'
+                f'                <h3 class="project__title">{i18n(es_title, en_title)}</h3>\n'
+                f'                <p class="project__text">{i18n(es, en)}</p>\n'
+                f'                <details class="case-fold">\n'
+                f'                  <summary>{i18n("Ver el caso", "See the case")}</summary>\n'
+                f'                  <div class="case-fold__inner">\n'
+                + case_block(mock, ch_es, ch_en, co_es, co_en)
+                + f"                  </div>\n"
+                f"                </details>\n"
+                f'                <div class="chip-list">'
+                + "".join(chip(slug, name) for slug, name in stack_items)
+                + "</div>\n"
+                f"              </div>\n"
+            )
+            cls = "project project--compact"
+        else:
+            body = (
+                f'              <div class="project__body">\n'
+                f'                <p class="project__type">{i18n(es_kicker, en_kicker)}</p>\n'
+                f'                <h3 class="project__title">{i18n(es_title, en_title)}</h3>\n'
+                f'                <p class="project__text">{i18n(es, en)}</p>\n'
+                + case_block(mock, ch_es, ch_en, co_es, co_en)
+                + f'                <div class="chip-list">'
+                + "".join(chip(slug, name) for slug, name in stack_items)
+                + "</div>\n"
+                f"              </div>\n"
+            )
+            cls = "project project--case" if mock else "project"
+        return (
+            f'            <article class="{cls} reveal">\n'
+            f'              <img class="project__icon" src="{icon}" alt="" width="56" height="56">\n'
+            + body
+            + f"            </article>"
+        )
+
+    pro_rows = sorted(T["pro"], key=lambda r: order.index(r[0]))
+    pro = "\n".join(pro_card(row) for row in pro_rows)
 
     stack = "\n".join(
         f'            <article class="stack-group reveal">\n'
@@ -837,7 +882,7 @@ def build():
             <h2 id="pro-title">{i18n(*T["h_pro"])}</h2>
             <p class="section__note">{i18n(*T["pro_note"])}</p>
           </div>
-          <div class="project-grid">
+          <div class="project-grid project-grid--pro">
 {pro}
           </div>
         </div>

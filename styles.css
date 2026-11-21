@@ -104,6 +104,7 @@ html[data-theme="light"] {
 *::after { box-sizing: border-box; }
 
 html {
+  background: var(--bg);
   scroll-behavior: smooth;
   scroll-padding-top: 86px;
   -webkit-text-size-adjust: 100%;
@@ -212,6 +213,15 @@ html[lang="en"] [data-lang="es"] { display: none; }
   position: relative;
   text-decoration: none;
   transition: color .18s var(--ease);
+  white-space: nowrap;
+}
+/* Between 1000 and 1200px the full header is tight: smaller gaps keep
+   the six links on one line instead of wrapping into two. */
+@media (max-width: 1200px) {
+  .site-header__inner { gap: var(--s3); }
+  .site-nav { gap: var(--s3); }
+  .site-nav a { font-size: .8rem; }
+  .header-tools { gap: var(--s1); }
 }
 .site-nav a::after {
   background: var(--brand);
@@ -811,6 +821,15 @@ html[data-theme="light"] .chip img[src*="linux"] { filter: brightness(.78); }
 
 /* ======================================================= case study === */
 
+/* The professional grid: two featured cases side by side on the first
+   row, the compact cards a third each below. The whole section fits one
+   screen instead of four. */
+.project-grid--pro { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.project-grid--pro .project--case { grid-column: span 3; }
+.project-grid--pro .project--case .project__body { grid-template-columns: minmax(0, 1fr); }
+.project-grid--pro .project--compact,
+.project-grid--pro .project:not(.project--case) { grid-column: span 2; }
+
 /* A case card spans two columns: the recreated screen on one side, the
    challenge and the contribution on the other. */
 .project--case { grid-column: span 2; }
@@ -826,6 +845,25 @@ html[data-theme="light"] .chip img[src*="linux"] { filter: brightness(.78); }
 
 .case__mock { margin: 0; }
 .case__notes { display: grid; gap: var(--s2); align-content: start; }
+
+/* The compact cards keep their case behind a native fold: one row tall
+   until the visitor asks for it. Works without JS. */
+.case-fold { border-top: 1px solid var(--border); margin-top: var(--s2); padding-top: var(--s2); }
+.case-fold summary {
+  color: var(--brand);
+  cursor: pointer;
+  font-size: .82rem;
+  font-weight: 700;
+  list-style: none;
+  padding: var(--s1) 0;
+  transition: color .18s var(--ease);
+}
+.case-fold summary::-webkit-details-marker { display: none; }
+.case-fold summary::before { content: "+ "; font-family: var(--font-mono); }
+.case-fold[open] summary::before { content: "− "; }
+.case-fold summary:hover { color: var(--text); }
+.case-fold__inner { display: grid; gap: var(--s3); padding-top: var(--s3); }
+.case-fold .case__mock { max-width: 260px; }
 .case__label {
   color: var(--accent-evidence);
   font-size: .72rem;
@@ -1018,10 +1056,22 @@ html[data-theme="light"] .social-links img[src*="email"] { filter: brightness(.6
   .pillar-grid,
   .stack-grid,
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-grid--pro { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-grid--pro .project--case { grid-column: span 2; }
+  .project-grid--pro .project--compact,
+  .project-grid--pro .project:not(.project--case) { grid-column: span 1; }
   .project--feature { grid-column: span 2; }
   .project--case { grid-column: span 2; }
   .project--case .project__body { grid-template-columns: minmax(0, 1fr); }
   .contact-card { grid-template-columns: minmax(0, 1fr); }
+
+  /* The full header (brand + six nav links + toggles + four 44px icons)
+     does not fit a tablet width: it overflowed the page by ~140px and
+     pushed everything to the left. Tablets get the compact header with
+     the menu button instead. */
+  .site-nav { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .header-tools .icon-link { display: none; }
 }
 
 /* ====================================================== mobile menu === */
@@ -1061,6 +1111,12 @@ html[data-theme="light"] .social-links img[src*="email"] { filter: brightness(.6
 }
 /* The hidden attribute must win over the display rule above. */
 .mobile-nav[hidden] { display: none; }
+/* Tablets (761–1000px) also use the compact header: the full one does
+   not fit. The rule lives here, after the base .nav-toggle, so it wins
+   the cascade regardless of media-query order. */
+@media (max-width: 1000px) {
+  .nav-toggle { display: inline-flex; }
+}
 .mobile-nav a {
   border-radius: var(--r-sm);
   color: var(--text-muted);
@@ -1103,6 +1159,10 @@ html[data-theme="light"] .social-links img[src*="email"] { filter: brightness(.6
   .stack-grid,
   .project-grid,
   .evidence-grid { grid-template-columns: minmax(0, 1fr); }
+  .project-grid--pro { grid-template-columns: minmax(0, 1fr); }
+  .project-grid--pro .project--case,
+  .project-grid--pro .project--compact,
+  .project-grid--pro .project:not(.project--case) { grid-column: span 1; }
   .project--feature { grid-column: span 1; }
   .project--case { grid-column: span 1; }
   .project--case .project__body { grid-template-columns: minmax(0, 1fr); }
