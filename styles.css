@@ -338,9 +338,8 @@ html[lang="en"] [data-lang="es"] { display: none; }
    a faint print on the paper, no rectangle, the mark still readable. */
 html[data-theme="light"] .hero__banner {
   mix-blend-mode: normal;
-  opacity: .32;
-  -webkit-mask-image: radial-gradient(ellipse 58% 52% at 50% 50%, #000 22%, transparent 72%);
-  mask-image: radial-gradient(ellipse 58% 52% at 50% 50%, #000 22%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 58% 60% at 50% 50%, #000 22%, transparent 85%);
+  mask-image: radial-gradient(ellipse 58% 60% at 50% 50%, #000 22%, transparent 85%);
 }
 
 .hero__inner {
