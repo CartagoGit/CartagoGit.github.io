@@ -863,6 +863,12 @@ html[data-theme="light"] .chip img[src*="linux"] { filter: brightness(.78); }
 .case-fold[open] summary::before { content: "− "; }
 .case-fold summary:hover { color: var(--text); }
 .case-fold__inner { display: grid; gap: var(--s3); padding-top: var(--s3); }
+/* The fold opens with a soft rise instead of snapping into place. */
+.case-fold[open] .case-fold__inner { animation: fold-in .28s var(--ease-out); }
+@keyframes fold-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
 .case-fold .case__mock { max-width: 260px; }
 .case__label {
   color: var(--accent-evidence);
