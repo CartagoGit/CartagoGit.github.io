@@ -694,13 +694,12 @@ html[data-theme="light"] .hero__panel {
 .link-pill:hover img { opacity: 1; }
 html[data-theme="light"] .link-pill img { filter: none; }
 
-/* In the light theme the banner becomes a texture under a light veil: the
-   artwork is still there, but it does not turn the hero into a dark hole. */
+/* In the light theme the hero keeps only the glow: the artwork lives in the
+   aside, above the panel, and does not repeat behind the whole section. */
 html[data-theme="light"] .hero {
   background:
     radial-gradient(760px 420px at 82% -12%, var(--glow-hero), transparent 66%),
     linear-gradient(180deg, rgb(242 245 251 / .62) 0%, rgb(242 245 251 / .84) 52%, var(--bg-alt) 100%),
-    url("assets/cartago-banner.png") center top / 100% auto no-repeat,
     var(--bg-alt);
 }
 
