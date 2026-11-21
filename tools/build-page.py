@@ -35,7 +35,9 @@ T = {
         "Also: team mentoring, architecture decisions, CI and containers, and the developer "
         "tooling I build for my own work. What is published on GitHub is independent work.",
     ),
-    "cta_work": ("Ver el trabajo", "See the work"),
+    "cta_work": ("Ver proyectos", "See projects"),
+    "cta_contact": ("Contactar", "Contact"),
+    "cta_cv": ("Ver CV", "View CV"),
     "cta_what": ("Qué hago", "What I do"),
     "at_a_glance": ("En una línea", "In one line"),
     "facts": [
@@ -277,6 +279,15 @@ T = {
             "relocation, reception and outsourced transport. I remodelled it almost entirely and "
             "kept adding features for years, on Angular and Material.",
             [("angular", "Angular"), ("typescript", "TypeScript"), ("capacitor", "Capacitor")],
+            ("pda",
+             "Una app usada a jornada completa por operarios, con procesos de inventario y "
+             "permisos distintos por rol, que había que modernizar sin parar la operación.",
+             "An app used full-shift by operators, with inventory processes and different "
+             "permissions per role, that had to be modernised without stopping the operation.",
+             "Remodelé gran parte del front-end y migré la base a Angular y Material, "
+             "añadiendo funcionalidad durante años sobre el mismo código.",
+             "I remodelled most of the front-end and migrated the base to Angular and "
+             "Material, adding features for years on the same codebase."),
         ),
         (
             "assets/pro/attendance.svg",
@@ -289,6 +300,15 @@ T = {
             "A monorepo with a web application and a mobile/tablet one sharing services, styles "
             "and resources. Geolocation and push notifications to record staff presence.",
             [("angular", "Angular"), ("ionic", "Ionic"), ("capacitor", "Capacitor")],
+            ("phone",
+             "Registrar la presencia del personal desde el móvil y gestionarla desde la web, "
+             "sin mantener dos aplicaciones divergentes.",
+             "Recording staff presence from the phone and managing it from the web, without "
+             "maintaining two diverging applications.",
+             "Diseñé el monorepo: servicios, estilos y recursos compartidos, y una capa por "
+             "plataforma para lo que de verdad cambia entre web y móvil.",
+             "I designed the monorepo: shared services, styles and resources, and a "
+             "per-platform layer for what actually differs between web and mobile."),
         ),
         (
             "assets/pro/signature.svg",
@@ -302,6 +322,15 @@ T = {
             "delivery, full screen on a phone or tablet, with the store and the pending delivery "
             "picked by hand.",
             [("angular", "Angular"), ("typescript", "TypeScript")],
+            ("signature",
+             "Sustituir el albarán en papel por una firma digital válida en el momento de la "
+             "entrega, desde el móvil del repartidor.",
+             "Replacing the paper delivery note with a digital signature captured at delivery "
+             "time, from the courier's phone.",
+             "Construí la PWA completa: selección de tienda y entrega, canvas de firma a "
+             "pantalla completa y sincronización con el backend.",
+             "I built the whole PWA: store and delivery selection, a full-screen signature "
+             "canvas and sync with the backend."),
         ),
         (
             "assets/pro/screens.svg",
@@ -313,6 +342,15 @@ T = {
             "The Table, Route and Parcels screens of the management system, replicated on the "
             "warehouse TVs so the operator sees the state without going back to the handheld.",
             [("angular", "Angular"), ("typescript", "TypeScript")],
+            ("tv",
+             "El operario no puede volver al terminal cada vez que necesita saber el estado "
+             "de su ruta: tiene que verlo de un vistazo, desde lejos.",
+             "The operator cannot go back to the handheld every time they need the state of "
+             "their route: they have to see it at a glance, from a distance.",
+             "Repliqué las pantallas del sistema de gestión en una app para TVs, con "
+             "actualización en tiempo real y tipografía pensada para leerse a metros.",
+             "I replicated the management system's screens in a TV app, with real-time "
+             "updates and typography meant to be read from metres away."),
         ),
         (
             "assets/pro/candidates.svg",
@@ -324,6 +362,7 @@ T = {
             "Project and candidate management with its forms, its filters and its reports, and a "
             "security layer with roles and passwords.",
             [("vue", "Vue"), ("sass", "Sass"), ("typescript", "TypeScript")],
+            (None, None, None, None, None),
         ),
         (
             "assets/pro/erp.svg",
@@ -335,6 +374,7 @@ T = {
             "Listings, forms and workflows of a services ERP, with its backend integration and "
             "its business rules in the interface.",
             [("angular", "Angular"), ("typescript", "TypeScript")],
+            (None, None, None, None, None),
         ),
         (
             "assets/pro/minigames.svg",
@@ -350,6 +390,15 @@ T = {
             "languages. I developed the whole front-end and the service behind it, and part of "
             "the visual design.",
             [("angular", "Angular"), ("nestjs", "NestJS"), ("typescript", "TypeScript")],
+            ("kiosk",
+             "Minijuegos configurables para un cliente concreto, que tienen que funcionar "
+             "igual en un quiosco táctil, en la web y en el móvil, sin conexión estable.",
+             "Configurable minigames for a specific client, that must work the same on a "
+             "touch kiosk, on the web and on a phone, without a stable connection.",
+             "Desarrollé el sistema entero en solitario: motor, catálogo, shell por formato, "
+             "base de datos local con SQLite y el servicio NestJS que la alimenta.",
+             "I developed the whole system alone: engine, catalogue, per-format shell, a "
+             "local SQLite database and the NestJS service behind it."),
         ),
     ],
 
@@ -466,6 +515,79 @@ def link(kind, href, label=None):
     )
 
 
+def mock_markup(kind):
+    """A recreated interface, drawn with divs and fictitious data.
+
+    These are not screenshots of the client's product: they are original
+    recreations of the kind of screen the work involved, so the visitor
+    can see the shape of the problem without seeing anything confidential.
+    """
+    if kind == "pda":
+        rows = "".join(
+            f'<div class="mock-row"><span class="mock-dot"></span>'
+            f'<span class="mock-line" style="width:{w}%"></span>'
+            f'<span class="mock-tag">{t}</span></div>'
+            for w, t in [(62, "OK"), (48, "OK"), (70, "REV"), (55, "OK")]
+        )
+        return (
+            '<div class="mock-frame mock-frame--pda">'
+            '<div class="mock-bar"><span class="mock-line" style="width:34%"></span>'
+            '<span class="mock-scan"></span></div>'
+            f'<div class="mock-list">{rows}</div>'
+            '<div class="mock-actions"><span class="mock-btn"></span>'
+            '<span class="mock-btn mock-btn--alt"></span></div>'
+            "</div>"
+        )
+    if kind == "phone":
+        return (
+            '<div class="mock-frame mock-frame--phone">'
+            '<div class="mock-bar"><span class="mock-line" style="width:40%"></span></div>'
+            '<div class="mock-clock"><span>08:57</span><span class="mock-pill">Fichado</span></div>'
+            '<div class="mock-map"><span class="mock-pin"></span></div>'
+            '<div class="mock-actions"><span class="mock-btn mock-btn--wide"></span></div>'
+            "</div>"
+        )
+    if kind == "signature":
+        return (
+            '<div class="mock-frame mock-frame--phone">'
+            '<div class="mock-bar"><span class="mock-line" style="width:46%"></span></div>'
+            '<div class="mock-row"><span class="mock-line" style="width:58%"></span>'
+            '<span class="mock-tag">ENT-2041</span></div>'
+            '<div class="mock-sign"><svg viewBox="0 0 120 40" aria-hidden="true">'
+            '<path d="M8 28 C 20 8, 30 34, 42 20 S 66 10, 78 24 S 100 30, 112 16" '
+            'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>'
+            '<div class="mock-actions"><span class="mock-btn"></span>'
+            '<span class="mock-btn mock-btn--alt"></span></div>'
+            "</div>"
+        )
+    if kind == "tv":
+        cols = "".join(
+            '<div class="mock-col">'
+            + "".join(f'<span class="mock-line" style="width:{w}%"></span>' for w in (80, 64, 72))
+            + "</div>"
+            for _ in range(3)
+        )
+        return (
+            '<div class="mock-frame mock-frame--tv">'
+            '<div class="mock-bar"><span class="mock-line" style="width:26%"></span>'
+            '<span class="mock-live"></span></div>'
+            f'<div class="mock-cols">{cols}</div>'
+            "</div>"
+        )
+    if kind == "kiosk":
+        tiles = "".join(
+            f'<span class="mock-tile mock-tile--{i}"></span>' for i in range(1, 7)
+        )
+        return (
+            '<div class="mock-frame mock-frame--kiosk">'
+            '<div class="mock-bar"><span class="mock-line" style="width:30%"></span></div>'
+            f'<div class="mock-grid">{tiles}</div>'
+            '<div class="mock-actions"><span class="mock-btn mock-btn--wide"></span></div>'
+            "</div>"
+        )
+    return ""
+
+
 def build():
     facts = "\n".join(
         f'              <div><dt>{i18n(es, en)}</dt><dd>{i18n(v_es, v_en)}</dd></div>'
@@ -503,19 +625,36 @@ def build():
         for i, (icon, es_type, en_type, title, es, en, links) in enumerate(T["projects"])
     )
 
+    def case_block(mock, ch_es, ch_en, co_es, co_en):
+        if mock is None:
+            return ""
+        return (
+            f'              <figure class="case__mock case__mock--{mock}" aria-hidden="true">'
+            + mock_markup(mock)
+            + "</figure>\n"
+            f'              <div class="case__notes">\n'
+            f'                <p class="case__label">{i18n("El reto", "The challenge")}</p>\n'
+            f'                <p class="case__text">{i18n(ch_es, ch_en)}</p>\n'
+            f'                <p class="case__label">{i18n("Mi contribución", "My contribution")}</p>\n'
+            f'                <p class="case__text">{i18n(co_es, co_en)}</p>\n'
+            f"              </div>\n"
+        )
+
     pro = "\n".join(
-        f'            <article class="project reveal">\n'
+        f'            <article class="project{" project--case" if mock else ""} reveal">\n'
         f'              <img class="project__icon" src="{icon}" alt="" width="56" height="56">\n'
         f'              <div class="project__body">\n'
         f'                <p class="project__type">{i18n(es_kicker, en_kicker)}</p>\n'
         f'                <h3 class="project__title">{i18n(es_title, en_title)}</h3>\n'
         f'                <p class="project__text">{i18n(es, en)}</p>\n'
-        f'                <div class="chip-list">'
+        + case_block(mock, ch_es, ch_en, co_es, co_en)
+        + f'                <div class="chip-list">'
         + "".join(chip(slug, name) for slug, name in stack_items)
         + "</div>\n"
         f"              </div>\n"
         f"            </article>"
-        for icon, es_kicker, en_kicker, es_title, en_title, es, en, stack_items in T["pro"]
+        for icon, es_kicker, en_kicker, es_title, en_title, es, en, stack_items,
+        (mock, ch_es, ch_en, co_es, co_en) in T["pro"]
     )
 
     stack = "\n".join(
@@ -548,6 +687,13 @@ def build():
 
     nav = "\n".join(
         f'          <a href="#{target}">{i18n(es, en)}</a>'
+        for (es, en), target in zip(
+            T["nav"], ["work", "pro", "evidence", "projects", "stack", "contact"]
+        )
+    )
+
+    mobile_nav = "\n".join(
+        f'        <a href="#{target}">{i18n(es, en)}</a>'
         for (es, en), target in zip(
             T["nav"], ["work", "pro", "evidence", "projects", "stack", "contact"]
         )
@@ -603,16 +749,23 @@ def build():
 
         <div class="header-tools">
           <div class="toggle" role="group" aria-label="Idioma / Language">
-            <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
-            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+            <button type="button" data-set-lang="es" aria-pressed="true" aria-label="Español">ES</button>
+            <button type="button" data-set-lang="en" aria-pressed="false" aria-label="English">EN</button>
           </div>
           <div class="toggle" role="group" aria-label="Tema / Theme">
-            <button type="button" data-set-theme="dark" aria-pressed="true">&#9789;</button>
-            <button type="button" data-set-theme="light" aria-pressed="false">&#9788;</button>
+            <button type="button" data-set-theme="dark" aria-pressed="true" aria-label="Tema oscuro / Dark theme">&#9789;</button>
+            <button type="button" data-set-theme="light" aria-pressed="false" aria-label="Tema claro / Light theme">&#9788;</button>
           </div>
 {header_links}
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menú / Menu">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+{mobile_nav}
+        <a class="mobile-nav__contact" href="#contact">{i18n("Contactar", "Contact")}</a>
+      </nav>
     </header>
 
     <main id="main">
@@ -639,7 +792,8 @@ def build():
 
             <div class="hero__actions">
               <a class="button button--primary" href="#projects">{i18n(*T["cta_work"])}</a>
-              <a class="button button--ghost" href="#work">{i18n(*T["cta_what"])}</a>
+              <a class="button button--ghost" href="#contact">{i18n(*T["cta_contact"])}</a>
+              <a class="button button--ghost" href="https://cartagogit.github.io/print-cv/" target="_blank" rel="noreferrer">{i18n(*T["cta_cv"])} &#8599;</a>
             </div>
           </div>
 
@@ -794,6 +948,26 @@ def build():
         root.dataset.theme = event.matches ? "light" : "dark";
         syncToggles();
       }});
+
+      // ---- mobile menu ---------------------------------------------------------
+      const navToggle = document.querySelector(".nav-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      if (navToggle && mobileNav) {{
+        const setMenu = (open) => {{
+          navToggle.setAttribute("aria-expanded", String(open));
+          mobileNav.hidden = !open;
+          document.body.classList.toggle("menu-open", open);
+        }};
+        navToggle.addEventListener("click", () => {{
+          setMenu(mobileNav.hidden);
+        }});
+        mobileNav.querySelectorAll("a").forEach((link) => {{
+          link.addEventListener("click", () => setMenu(false));
+        }});
+        document.addEventListener("keydown", (event) => {{
+          if (event.key === "Escape" && !mobileNav.hidden) setMenu(false);
+        }});
+      }}
 
       // ---- scroll reveal ------------------------------------------------------
       const revealables = document.querySelectorAll(".reveal");

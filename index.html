@@ -53,12 +53,12 @@
 
         <div class="header-tools">
           <div class="toggle" role="group" aria-label="Idioma / Language">
-            <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
-            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+            <button type="button" data-set-lang="es" aria-pressed="true" aria-label="Español">ES</button>
+            <button type="button" data-set-lang="en" aria-pressed="false" aria-label="English">EN</button>
           </div>
           <div class="toggle" role="group" aria-label="Tema / Theme">
-            <button type="button" data-set-theme="dark" aria-pressed="true">&#9789;</button>
-            <button type="button" data-set-theme="light" aria-pressed="false">&#9788;</button>
+            <button type="button" data-set-theme="dark" aria-pressed="true" aria-label="Tema oscuro / Dark theme">&#9789;</button>
+            <button type="button" data-set-theme="light" aria-pressed="false" aria-label="Tema claro / Light theme">&#9788;</button>
           </div>
           <a class="icon-link" href="https://github.com/CartagoGit" target="_blank" rel="noreferrer" aria-label="GitHub profile">
             <img src="assets/brand/github.svg?v=3" alt="" width="17" height="17">
@@ -72,8 +72,20 @@
           <a class="icon-link" href="https://hub.docker.com/u/cartagodocker" target="_blank" rel="noreferrer" aria-label="Docker Hub images">
             <img src="assets/brand/docker.svg?v=3" alt="" width="17" height="17">
           </a>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menú / Menu">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+        <a href="#work"><span data-lang="es">Qué hago</span><span data-lang="en">What I do</span></a>
+        <a href="#pro"><span data-lang="es">Trabajo</span><span data-lang="en">Work</span></a>
+        <a href="#evidence"><span data-lang="es">Evidencia</span><span data-lang="en">Evidence</span></a>
+        <a href="#projects"><span data-lang="es">Proyectos</span><span data-lang="en">Projects</span></a>
+        <a href="#stack"><span data-lang="es">Con qué</span><span data-lang="en">Tools</span></a>
+        <a href="#contact"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
+        <a class="mobile-nav__contact" href="#contact"><span data-lang="es">Contactar</span><span data-lang="en">Contact</span></a>
+      </nav>
     </header>
 
     <main id="main">
@@ -99,8 +111,9 @@
             <p class="hero__secondary"><span data-lang="es">Además: mentoría del equipo, decisiones de arquitectura, CI y contenedores, y las herramientas de desarrollo que construyo para mi propio trabajo. Lo publicado en GitHub es trabajo independiente.</span><span data-lang="en">Also: team mentoring, architecture decisions, CI and containers, and the developer tooling I build for my own work. What is published on GitHub is independent work.</span></p>
 
             <div class="hero__actions">
-              <a class="button button--primary" href="#projects"><span data-lang="es">Ver el trabajo</span><span data-lang="en">See the work</span></a>
-              <a class="button button--ghost" href="#work"><span data-lang="es">Qué hago</span><span data-lang="en">What I do</span></a>
+              <a class="button button--primary" href="#projects"><span data-lang="es">Ver proyectos</span><span data-lang="en">See projects</span></a>
+              <a class="button button--ghost" href="#contact"><span data-lang="es">Contactar</span><span data-lang="en">Contact</span></a>
+              <a class="button button--ghost" href="https://cartagogit.github.io/print-cv/" target="_blank" rel="noreferrer"><span data-lang="es">Ver CV</span><span data-lang="en">View CV</span> &#8599;</a>
             </div>
           </div>
 
@@ -170,39 +183,67 @@
             <p class="section__note"><span data-lang="es">El código de estos sistemas es de la empresa, así que no se publica. Lo que sí puedo mostrar es qué construí y con qué stack.</span><span data-lang="en">The code behind these systems belongs to the company, so it is not published. What I can show is what I built and with which stack.</span></p>
           </div>
           <div class="project-grid">
-            <article class="project reveal">
+            <article class="project project--case reveal">
               <img class="project__icon" src="assets/pro/logistics.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Logística</span><span data-lang="en">Logistics</span></p>
                 <h3 class="project__title"><span data-lang="es">El terminal del operario, en Android</span><span data-lang="en">The operator's handheld, on Android</span></h3>
                 <p class="project__text"><span data-lang="es">Software para los PDAs de almacén: entradas, salidas, inventario, traspasos, reubicación, recepciones y transporte externo. Lo remodelé casi por completo y seguí añadiendo funcionalidad durante años, sobre Angular y Material.</span><span data-lang="en">Software for the warehouse handhelds: inbound, outbound, inventory, transfers, relocation, reception and outsourced transport. I remodelled it almost entirely and kept adding features for years, on Angular and Material.</span></p>
+              <figure class="case__mock case__mock--pda" aria-hidden="true"><div class="mock-frame mock-frame--pda"><div class="mock-bar"><span class="mock-line" style="width:34%"></span><span class="mock-scan"></span></div><div class="mock-list"><div class="mock-row"><span class="mock-dot"></span><span class="mock-line" style="width:62%"></span><span class="mock-tag">OK</span></div><div class="mock-row"><span class="mock-dot"></span><span class="mock-line" style="width:48%"></span><span class="mock-tag">OK</span></div><div class="mock-row"><span class="mock-dot"></span><span class="mock-line" style="width:70%"></span><span class="mock-tag">REV</span></div><div class="mock-row"><span class="mock-dot"></span><span class="mock-line" style="width:55%"></span><span class="mock-tag">OK</span></div></div><div class="mock-actions"><span class="mock-btn"></span><span class="mock-btn mock-btn--alt"></span></div></div></figure>
+              <div class="case__notes">
+                <p class="case__label"><span data-lang="es">El reto</span><span data-lang="en">The challenge</span></p>
+                <p class="case__text"><span data-lang="es">Una app usada a jornada completa por operarios, con procesos de inventario y permisos distintos por rol, que había que modernizar sin parar la operación.</span><span data-lang="en">An app used full-shift by operators, with inventory processes and different permissions per role, that had to be modernised without stopping the operation.</span></p>
+                <p class="case__label"><span data-lang="es">Mi contribución</span><span data-lang="en">My contribution</span></p>
+                <p class="case__text"><span data-lang="es">Remodelé gran parte del front-end y migré la base a Angular y Material, añadiendo funcionalidad durante años sobre el mismo código.</span><span data-lang="en">I remodelled most of the front-end and migrated the base to Angular and Material, adding features for years on the same codebase.</span></p>
+              </div>
                 <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=3" alt="" width="16" height="16">Angular</span><span class="chip"><img src="assets/brand/typescript.svg?v=3" alt="" width="16" height="16">TypeScript</span><span class="chip"><img src="assets/brand/capacitor.svg?v=3" alt="" width="16" height="16">Capacitor</span></div>
               </div>
             </article>
-            <article class="project reveal">
+            <article class="project project--case reveal">
               <img class="project__icon" src="assets/pro/attendance.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Personal</span><span data-lang="en">Workforce</span></p>
                 <h3 class="project__title"><span data-lang="es">Web y móvil sobre la misma base de código</span><span data-lang="en">Web and mobile over one codebase</span></h3>
                 <p class="project__text"><span data-lang="es">Monorepo con una aplicación web y otra móvil/tablet que comparten servicios, estilos y recursos. Geolocalización y notificaciones push para registrar la presencia del personal.</span><span data-lang="en">A monorepo with a web application and a mobile/tablet one sharing services, styles and resources. Geolocation and push notifications to record staff presence.</span></p>
+              <figure class="case__mock case__mock--phone" aria-hidden="true"><div class="mock-frame mock-frame--phone"><div class="mock-bar"><span class="mock-line" style="width:40%"></span></div><div class="mock-clock"><span>08:57</span><span class="mock-pill">Fichado</span></div><div class="mock-map"><span class="mock-pin"></span></div><div class="mock-actions"><span class="mock-btn mock-btn--wide"></span></div></div></figure>
+              <div class="case__notes">
+                <p class="case__label"><span data-lang="es">El reto</span><span data-lang="en">The challenge</span></p>
+                <p class="case__text"><span data-lang="es">Registrar la presencia del personal desde el móvil y gestionarla desde la web, sin mantener dos aplicaciones divergentes.</span><span data-lang="en">Recording staff presence from the phone and managing it from the web, without maintaining two diverging applications.</span></p>
+                <p class="case__label"><span data-lang="es">Mi contribución</span><span data-lang="en">My contribution</span></p>
+                <p class="case__text"><span data-lang="es">Diseñé el monorepo: servicios, estilos y recursos compartidos, y una capa por plataforma para lo que de verdad cambia entre web y móvil.</span><span data-lang="en">I designed the monorepo: shared services, styles and resources, and a per-platform layer for what actually differs between web and mobile.</span></p>
+              </div>
                 <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=3" alt="" width="16" height="16">Angular</span><span class="chip"><img src="assets/brand/ionic.svg?v=3" alt="" width="16" height="16">Ionic</span><span class="chip"><img src="assets/brand/capacitor.svg?v=3" alt="" width="16" height="16">Capacitor</span></div>
               </div>
             </article>
-            <article class="project reveal">
+            <article class="project project--case reveal">
               <img class="project__icon" src="assets/pro/signature.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Entregas</span><span data-lang="en">Deliveries</span></p>
                 <h3 class="project__title"><span data-lang="es">La firma del cliente, en el móvil</span><span data-lang="en">The customer's signature, on the phone</span></h3>
                 <p class="project__text"><span data-lang="es">Aplicación web progresiva en Angular para recoger la firma de recepción de material en la entrega, a pantalla completa en móvil o tablet, con la tienda y la entrega pendiente elegidas a mano.</span><span data-lang="en">An Angular progressive web app to capture the material receipt signature on delivery, full screen on a phone or tablet, with the store and the pending delivery picked by hand.</span></p>
+              <figure class="case__mock case__mock--signature" aria-hidden="true"><div class="mock-frame mock-frame--phone"><div class="mock-bar"><span class="mock-line" style="width:46%"></span></div><div class="mock-row"><span class="mock-line" style="width:58%"></span><span class="mock-tag">ENT-2041</span></div><div class="mock-sign"><svg viewBox="0 0 120 40" aria-hidden="true"><path d="M8 28 C 20 8, 30 34, 42 20 S 66 10, 78 24 S 100 30, 112 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div class="mock-actions"><span class="mock-btn"></span><span class="mock-btn mock-btn--alt"></span></div></div></figure>
+              <div class="case__notes">
+                <p class="case__label"><span data-lang="es">El reto</span><span data-lang="en">The challenge</span></p>
+                <p class="case__text"><span data-lang="es">Sustituir el albarán en papel por una firma digital válida en el momento de la entrega, desde el móvil del repartidor.</span><span data-lang="en">Replacing the paper delivery note with a digital signature captured at delivery time, from the courier's phone.</span></p>
+                <p class="case__label"><span data-lang="es">Mi contribución</span><span data-lang="en">My contribution</span></p>
+                <p class="case__text"><span data-lang="es">Construí la PWA completa: selección de tienda y entrega, canvas de firma a pantalla completa y sincronización con el backend.</span><span data-lang="en">I built the whole PWA: store and delivery selection, a full-screen signature canvas and sync with the backend.</span></p>
+              </div>
                 <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=3" alt="" width="16" height="16">Angular</span><span class="chip"><img src="assets/brand/typescript.svg?v=3" alt="" width="16" height="16">TypeScript</span></div>
               </div>
             </article>
-            <article class="project reveal">
+            <article class="project project--case reveal">
               <img class="project__icon" src="assets/pro/screens.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Almacén</span><span data-lang="en">Warehouse</span></p>
                 <h3 class="project__title"><span data-lang="es">Lo que los operarios ven en las TVs</span><span data-lang="en">What the operators see on the TVs</span></h3>
                 <p class="project__text"><span data-lang="es">Las pantallas de Mesa, Ruta y Bultos-Ruta del sistema de gestión, replicadas en las TVs del almacén para que el operario vea el estado sin volver al terminal.</span><span data-lang="en">The Table, Route and Parcels screens of the management system, replicated on the warehouse TVs so the operator sees the state without going back to the handheld.</span></p>
+              <figure class="case__mock case__mock--tv" aria-hidden="true"><div class="mock-frame mock-frame--tv"><div class="mock-bar"><span class="mock-line" style="width:26%"></span><span class="mock-live"></span></div><div class="mock-cols"><div class="mock-col"><span class="mock-line" style="width:80%"></span><span class="mock-line" style="width:64%"></span><span class="mock-line" style="width:72%"></span></div><div class="mock-col"><span class="mock-line" style="width:80%"></span><span class="mock-line" style="width:64%"></span><span class="mock-line" style="width:72%"></span></div><div class="mock-col"><span class="mock-line" style="width:80%"></span><span class="mock-line" style="width:64%"></span><span class="mock-line" style="width:72%"></span></div></div></div></figure>
+              <div class="case__notes">
+                <p class="case__label"><span data-lang="es">El reto</span><span data-lang="en">The challenge</span></p>
+                <p class="case__text"><span data-lang="es">El operario no puede volver al terminal cada vez que necesita saber el estado de su ruta: tiene que verlo de un vistazo, desde lejos.</span><span data-lang="en">The operator cannot go back to the handheld every time they need the state of their route: they have to see it at a glance, from a distance.</span></p>
+                <p class="case__label"><span data-lang="es">Mi contribución</span><span data-lang="en">My contribution</span></p>
+                <p class="case__text"><span data-lang="es">Repliqué las pantallas del sistema de gestión en una app para TVs, con actualización en tiempo real y tipografía pensada para leerse a metros.</span><span data-lang="en">I replicated the management system's screens in a TV app, with real-time updates and typography meant to be read from metres away.</span></p>
+              </div>
                 <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=3" alt="" width="16" height="16">Angular</span><span class="chip"><img src="assets/brand/typescript.svg?v=3" alt="" width="16" height="16">TypeScript</span></div>
               </div>
             </article>
@@ -224,12 +265,19 @@
                 <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=3" alt="" width="16" height="16">Angular</span><span class="chip"><img src="assets/brand/typescript.svg?v=3" alt="" width="16" height="16">TypeScript</span></div>
               </div>
             </article>
-            <article class="project reveal">
+            <article class="project project--case reveal">
               <img class="project__icon" src="assets/pro/minigames.svg" alt="" width="56" height="56">
               <div class="project__body">
                 <p class="project__type"><span data-lang="es">Quioscos</span><span data-lang="en">Kiosks</span></p>
                 <h3 class="project__title"><span data-lang="es">Un motor, siete juegos, tres formatos</span><span data-lang="en">One engine, seven games, three shapes</span></h3>
                 <p class="project__text"><span data-lang="es">Monorepo Nx con Angular, Capacitor y Phaser: un motor, un catálogo de juegos y un shell que los monta en quiosco, web o móvil. Siete juegos y cinco idiomas. Desarrollé el front-end completo y el servicio que lo acompaña, y parte del diseño visual.</span><span data-lang="en">An Nx monorepo with Angular, Capacitor and Phaser: an engine, a game catalogue and a shell that mounts them on a kiosk, the web or a phone. Seven games and five languages. I developed the whole front-end and the service behind it, and part of the visual design.</span></p>
+              <figure class="case__mock case__mock--kiosk" aria-hidden="true"><div class="mock-frame mock-frame--kiosk"><div class="mock-bar"><span class="mock-line" style="width:30%"></span></div><div class="mock-grid"><span class="mock-tile mock-tile--1"></span><span class="mock-tile mock-tile--2"></span><span class="mock-tile mock-tile--3"></span><span class="mock-tile mock-tile--4"></span><span class="mock-tile mock-tile--5"></span><span class="mock-tile mock-tile--6"></span></div><div class="mock-actions"><span class="mock-btn mock-btn--wide"></span></div></div></figure>
+              <div class="case__notes">
+                <p class="case__label"><span data-lang="es">El reto</span><span data-lang="en">The challenge</span></p>
+                <p class="case__text"><span data-lang="es">Minijuegos configurables para un cliente concreto, que tienen que funcionar igual en un quiosco táctil, en la web y en el móvil, sin conexión estable.</span><span data-lang="en">Configurable minigames for a specific client, that must work the same on a touch kiosk, on the web and on a phone, without a stable connection.</span></p>
+                <p class="case__label"><span data-lang="es">Mi contribución</span><span data-lang="en">My contribution</span></p>
+                <p class="case__text"><span data-lang="es">Desarrollé el sistema entero en solitario: motor, catálogo, shell por formato, base de datos local con SQLite y el servicio NestJS que la alimenta.</span><span data-lang="en">I developed the whole system alone: engine, catalogue, per-format shell, a local SQLite database and the NestJS service behind it.</span></p>
+              </div>
                 <div class="chip-list"><span class="chip"><img src="assets/brand/angular.svg?v=3" alt="" width="16" height="16">Angular</span><span class="chip"><img src="assets/brand/nestjs.svg?v=3" alt="" width="16" height="16">NestJS</span><span class="chip"><img src="assets/brand/typescript.svg?v=3" alt="" width="16" height="16">TypeScript</span></div>
               </div>
             </article>
@@ -482,6 +530,26 @@
         root.dataset.theme = event.matches ? "light" : "dark";
         syncToggles();
       });
+
+      // ---- mobile menu ---------------------------------------------------------
+      const navToggle = document.querySelector(".nav-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      if (navToggle && mobileNav) {
+        const setMenu = (open) => {
+          navToggle.setAttribute("aria-expanded", String(open));
+          mobileNav.hidden = !open;
+          document.body.classList.toggle("menu-open", open);
+        };
+        navToggle.addEventListener("click", () => {
+          setMenu(mobileNav.hidden);
+        });
+        mobileNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => setMenu(false));
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !mobileNav.hidden) setMenu(false);
+        });
+      }
 
       // ---- scroll reveal ------------------------------------------------------
       const revealables = document.querySelectorAll(".reveal");
