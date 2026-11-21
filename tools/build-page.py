@@ -15,8 +15,8 @@ T = {
     # ---- hero ----
     "eyebrow_hero": ("Frontend engineer · Angular + SCSS", "Frontend engineer · Angular + SCSS"),
     "hero_role": (
-        "Interfaces para sistemas que no se pueden romper",
-        "Interfaces for systems that must not break",
+        "Construyo el front-end de sistemas que se usan todo el día",
+        "I build the front-end of systems people use all day",
     ),
     "hero_lead": (
         "ERP, logística, inventario, personal: las mismas pantallas ocho horas al día, con "
@@ -44,7 +44,7 @@ T = {
         ("Detrás", "Behind", "NestJS · Bun · SQLite"),
         ("Entrega", "Delivery", "Docker · GitLab CI · Actions"),
         ("Rol", "Role", "Mentor · Decisiones técnicas"),
-        ("En GitHub", "On GitHub", "25 repos · 3 paquetes"),
+        ("En GitHub", "On GitHub", "89 repositorios · 26 activos"),
     ],
 
     # ---- work ----
@@ -55,40 +55,45 @@ T = {
     ),
     "pillars": [
         (
-            "01 · Front-end operativo",
-            "01 · Operational front-end",
-            "Las pantallas que se usan ocho horas al día",
-            "The screens people use eight hours a day",
-            "Comercial, financiero, inventario, logística, personal. Estados que dependen del "
-            "rol, informes que no cuadran si el estado se desincroniza, y permisos que hay que "
-            "cambiar sin tocar el resto.",
-            "Commercial, financial, inventory, logistics, workforce. States that depend on the "
-            "role, reports that stop adding up when a state desynchronises, and permissions that "
-            "change without touching everything else.",
+            "01 · Aplicaciones de gestión",
+            "01 · Business applications",
+            "ERP, almacén y personal, en Angular",
+            "ERP, warehouse and workforce, in Angular",
+            "Desarrollo front-end de aplicaciones operativas: permisos que cambian según el rol, "
+            "formularios que tienen que sobrevivir a un uso distinto cada turno y listados que "
+            "aguantan años sin volverse lentos. Con SCSS propio y Material para el sistema de "
+            "diseño.",
+            "Front-end development of operational applications: permissions that shift by role, "
+            "forms that have to survive a different way of working every shift, and listings "
+            "that stay quick after years. With my own SCSS and Material for the design system.",
         ),
         (
-            "02 · Web y Android",
-            "02 · Web and Android",
-            "El mismo código, en el navegador y en el bolsillo",
-            "The same code, in the browser and in the pocket",
-            "Angular e Ionic, empaquetado con Capacitor. La decisión importante no es la "
-            "tecnología: es diseñar para uso repetido, donde cada clic de más se paga treinta "
-            "veces al día.",
-            "Angular and Ionic, packaged with Capacitor. The important decision is not the "
-            "stack: it is designing for repeated use, where every extra click is paid for thirty "
-            "times a day.",
+            "02 · Móvil, tablet y quiosco",
+            "02 · Mobile, tablet and kiosk",
+            "La misma aplicación en tres formatos",
+            "The same application in three shapes",
+            "Ionic y Capacitor para llevar la aplicación a Android sin duplicar el código, "
+            "Quasar para los paneles de gestión, y PWA para lo que tiene que funcionar sin "
+            "instalación. El terminal de almacén con lector de código de barras es un caso de "
+            "uso, no una excepción.",
+            "Ionic and Capacitor to take the application to Android without duplicating the code, "
+            "Quasar for the management panels, and PWA for what has to work without being "
+            "installed. The warehouse handheld with a barcode reader is a use case, not an "
+            "exception.",
         ),
         (
-            "03 · Decisiones y mentoría",
-            "03 · Decisions and mentoring",
-            "Lo que hay que decidir antes de escribir código",
-            "What has to be decided before any code is written",
-            "Qué se queda en el front y qué baja a un servicio. Qué lleva una puerta de calidad "
-            "y qué lleva una decisión escrita. Y el código del equipo cuando la feature aprieta "
-            "y ya no da tiempo a hacerlo bien.",
-            "What stays in the front-end and what moves to a service. What gets a quality gate "
-            "and what gets a written decision. And the team's code when the feature is tight and "
-            "there is no time to do it properly.",
+            "03 · Arquitectura y mentoría",
+            "03 · Architecture and mentoring",
+            "Decidir antes de escribir, y que el equipo pueda seguir",
+            "Decide before writing, and let the team carry on",
+            "Elijo el límite entre el front y el servicio, qué merece una puerta de calidad y "
+            "qué merece una decisión escrita. Reviso el código del equipo y mentorizo a los "
+            "que entran. La parte del trabajo que no aparece en un repositorio, pero que decide "
+            "que el repositorio siga vivo.",
+            "I choose the boundary between the front-end and the service, and what deserves a "
+            "quality gate and what deserves a written decision. I review the team's code and "
+            "mentor whoever joins. The part of the job that does not show up in a repository, "
+            "but that decides whether the repository survives.",
         ),
         (
             "04 · CI y contenedores",
@@ -107,12 +112,12 @@ T = {
             "05 · Own tooling",
             "Construidas porque me faltaban",
             "Built because I was missing them",
-            "Un runtime MCP, un análisis estático de APIs, una librería de serialización, un "
-            "gestor de secretos. Ninguno salió de una hoja de ruta: salieron todos de un "
-            "problema mío de un martes por la tarde.",
-            "An MCP runtime, a static analysis engine for APIs, a serialization library, a secret "
-            "manager. None of them came off a roadmap: all of them came from one of my problems "
-            "on a Tuesday afternoon.",
+            "Un servidor MCP con 62 capacidades, un análisis estático de APIs, una librería de "
+            "serialización, un gestor de secretos y un gestor de claves. Ninguno salió de una "
+            "hoja de ruta: salieron todos de un problema mío de un martes por la tarde.",
+            "An MCP server with 62 capabilities, a static analysis engine for APIs, a "
+            "serialization library, a secret manager and a key manager. None of them came off a "
+            "roadmap: all of them came from one of my problems on a Tuesday afternoon.",
         ),
         (
             "06 · Lo que hay detrás",
@@ -135,12 +140,12 @@ T = {
         "What can be measured, measured.",
     ),
     "evidence": [
-        ("Commits", "Commits", "17.484", "17,484", "en el runtime MCP"),
-        ("Líneas de fuente", "Source lines", "628.712", "628,712", "sin contar los tests"),
-        ("Líneas de test", "Test lines", "460.854", "460,854", "el 42% del repositorio"),
-        ("Paquetes", "Packages", "84", "84", "en un solo monorepo"),
-        ("Workflows de CI", "CI workflows", "18", "18", "en el runtime"),
-        ("Frameworks", "Frameworks", "25", "25", "detectados desde el código"),
+        ("Repositorios", "Repositories", "89", "89", "68 públicos y 21 privados"),
+        ("Repos activos", "Active repositories", "26", "26", "publicados y mantenidos ahora"),
+        ("Commits", "Commits", "22.638", "22,638", "en los repositorios públicos activos"),
+        ("Años en GitHub", "Years on GitHub", "5", "5", "publicando desde octubre de 2021"),
+        ("Capacidades", "Capabilities", "62", "62", "plugins aisladas en DelendAI"),
+        ("Puertas de CI", "CI gates", "18", "18", "cada una con su aserción"),
     ],
 
     # ---- projects ----
@@ -152,16 +157,18 @@ T = {
     "all_repos": ("Todos", "All"),
     "projects": [
         (
-            "assets/delendai.svg", "Runtime MCP", "MCP runtime",
+            "assets/delendai.svg", "Plataforma", "Platform",
             "DelendAI",
-            "Núcleo agnóstico para montar servidores MCP y el cargador de plugins que los "
-            "alimenta. Superficie perezosa, errores públicos, datos privados y un ciclo de "
-            "propuesta a release alrededor.",
-            "An agnostic core for building MCP servers and the plugin loader that feeds them. A "
-            "lazy surface, public errors, private data, and a proposal-to-release cycle around "
-            "it.",
-            [("repo", "https://github.com/CartagoGit/DelendAI"),
-             ("releases", "https://github.com/CartagoGit/DelendAI/releases")],
+            "Un servidor MCP al que apuntas a un proyecto y le da exactamente las capacidades "
+            "que ese proyecto necesita: 62 plugins aisladas, una CLI, nueve presets y un ciclo "
+            "de propuesta → implementación → revisión → release detrás de 18 puertas de CI. No "
+            "sabe nada de tu stack, y se desarrolla con agentes usando el propio servidor.",
+            "An MCP server you point at a project, and it hands that project exactly the "
+            "capabilities it needs: 62 isolated plugins, a CLI, nine presets and a proposal → "
+            "implement → review → release cycle behind 18 CI gates. It knows nothing about your "
+            "stack, and it is developed by agents using the server it builds.",
+            [("repo", "https://github.com/CartagoGit/DelendAI", "DelendAI"),
+             ("releases", "https://github.com/CartagoGit/DelendAI/releases", "Releases")],
         ),
         (
             "assets/tanit.svg", "Análisis estático", "Static analysis",
@@ -172,18 +179,19 @@ T = {
             "Detects the framework by reading the code, recovers request bodies from validation "
             "schemas, and exports to Postman, Bruno, Insomnia, HAR, OpenAPI or cURL. Without "
             "starting the server.",
-            [("repo", "https://github.com/CartagoGit/api-source-tanit"),
-             ("releases", "https://github.com/CartagoGit/api-source-tanit/releases")],
+            [("repo", "https://github.com/CartagoGit/api-source-tanit", "Tanit"),
+             ("releases", "https://github.com/CartagoGit/api-source-tanit/releases", "Releases")],
         ),
         (
             "assets/quickmodel.png", "Librería", "Library",
             "QuickModel",
             "Transformación automática de tipos y adaptadores de validación sobre una base "
-            "SOLID. Los tests pesan más que el código fuente, y es a propósito.",
-            "Automatic type transformation and validation adapters over a SOLID base. The tests "
-            "weigh more than the source, on purpose.",
-            [("repo", "https://github.com/CartagoGit/quickmodel"),
-             ("docs", "https://cartagogit.github.io/quickmodel/")],
+            "SOLID, con un servidor MCP encima. Los tests pesan más que el código fuente, y es "
+            "a propósito.",
+            "Automatic type transformation and validation adapters over a SOLID base, with an "
+            "MCP server on top. The tests weigh more than the source, on purpose.",
+            [("repo", "https://github.com/CartagoGit/quickmodel", "QuickModel"),
+             ("docs", "https://cartagogit.github.io/quickmodel/", "Docs")],
         ),
         (
             "assets/keyer.svg", "Paquete publicado", "Published package",
@@ -192,7 +200,7 @@ T = {
             "que ninguna credencial real acabe en un repositorio o en una imagen.",
             "Encrypts keys and environment files from the terminal. Published on npm and used so "
             "that no real credential ends up in a repository or an image.",
-            [("repo", "https://github.com/CartagoGit/Keyer"),
+            [("repo", "https://github.com/CartagoGit/Keyer", "Keyer"),
              ("package", "https://www.npmjs.com/package/@cartago-git/keyer")],
         ),
         (
@@ -202,8 +210,8 @@ T = {
             "diseñado alrededor del papel real. Es la aplicación que vive en cartagogit.github.io.",
             "A CV modelled as validated data, in two languages, with a print mode designed around "
             "real paper. This is the application that lives at cartagogit.github.io.",
-            [("repo", "https://github.com/CartagoGit/print-cv"),
-             ("live", "https://cartagogit.github.io/print-cv/")],
+            [("repo", "https://github.com/CartagoGit/print-cv", "Print CV"),
+             ("live", "https://cartagogit.github.io/print-cv/", "Live")],
         ),
         (
             "assets/cartago.svg", "Sitio", "Site",
@@ -214,8 +222,8 @@ T = {
             "The site you are reading: a static page generated from a script, in two languages and "
             "following the system theme. The repository behind it is an Angular application with "
             "server-side rendering.",
-            [("repo", "https://github.com/CartagoGit/portfolio"),
-             ("live", "https://cartagogit.github.io")],
+            [("repo", "https://github.com/CartagoGit/portfolio", "Cartago"),
+             ("live", "https://cartagogit.github.io", "Live")],
         ),
         (
             "assets/docker.svg", "Infraestructura", "Infrastructure",
@@ -226,8 +234,8 @@ T = {
             "Node/Bun, Angular, Ionic, NestJS and Zsh, with pinned versions. The same environment "
             "on the laptop and on the runner, which is where most 'works on my machine' problems "
             "come from.",
-            [("repo", "https://github.com/CartagoGit/DockerNodeBun"),
-             ("live", "https://hub.docker.com/u/cartagodocker")],
+            [("repo", "https://github.com/CartagoGit/DockerNodeBun", "DockerNodeBun"),
+             ("live", "https://hub.docker.com/u/cartagodocker", "Docker Hub")],
         ),
         (
             "assets/brand/steam-keys.svg", "Escritorio", "Desktop",
@@ -236,7 +244,7 @@ T = {
             "otras tiendas no salen del equipo. Sin cuentas, sin nube y sin telemetría.",
             "A desktop application, Tauri 2 and SQLite, where Steam keys and keys from other "
             "stores never leave the machine. No accounts, no cloud, no telemetry.",
-            [("repo", "https://github.com/CartagoGit/steam-keys")],
+            [("repo", "https://github.com/CartagoGit/steam-keys", "Steam Keys")],
         ),
         (
             "assets/brand/mods.svg", "Mods y contenido", "Mods and content",
@@ -245,8 +253,110 @@ T = {
             "automatización de contenido. Un terreno abierto, con proyectos que van y vienen.",
             "Tools and content for modding games: binary formats, localisation and content "
             "automation. An open field, with projects that come and go.",
-            [("repo", "https://github.com/CartagoGit/aoe2-mods"),
-             ("repo", "https://github.com/CartagoGit/pcfutbol6-mod")],
+            [("repo", "https://github.com/CartagoGit/aoe2-mods", "Aoe2 mods"),
+             ("repo", "https://github.com/CartagoGit/pcfutbol6-mod", "PC Fútbol 6")],
+        ),
+    ],
+
+    # ---- professional work ----
+    "eyebrow_pro": ("Trabajo profesional", "Professional work"),
+    "h_pro": (
+        "Lo que he construido para clientes, descrito por su función.",
+        "What I have built for clients, described by function.",
+    ),
+    "pro_note": (
+        "El código de estos sistemas es de la empresa y los clientes tienen su nombre, así que "
+        "no hay enlaces. Sí hay cifras: los commits de cada repositorio llevan mi firma.",
+        "The code behind these systems belongs to the company and the clients have their name, "
+        "so there are no links. There are numbers though: the commits in each repository carry "
+        "my signature.",
+    ),
+    "pro": [
+        (
+            "assets/pro/logistics.svg",
+            "Logística de almacén",
+            "El terminal del operario, en Android",
+            "The operator's handheld, on Android",
+            "Software para los PDAs de almacén: entradas, salidas, inventario, traspasos, "
+            "reubicación, recepciones y transporte externo. Lo remodelé casi por completo y "
+            "seguí añadiendo funcionalidad durante años, sobre Angular y Material.",
+            "Software for the warehouse handhelds: inbound, outbound, inventory, transfers, "
+            "relocation, reception and outsourced transport. I remodelled it almost entirely and "
+            "kept adding features for years, on Angular and Material.",
+            [("angular", "Angular"), ("typescript", "TypeScript"), ("capacitor", "Capacitor")],
+        ),
+        (
+            "assets/pro/attendance.svg",
+            "Control de asistencia",
+            "Web y móvil sobre la misma base de código",
+            "Web and mobile over one codebase",
+            "Monorepo con una aplicación web y otra móvil/tablet que comparten servicios, "
+            "estilos y recursos. Geolocalización y notificaciones push para registrar la "
+            "presencia del personal.",
+            "A monorepo with a web application and a mobile/tablet one sharing services, styles "
+            "and resources. Geolocation and push notifications to record staff presence.",
+            [("angular", "Angular"), ("ionic", "Ionic"), ("capacitor", "Capacitor")],
+        ),
+        (
+            "assets/pro/signature.svg",
+            "Firma de recepción",
+            "La firma del cliente, en el móvil",
+            "The customer's signature, on the phone",
+            "Aplicación web progresiva en Angular para recoger la firma de recepción de material "
+            "en la entrega, a pantalla completa en móvil o tablet, con la tienda y la entrega "
+            "pendiente elegidas a mano.",
+            "An Angular progressive web app to capture the material receipt signature on "
+            "delivery, full screen on a phone or tablet, with the store and the pending delivery "
+            "picked by hand.",
+            [("angular", "Angular"), ("typescript", "TypeScript")],
+        ),
+        (
+            "assets/pro/screens.svg",
+            "Pantallas de almacén",
+            "Lo que los operarios ven en las TVs",
+            "What the operators see on the TVs",
+            "Las pantallas de Mesa, Ruta y Bultos-Ruta del sistema de gestión, replicadas en las "
+            " TVs del almacén para que el operario vea el estado sin volver al terminal.",
+            "The Table, Route and Parcels screens of the management system, replicated on the "
+            "warehouse TVs so the operator sees the state without going back to the handheld.",
+            [("angular", "Angular"), ("typescript", "TypeScript")],
+        ),
+        (
+            "assets/pro/candidates.svg",
+            "Proyectos y candidatos",
+            "Un panel en Vue y Quasar",
+            "A panel in Vue and Quasar",
+            "Gestión de proyectos y de candidatos con sus formularios, sus filtros y sus "
+            "informes, y una capa de seguridad con roles y contraseñas.",
+            "Project and candidate management with its forms, its filters and its reports, and a "
+            "security layer with roles and passwords.",
+            [("vue", "Vue"), ("sass", "Sass"), ("typescript", "TypeScript")],
+        ),
+        (
+            "assets/pro/erp.svg",
+            "ERP de servicios",
+            "La parte frontal de un ERP",
+            "The front-end of an ERP",
+            "Listados, formularios y flujos de trabajo de un ERP de servicios, con su "
+            "integración en el backend y sus reglas de negocio en la interfaz.",
+            "Listings, forms and workflows of a services ERP, with its backend integration and "
+            "its business rules in the interface.",
+            [("angular", "Angular"), ("typescript", "TypeScript")],
+        ),
+        (
+            "assets/pro/minigames.svg",
+            "Minijuegos para quioscos",
+            "Un motor, siete juegos, tres formatos",
+            "One engine, seven games, three shapes",
+            "Monorepo Nx con Angular, Capacitor y Phaser: un motor, un catálogo de juegos y un "
+            "shell que los monta en quiosco, web o móvil. Siete juegos y cinco idiomas. Escribí "
+            "el front-end entero y el servicio que lo acompaña, sin un equipo detrás; los "
+            "diseños entraron cuando hacía falta y no había nadie para pedirlos.",
+            "An Nx monorepo with Angular, Capacitor and Phaser: an engine, a game catalogue and "
+            "a shell that mounts them on a kiosk, the web or a phone. Seven games and five "
+            "languages. I wrote the whole front-end and the service behind it, with no team "
+            "behind me; the designs went in when they were needed and there was nobody to ask.",
+            [("angular", "Angular"), ("nestjs", "NestJS"), ("typescript", "TypeScript")],
         ),
     ],
 
@@ -280,6 +390,7 @@ T = {
     # ---- nav (order matches the sections) ----
     "nav": [
         ("Qué hago", "What I do"),
+        ("Trabajo", "Work"),
         ("Evidencia", "Evidence"),
         ("Proyectos", "Projects"),
         ("Con qué", "Tools"),
@@ -290,7 +401,7 @@ T = {
 STACK_GROUPS = [
     ("Front-end — a diario", "Front-end — daily", "Angular, SCSS, Ionic y el diseño", "Angular, SCSS, Ionic and the design", [
         ("angular", "Angular"), ("sass", "Sass"), ("ionic", "Ionic"),
-        ("typescript", "TypeScript"), ("rxjs", "RxJS"), ("angular", "Material"),
+        ("typescript", "TypeScript"), ("rxjs", "RxJS"), ("material", "Material"),
         ("capacitor", "Capacitor"), ("tailwindcss", "Tailwind"),
         ("vue", "Vue"), ("react", "React"),
     ]),
@@ -346,13 +457,19 @@ def chip(slug, name):
     )
 
 
-def link(kind, href):
+def link(kind, href, label=None):
     slug, es, en = LINK_ICONS[kind]
+    if label is None:
+        text = i18n(es, en)
+        title = f"{es} / {en}"
+    else:
+        text = label
+        title = label
     return (
         f'<a class="link-pill" href="{href}" target="_blank" rel="noreferrer" '
-        f'title="{es} / {en}">'
+        f'title="{title}">'
         f'<img src="assets/brand/{slug}.svg?v=2" alt="" width="15" height="15" loading="lazy">'
-        f'<span>{i18n(es, en)}</span>'
+        f"<span>{text}</span>"
         f"</a>"
     )
 
@@ -388,10 +505,25 @@ def build():
         f'                <p class="project__text">{i18n(es, en)}</p>\n'
         f"              </div>\n"
         f'              <div class="project__links">'
-        + "".join(link(kind, href) for kind, href in links)
+        + "".join(link(*entry) for entry in links)
         + "</div>\n"
         f"            </article>"
         for i, (icon, es_type, en_type, title, es, en, links) in enumerate(T["projects"])
+    )
+
+    pro = "\n".join(
+        f'            <article class="project reveal">\n'
+        f'              <img class="project__icon" src="{icon}" alt="" width="56" height="56">\n'
+        f'              <div class="project__body">\n'
+        f'                <p class="project__type">{i18n(es_type, en_type)}</p>\n'
+        f'                <h3 class="project__title">{title}</h3>\n'
+        f'                <p class="project__text">{i18n(es, en)}</p>\n'
+        f'                <div class="chip-list">'
+        + "".join(chip(slug, name) for slug, name in stack_items)
+        + "</div>\n"
+        f"              </div>\n"
+        f"            </article>"
+        for icon, es_type, en_type, title, es, en, stack_items in T["pro"]
     )
 
     stack = "\n".join(
@@ -424,7 +556,9 @@ def build():
 
     nav = "\n".join(
         f'          <a href="#{target}">{i18n(es, en)}</a>'
-        for (es, en), target in zip(T["nav"], ["work", "evidence", "projects", "stack", "contact"])
+        for (es, en), target in zip(
+            T["nav"], ["work", "pro", "evidence", "projects", "stack", "contact"]
+        )
     )
 
     return f"""<!doctype html>
@@ -538,6 +672,19 @@ def build():
 
           <div class="pillar-grid">
 {pillars}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--pro" id="pro" aria-labelledby="pro-title">
+        <div class="shell">
+          <div class="section__heading reveal">
+            <p class="eyebrow">{i18n(*T["eyebrow_pro"])}</p>
+            <h2 id="pro-title">{i18n(*T["h_pro"])}</h2>
+            <p class="section__note">{i18n(*T["pro_note"])}</p>
+          </div>
+          <div class="project-grid">
+{pro}
           </div>
         </div>
       </section>

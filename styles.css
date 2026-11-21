@@ -39,6 +39,12 @@
   --shadow-md: 0 12px 34px -14px rgb(0 0 0 / .7);
   --shadow-lg: 0 34px 80px -34px rgb(0 0 0 / .85);
 
+  /* The small icons sit on a tile of their own, with a fixed colour. The
+     tile does not change with the theme, so a brand icon reads exactly the
+     same on a pale page and on a dark one. */
+  --icon-tile: #0e1a2b;
+  --icon-tile-edge: #2b4786;
+
   /* ---- type ---- */
   --font: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -265,9 +271,13 @@ html[lang="en"] [data-lang="es"] { display: none; }
   width: 34px;
 }
 .icon-link img {
-  filter: brightness(0) invert(1);
-  height: 17px;
-  width: 17px;
+  background: var(--icon-tile);
+  border: 1px solid var(--icon-tile-edge);
+  border-radius: 5px;
+  box-sizing: content-box;
+  height: 14px;
+  padding: 2px;
+  width: 14px;
 }
 .icon-link:hover {
   background: var(--brand-soft);
@@ -302,8 +312,8 @@ html[lang="en"] [data-lang="es"] { display: none; }
 
 /* The artwork. The banner sits above the "En una línea" panel, with its edges
    dissolved so it reads as part of the page instead of a picture on it. The
-   mask is built around the globe, which is at 46% across and 44% down the
-   artwork, so the fade takes the rectangle away and leaves the sphere. */
+   mask is generous and centred further right, so the globe stays legible
+   while the rectangle around it fades away. */
 .hero__aside {
   display: flex;
   flex-direction: column;
@@ -314,18 +324,18 @@ html[lang="en"] [data-lang="es"] { display: none; }
   display: block;
   height: auto;
   margin-inline: auto;
-  max-width: 380px;
-  opacity: .5;
+  max-width: 440px;
+  opacity: .72;
   pointer-events: none;
   width: 100%;
-  -webkit-mask-image: radial-gradient(ellipse 46% 50% at 40% 50%, #000 12%, transparent 86%);
-  mask-image: radial-gradient(ellipse 46% 50% at 40% 50%, #000 12%, transparent 86%);
+  -webkit-mask-image: radial-gradient(ellipse 82% 92% at 54% 50%, #000 46%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 92% at 54% 50%, #000 46%, transparent 100%);
 }
 /* On a pale background the navy of the artwork would be a dark patch, so it
    is multiplied: the navy sinks into the page and only the lit globe stays. */
 html[data-theme="light"] .hero__banner {
   mix-blend-mode: multiply;
-  opacity: .42;
+  opacity: .55;
 }
 
 .hero__inner {
@@ -499,6 +509,14 @@ html[data-theme="light"] .hero__panel {
 
 .section--work { background: var(--bg); }
 .section--work .eyebrow { color: var(--accent-work); }
+
+/* The professional work sits between the two: it has the accent of the
+   section above it and the background of the one below. */
+.section--pro {
+  background: var(--bg);
+  border-block: 1px solid var(--border);
+}
+.section--pro .eyebrow { color: var(--accent-evidence); }
 
 .pillar-grid {
   display: grid;
@@ -679,11 +697,14 @@ html[data-theme="light"] .hero__panel {
               color .18s var(--ease), transform .18s var(--ease);
 }
 .link-pill img {
-  filter: brightness(0) invert(1);
+  background: var(--icon-tile);
+  border: 1px solid var(--icon-tile-edge);
+  border-radius: 4px;
+  box-sizing: content-box;
   flex: 0 0 auto;
-  height: 15px;
-  opacity: .75;
-  width: 15px;
+  height: 12px;
+  padding: 1.5px;
+  width: 12px;
 }
 .link-pill:hover {
   background: var(--brand-soft);
@@ -691,8 +712,7 @@ html[data-theme="light"] .hero__panel {
   color: var(--text);
   transform: translateY(-1px);
 }
-.link-pill:hover img { opacity: 1; }
-html[data-theme="light"] .link-pill img { filter: none; }
+.link-pill:hover img { border-color: var(--brand-line); }
 
 /* In the light theme the hero keeps only the glow: the artwork lives in the
    aside, above the panel, and does not repeat behind the whole section. */
@@ -748,14 +768,15 @@ html[data-theme="light"] .site-header { background: color-mix(in srgb, var(--bg)
 }
 .chip-list span:hover { border-color: var(--brand-line); color: var(--text); transform: translateY(-1px); }
 .chip-list .chip img {
-  border-radius: 3px;
-  filter: brightness(0) invert(1);
+  background: var(--icon-tile);
+  border: 1px solid var(--icon-tile-edge);
+  border-radius: 4px;
+  box-sizing: content-box;
   flex: 0 0 auto;
-  height: 15px;
-  opacity: .85;
-  width: 15px;
+  height: 13px;
+  padding: 1.5px;
+  width: 13px;
 }
-html[data-theme="light"] .chip-list .chip img { filter: none; opacity: .95; }
 
 /* =========================================================== contact === */
 
@@ -794,12 +815,15 @@ html[data-theme="light"] .chip-list .chip img { filter: none; opacity: .95; }
 }
 .social-links a:hover { background: var(--brand-soft); border-color: var(--brand-line); transform: translateX(3px); }
 .social-links img {
-  filter: brightness(0) invert(1);
+  background: var(--icon-tile);
+  border: 1px solid var(--icon-tile-edge);
+  border-radius: 5px;
+  box-sizing: content-box;
   flex: 0 0 auto;
-  height: 18px;
-  width: 18px;
+  height: 14px;
+  padding: 2px;
+  width: 14px;
 }
-html[data-theme="light"] .social-links img { filter: none; }
 
 /* ============================================================ footer === */
 
