@@ -175,19 +175,6 @@ html[lang="en"] [data-lang="es"] { display: none; }
   z-index: 80;
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
-/* A faint trace of the banner keeps the header from feeling detached from
-   the artwork below it. */
-.site-header::before {
-  background:
-    linear-gradient(180deg, rgb(9 38 161 / .16), transparent),
-    url("assets/cartago-banner.png") center 30% / 720px auto no-repeat;
-  content: "";
-  inset: 0;
-  opacity: .3;
-  pointer-events: none;
-  position: absolute;
-}
-
 .site-header__inner {
   align-items: center;
   display: flex;
@@ -291,13 +278,11 @@ html[lang="en"] [data-lang="es"] { display: none; }
 /* ============================================================== hero === */
 
 .hero {
-  /* The banner is the page's own artwork: it sits behind the content, and a
-     vertical scrim fades it into the page background so the two never meet
-     as two different images. */
+  /* The page background continues under the artwork, so the mask on the
+     image lands on a colour that belongs to the page. */
   background:
     radial-gradient(760px 420px at 82% -12%, var(--glow-hero), transparent 66%),
-    linear-gradient(180deg, rgb(6 11 24 / .1) 0%, rgb(6 11 24 / .45) 48%, rgb(6 11 24 / .9) 88%, var(--bg-alt) 100%),
-    url("assets/cartago-banner.png") center top / 100% auto no-repeat,
+    radial-gradient(720px 420px at 0% 8%, var(--glow-work), transparent 62%),
     var(--bg-alt);
   overflow: hidden;
   position: relative;
@@ -315,14 +300,43 @@ html[lang="en"] [data-lang="es"] { display: none; }
   position: absolute;
 }
 
+/* The artwork. The banner sits above the "En una línea" panel, with its edges
+   dissolved so it reads as part of the page instead of a picture on it. The
+   mask is built around the globe, which is at 46% across and 44% down the
+   artwork, so the fade takes the rectangle away and leaves the sphere. */
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  position: relative;
+}
+.hero__banner {
+  display: block;
+  height: auto;
+  margin-inline: auto;
+  max-width: 380px;
+  opacity: .5;
+  pointer-events: none;
+  width: 100%;
+  -webkit-mask-image: radial-gradient(ellipse 46% 50% at 40% 50%, #000 12%, transparent 86%);
+  mask-image: radial-gradient(ellipse 46% 50% at 40% 50%, #000 12%, transparent 86%);
+}
+/* On a pale background the navy of the artwork would be a dark patch, so it
+   is multiplied: the navy sinks into the page and only the lit globe stays. */
+html[data-theme="light"] .hero__banner {
+  mix-blend-mode: multiply;
+  opacity: .42;
+}
+
 .hero__inner {
   align-items: center;
   display: grid;
   gap: clamp(var(--s6), 5vw, var(--s9));
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
   min-height: min(720px, calc(100svh - 66px));
   padding-block: var(--s9);
   position: relative;
+  z-index: 1;
   z-index: 1;
 }
 
@@ -424,12 +438,18 @@ html[lang="en"] [data-lang="es"] { display: none; }
 .button--ghost { border-color: var(--border-strong); color: var(--text); }
 .button--ghost:hover { background: var(--brand-soft); border-color: var(--brand-line); }
 
+/* The card floats over the artwork: translucent and blurred, so the globe
+   reads through it instead of being cut off by it. */
 .hero__panel {
-  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  backdrop-filter: blur(18px) saturate(150%);
+  background: linear-gradient(160deg, rgb(22 36 71 / .78), rgb(16 28 54 / .72));
   border: 1px solid var(--border-strong);
   border-radius: var(--r-xl);
   box-shadow: var(--shadow-lg);
   padding: var(--s5);
+}
+html[data-theme="light"] .hero__panel {
+  background: linear-gradient(160deg, rgb(255 255 255 / .82), rgb(244 247 253 / .74));
 }
 .hero__panel-title {
   color: var(--accent-hero);
@@ -684,7 +704,7 @@ html[data-theme="light"] .hero {
     var(--bg-alt);
 }
 
-html[data-theme="light"] .site-header::before { opacity: .18; }
+html[data-theme="light"] .site-header { background: color-mix(in srgb, var(--bg) 86%, transparent); }
 
 /* ============================================================= stack === */
 
