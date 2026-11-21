@@ -39,12 +39,6 @@
   --shadow-md: 0 12px 34px -14px rgb(0 0 0 / .7);
   --shadow-lg: 0 34px 80px -34px rgb(0 0 0 / .85);
 
-  /* The small icons sit on a tile of their own, with a fixed colour. The
-     tile does not change with the theme, so a brand icon reads exactly the
-     same on a pale page and on a dark one. */
-  --icon-tile: #0e1a2b;
-  --icon-tile-edge: #2b4786;
-
   /* ---- type ---- */
   --font: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -143,7 +137,12 @@ code {
   border-radius: var(--r-sm);
   outline: 2px solid var(--brand);
   outline-offset: 3px;
+  transition: outline-offset .15s var(--ease);
 }
+
+/* Interactive surfaces settle into their hover state instead of snapping,
+   and pressing them gives a small, physical acknowledgement. */
+a, button { -webkit-tap-highlight-color: transparent; }
 
 .shell {
   margin-inline: auto;
@@ -271,19 +270,15 @@ html[lang="en"] [data-lang="es"] { display: none; }
   width: 34px;
 }
 .icon-link img {
-  background: var(--icon-tile);
-  border: 1px solid var(--icon-tile-edge);
-  border-radius: 5px;
-  box-sizing: content-box;
-  height: 14px;
-  padding: 2px;
-  width: 14px;
+  height: 19px;
+  width: 19px;
 }
 .icon-link:hover {
   background: var(--brand-soft);
   border-color: var(--brand-line);
   transform: translateY(-2px);
 }
+.icon-link:active { transform: translateY(0) scale(.96); }
 
 /* ============================================================== hero === */
 
@@ -310,10 +305,10 @@ html[lang="en"] [data-lang="es"] { display: none; }
   position: absolute;
 }
 
-/* The artwork. The banner sits above the "En una línea" panel, with its edges
-   dissolved so it reads as part of the page instead of a picture on it. The
-   mask is generous and centred further right, so the globe stays legible
-   while the rectangle around it fades away. */
+/* The artwork. The banner sits above the "En una línea" panel, and its
+   edges dissolve into the page in both themes: a soft mask all around, no
+   border, no shadow — the picture belongs to the background, it is not a
+   card on top of it. */
 .hero__aside {
   display: flex;
   flex-direction: column;
@@ -321,25 +316,27 @@ html[lang="en"] [data-lang="es"] { display: none; }
   position: relative;
 }
 .hero__banner {
-  border-radius: 14px;
   display: block;
   height: auto;
   margin-inline: auto;
   max-width: 440px;
-  opacity: .72;
+  opacity: .85;
   pointer-events: none;
   width: 100%;
-  -webkit-mask-image: radial-gradient(ellipse 82% 92% at 54% 50%, #000 46%, transparent 100%);
-  mask-image: radial-gradient(ellipse 82% 92% at 54% 50%, #000 46%, transparent 100%);
+  /* The fade hugs the rectangle, not an ellipse: each edge dissolves on
+     its own axis and the corners fade on both, so the picture melts into
+     the page with no visible shape of its own. Long solid cores on each
+     axis keep the globe fully readable. */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
-/* On a pale background the navy of the artwork would be a dark patch if it
-   were multiplied — it went silver. Instead the picture stays what it is:
-   a framed image, with the same fade around the edges as in the dark theme. */
-html[data-theme="light"] .hero__banner {
-  border: 1px solid var(--border-strong);
-  box-shadow: 0 14px 34px -20px rgb(12 24 48 / .5);
-  opacity: .85;
-}
+html[data-theme="light"] .hero__banner { opacity: .92; }
 
 .hero__inner {
   align-items: center;
@@ -449,7 +446,8 @@ html[data-theme="light"] .hero__banner {
 }
 .button--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -14px var(--accent-hero); }
 .button--ghost { border-color: var(--border-strong); color: var(--text); }
-.button--ghost:hover { background: var(--brand-soft); border-color: var(--brand-line); }
+.button--ghost:hover { background: var(--brand-soft); border-color: var(--brand-line); transform: translateY(-2px); }
+.button:active { transform: translateY(0) scale(.97); }
 
 /* The card floats over the artwork: translucent and blurred, so the globe
    reads through it instead of being cut off by it. */
@@ -537,20 +535,26 @@ html[data-theme="light"] .hero__panel {
   position: relative;
   transition: border-color .22s var(--ease), box-shadow .22s var(--ease), transform .22s var(--ease);
 }
+/* The accent line lives inside the card: the padding keeps it off the
+   border, so it never looks detached from the rounded corners. */
 .pillar::before {
   background: linear-gradient(90deg, var(--accent-work), transparent 78%);
+  border-radius: 2px;
   content: "";
   height: 2px;
-  left: 0;
+  left: var(--s5);
+  opacity: .55;
   position: absolute;
-  top: 0;
-  width: 100%;
+  top: var(--s3);
+  transition: opacity .22s var(--ease), width .22s var(--ease);
+  width: 34%;
 }
 .pillar:hover {
   border-color: var(--border-strong);
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
+.pillar:hover::before { opacity: 1; width: calc(100% - 2 * var(--s5)); }
 .pillar__kicker {
   color: var(--accent-work);
   font-family: var(--font-mono);
@@ -632,20 +636,27 @@ html[data-theme="light"] .hero__panel {
   position: relative;
   transition: border-color .22s var(--ease), box-shadow .22s var(--ease), transform .22s var(--ease);
 }
+/* The accent line lives inside the card, inset by the padding, so it
+   belongs to the rounded shape instead of running past the corners. */
 .project::after {
   background: linear-gradient(90deg, var(--accent-projects), transparent 82%);
-  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  border-radius: 2px;
   content: "";
   height: 2px;
-  left: 0;
+  left: var(--s5);
   opacity: 0;
   position: absolute;
-  top: 0;
-  transition: opacity .22s var(--ease);
-  width: 100%;
+  top: var(--s3);
+  transition: opacity .22s var(--ease), width .22s var(--ease);
+  width: 34%;
 }
 .project:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-4px); }
-.project:hover::after { opacity: 1; }
+.project:hover::after { opacity: 1; width: calc(100% - 2 * var(--s5)); }
+
+/* The technology chips sit at the bottom of the body, so every card in a
+   row shows them at the same height regardless of how long the text is. */
+.project__body { display: flex; flex: 1; flex-direction: column; }
+.project__body .chip-list { margin-top: auto; padding-top: var(--s4); }
 
 .project--feature {
   background: linear-gradient(150deg, var(--surface-3), var(--surface) 62%);
@@ -663,7 +674,6 @@ html[data-theme="light"] .hero__panel {
 }
 .project__icon--photo { object-fit: cover; }
 
-.project__body { flex: 1; }
 .project__type {
   color: var(--text-dim);
   font-size: .67rem;
@@ -700,14 +710,10 @@ html[data-theme="light"] .hero__panel {
               color .18s var(--ease), transform .18s var(--ease);
 }
 .link-pill img {
-  background: var(--icon-tile);
-  border: 1px solid var(--icon-tile-edge);
-  border-radius: 4px;
-  box-sizing: content-box;
   flex: 0 0 auto;
-  height: 12px;
-  padding: 1.5px;
-  width: 12px;
+  height: 16px;
+  transition: transform .18s var(--ease);
+  width: 16px;
 }
 .link-pill:hover {
   background: var(--brand-soft);
@@ -715,7 +721,8 @@ html[data-theme="light"] .hero__panel {
   color: var(--text);
   transform: translateY(-1px);
 }
-.link-pill:hover img { border-color: var(--brand-line); }
+.link-pill:hover img { transform: scale(1.12); }
+.link-pill:active { transform: translateY(0) scale(.97); }
 
 /* In the light theme the hero keeps only the glow: the artwork lives in the
    aside, above the panel, and does not repeat behind the whole section. */
@@ -771,15 +778,30 @@ html[data-theme="light"] .site-header { background: color-mix(in srgb, var(--bg)
 }
 .chip-list span:hover { border-color: var(--brand-line); color: var(--text); transform: translateY(-1px); }
 .chip-list .chip img {
-  background: var(--icon-tile);
-  border: 1px solid var(--icon-tile-edge);
-  border-radius: 4px;
-  box-sizing: content-box;
   flex: 0 0 auto;
-  height: 13px;
-  padding: 1.5px;
-  width: 13px;
+  height: 17px;
+  transition: transform .18s var(--ease);
+  width: 17px;
 }
+.chip-list .chip:hover img { transform: scale(1.15); }
+
+/* In the light theme the white marks (GitHub, MCP, OpenAI, Grok) would
+   vanish on the white chips, and the pale ones (Bun, Tauri, Prettier,
+   Linux) would wash out. They take a darker reading of themselves. */
+html[data-theme="light"] .icon-link img[src*="github"],
+html[data-theme="light"] .social-links img[src*="github"],
+html[data-theme="light"] .link-pill img[src*="github"],
+html[data-theme="light"] .chip img[src*="model-context-protocol"],
+html[data-theme="light"] .chip img[src*="openai"],
+html[data-theme="light"] .chip img[src*="grok"] { filter: brightness(.18); }
+html[data-theme="light"] .link-pill img[src*="releases"],
+html[data-theme="light"] .link-pill img[src*="docs.svg"],
+html[data-theme="light"] .link-pill img[src*="live.svg"],
+html[data-theme="light"] .link-pill img[src*="package"] { filter: brightness(.62) saturate(1.4); }
+html[data-theme="light"] .chip img[src*="bun"] { filter: brightness(.4); }
+html[data-theme="light"] .chip img[src*="tauri"],
+html[data-theme="light"] .chip img[src*="prettier"],
+html[data-theme="light"] .chip img[src*="linux"] { filter: brightness(.78); }
 
 /* =========================================================== contact === */
 
@@ -817,15 +839,11 @@ html[data-theme="light"] .site-header { background: color-mix(in srgb, var(--bg)
   transition: background-color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease);
 }
 .social-links a:hover { background: var(--brand-soft); border-color: var(--brand-line); transform: translateX(3px); }
+.social-links a:active { transform: translateX(1px) scale(.99); }
 .social-links img {
-  background: var(--icon-tile);
-  border: 1px solid var(--icon-tile-edge);
-  border-radius: 5px;
-  box-sizing: content-box;
   flex: 0 0 auto;
-  height: 14px;
-  padding: 2px;
-  width: 14px;
+  height: 19px;
+  width: 19px;
 }
 
 /* ============================================================ footer === */

@@ -29,29 +29,28 @@ T = {
         "design system.",
     ),
     "hero_secondary": (
-        "Alrededor, la parte que casi nadie documenta: mentoría, decisiones de arquitectura, "
-        "CI, contenedores y las herramientas que me faltaban. Lo que hay en GitHub es el trabajo "
-        "de las horas que no son de cliente.",
-        "Around it, the part almost nobody documents: mentoring, architecture decisions, CI, "
-        "containers, and the tools I was missing. What is on GitHub is the work of the hours that "
-        "are not client work.",
+        "Además: mentoría del equipo, decisiones de arquitectura, CI y contenedores, y las "
+        "herramientas de desarrollo que construyo para mi propio trabajo. Lo publicado en "
+        "GitHub es trabajo independiente.",
+        "Also: team mentoring, architecture decisions, CI and containers, and the developer "
+        "tooling I build for my own work. What is published on GitHub is independent work.",
     ),
     "cta_work": ("Ver el trabajo", "See the work"),
     "cta_what": ("Qué hago", "What I do"),
     "at_a_glance": ("En una línea", "In one line"),
     "facts": [
-        ("Base", "Base", "Angular · SCSS · Ionic · Material"),
-        ("Detrás", "Behind", "NestJS · Bun · SQLite"),
-        ("Entrega", "Delivery", "Docker · GitLab CI · Actions"),
-        ("Rol", "Role", "Mentor · Decisiones técnicas"),
-        ("En GitHub", "On GitHub", "89 repositorios · 26 activos"),
+        ("Base", "Base", "Angular · SCSS · Ionic · Material", "Angular · SCSS · Ionic · Material"),
+        ("Detrás", "Behind", "NestJS · Bun · SQLite", "NestJS · Bun · SQLite"),
+        ("Entrega", "Delivery", "Docker · GitLab CI · Actions", "Docker · GitLab CI · Actions"),
+        ("Rol", "Role", "Mentor · Decisiones técnicas", "Mentor · Technical decisions"),
+        ("En GitHub", "On GitHub", "89 repositorios · 26 activos", "89 repositories · 26 active"),
     ],
 
     # ---- work ----
     "eyebrow_work": ("Qué hago", "What I do"),
     "h_work": (
-        "Seis cosas que hago, y por qué.",
-        "Six things I do, and why.",
+        "Qué desarrollo, y cómo lo entrego.",
+        "What I develop, and how I ship it.",
     ),
     "pillars": [
         (
@@ -74,26 +73,22 @@ T = {
             "The same application in three shapes",
             "Ionic y Capacitor para llevar la aplicación a Android sin duplicar el código, "
             "Quasar para los paneles de gestión, y PWA para lo que tiene que funcionar sin "
-            "instalación. El terminal de almacén con lector de código de barras es un caso de "
-            "uso, no una excepción.",
-            "Ionic and Capacitor to take the application to Android without duplicating the code, "
-            "Quasar for the management panels, and PWA for what has to work without being "
-            "installed. The warehouse handheld with a barcode reader is a use case, not an "
-            "exception.",
+            "instalación. Incluye terminales de almacén con lector de código de barras.",
+            "Ionic and Capacitor to take the application to Android without duplicating the "
+            "code, Quasar for the management panels, and PWA for what has to work without "
+            "being installed. Includes warehouse handhelds with a barcode reader.",
         ),
         (
             "03 · Arquitectura y mentoría",
             "03 · Architecture and mentoring",
             "Decidir antes de escribir, y que el equipo pueda seguir",
             "Decide before writing, and let the team carry on",
-            "Elijo el límite entre el front y el servicio, qué merece una puerta de calidad y "
-            "qué merece una decisión escrita. Reviso el código del equipo y mentorizo a los "
-            "que entran. La parte del trabajo que no aparece en un repositorio, pero que decide "
-            "que el repositorio siga vivo.",
-            "I choose the boundary between the front-end and the service, and what deserves a "
-            "quality gate and what deserves a written decision. I review the team's code and "
-            "mentor whoever joins. The part of the job that does not show up in a repository, "
-            "but that decides whether the repository survives.",
+            "Elijo el límite entre el front y el servicio, qué lleva una puerta de calidad y qué "
+            "lleva una decisión escrita. Reviso el código del equipo y mentorizo a quien se "
+            "incorpora.",
+            "I choose the boundary between the front-end and the service, and what gets a "
+            "quality gate and what gets a written decision. I review the team's code and "
+            "mentor whoever joins.",
         ),
         (
             "04 · CI y contenedores",
@@ -101,11 +96,11 @@ T = {
             "El mismo entorno en el portátil y en el runner",
             "The same environment on the laptop and on the runner",
             "GitLab CI para el producto, GitHub Actions para lo propio. Imágenes de Node/Bun, "
-            "Angular, Ionic y NestJS con las versiones fijadas, porque un «latest» que cambia "
-            "un martes es un incidente el miércoles.",
+            "Angular, Ionic y NestJS con las versiones fijadas, para que el entorno del "
+            "portátil y el del runner sean el mismo.",
             "GitLab CI for the product, GitHub Actions for my own work. Images for Node/Bun, "
-            "Angular, Ionic and NestJS with pinned versions, because a 'latest' that moves on a "
-            "Tuesday is an incident on Wednesday.",
+            "Angular, Ionic and NestJS with pinned versions, so the environment on the laptop "
+            "and on the runner is the same one.",
         ),
         (
             "05 · Herramientas propias",
@@ -113,11 +108,11 @@ T = {
             "Construidas porque me faltaban",
             "Built because I was missing them",
             "Un servidor MCP con 62 capacidades, un análisis estático de APIs, una librería de "
-            "serialización, un gestor de secretos y un gestor de claves. Ninguno salió de una "
-            "hoja de ruta: salieron todos de un problema mío de un martes por la tarde.",
+            "serialización, un gestor de secretos y un gestor de claves. Cada uno nació de una "
+            "necesidad concreta de mi propio trabajo.",
             "An MCP server with 62 capabilities, a static analysis engine for APIs, a "
-            "serialization library, a secret manager and a key manager. None of them came off a "
-            "roadmap: all of them came from one of my problems on a Tuesday afternoon.",
+            "serialization library, a secret manager and a key manager. Each one started from "
+            "a concrete need in my own work.",
         ),
         (
             "06 · Lo que hay detrás",
@@ -136,23 +131,23 @@ T = {
     # ---- evidence ----
     "eyebrow_evidence": ("Evidencia", "Evidence"),
     "h_evidence": (
-        "Lo que se puede medir, medido.",
-        "What can be measured, measured.",
+        "La actividad, en cifras.",
+        "The activity, in numbers.",
     ),
     "evidence": [
-        ("Repositorios", "Repositories", "89", "89", "68 públicos y 21 privados"),
-        ("Repos activos", "Active repositories", "26", "26", "publicados y mantenidos ahora"),
-        ("Commits", "Commits", "22.638", "22,638", "en los repositorios públicos activos"),
-        ("Años en GitHub", "Years on GitHub", "5", "5", "publicando desde octubre de 2021"),
-        ("Capacidades", "Capabilities", "62", "62", "plugins aisladas en DelendAI"),
-        ("Puertas de CI", "CI gates", "18", "18", "cada una con su aserción"),
+        ("Repositorios", "Repositories", "89", "89", "68 públicos y 21 privados", "68 public and 21 private"),
+        ("Repos activos", "Active repositories", "26", "26", "publicados y mantenidos ahora", "published and maintained now"),
+        ("Commits", "Commits", "22.638", "22,638", "en los repositorios públicos activos", "across the active public repositories"),
+        ("Años en GitHub", "Years on GitHub", "5", "5", "publicando desde octubre de 2021", "publishing since October 2021"),
+        ("Capacidades", "Capabilities", "62", "62", "plugins aisladas en DelendAI", "isolated plugins in DelendAI"),
+        ("Puertas de CI", "CI gates", "18", "18", "cada una con su aserción", "each one with its own assertion"),
     ],
 
     # ---- projects ----
     "eyebrow_projects": ("Proyectos", "Projects"),
     "h_projects": (
-        "Lo que está en GitHub, y en qué estado.",
-        "What is on GitHub, and in which state.",
+        "Proyectos independientes, con código abierto.",
+        "Independent projects, with open code.",
     ),
     "all_repos": ("Todos", "All"),
     "projects": [
@@ -274,7 +269,7 @@ T = {
     "pro": [
         (
             "assets/pro/logistics.svg",
-            "Logística de almacén",
+            "Logística", "Logistics",
             "El terminal del operario, en Android",
             "The operator's handheld, on Android",
             "Software para los PDAs de almacén: entradas, salidas, inventario, traspasos, "
@@ -287,7 +282,7 @@ T = {
         ),
         (
             "assets/pro/attendance.svg",
-            "Control de asistencia",
+            "Personal", "Workforce",
             "Web y móvil sobre la misma base de código",
             "Web and mobile over one codebase",
             "Monorepo con una aplicación web y otra móvil/tablet que comparten servicios, "
@@ -299,7 +294,7 @@ T = {
         ),
         (
             "assets/pro/signature.svg",
-            "Firma de recepción",
+            "Entregas", "Deliveries",
             "La firma del cliente, en el móvil",
             "The customer's signature, on the phone",
             "Aplicación web progresiva en Angular para recoger la firma de recepción de material "
@@ -312,7 +307,7 @@ T = {
         ),
         (
             "assets/pro/screens.svg",
-            "Pantallas de almacén",
+            "Almacén", "Warehouse",
             "Lo que los operarios ven en las TVs",
             "What the operators see on the TVs",
             "Las pantallas de Mesa, Ruta y Bultos-Ruta del sistema de gestión, replicadas en las "
@@ -323,7 +318,7 @@ T = {
         ),
         (
             "assets/pro/candidates.svg",
-            "Proyectos y candidatos",
+            "Gestión", "Management",
             "Un panel en Vue y Quasar",
             "A panel in Vue and Quasar",
             "Gestión de proyectos y de candidatos con sus formularios, sus filtros y sus "
@@ -334,9 +329,9 @@ T = {
         ),
         (
             "assets/pro/erp.svg",
-            "ERP de servicios",
-            "La parte frontal de un ERP",
-            "The front-end of an ERP",
+            "ERP", "ERP",
+            "La parte frontal de un ERP de servicios",
+            "The front-end of a services ERP",
             "Listados, formularios y flujos de trabajo de un ERP de servicios, con su "
             "integración en el backend y sus reglas de negocio en la interfaz.",
             "Listings, forms and workflows of a services ERP, with its backend integration and "
@@ -345,17 +340,17 @@ T = {
         ),
         (
             "assets/pro/minigames.svg",
-            "Minijuegos para quioscos",
+            "Quioscos", "Kiosks",
             "Un motor, siete juegos, tres formatos",
             "One engine, seven games, three shapes",
             "Monorepo Nx con Angular, Capacitor y Phaser: un motor, un catálogo de juegos y un "
-            "shell que los monta en quiosco, web o móvil. Siete juegos y cinco idiomas. Escribí "
-            "el front-end entero y el servicio que lo acompaña, sin un equipo detrás; los "
-            "diseños entraron cuando hacía falta y no había nadie para pedirlos.",
+            "shell que los monta en quiosco, web o móvil. Siete juegos y cinco idiomas. "
+            "Desarrollé el front-end completo y el servicio que lo acompaña, y parte del diseño "
+            "visual.",
             "An Nx monorepo with Angular, Capacitor and Phaser: an engine, a game catalogue and "
             "a shell that mounts them on a kiosk, the web or a phone. Seven games and five "
-            "languages. I wrote the whole front-end and the service behind it, with no team "
-            "behind me; the designs went in when they were needed and there was nobody to ask.",
+            "languages. I developed the whole front-end and the service behind it, and part of "
+            "the visual design.",
             [("angular", "Angular"), ("nestjs", "NestJS"), ("typescript", "TypeScript")],
         ),
     ],
@@ -363,14 +358,12 @@ T = {
     # ---- stack ----
     "eyebrow_stack": ("Con qué trabajo", "What I work with"),
     "h_stack": (
-        "El stack, por capas y no por logotipo.",
-        "The stack, by layer and not by logo.",
+        "Las tecnologías, agrupadas por uso.",
+        "The technologies, grouped by use.",
     ),
     "stack_note": (
-        "La capa de arriba es la que uso cada día. Las de abajo están porque en algún momento "
-        "hizo falta.",
-        "The top layer is what I use every day. The ones below are there because at some point "
-        "they were needed.",
+        "La primera capa es la que uso a diario; las demás, según lo que pide cada proyecto.",
+        "The first layer is what I use daily; the rest, depending on what each project needs.",
     ),
 
     # ---- contact ----
@@ -476,8 +469,8 @@ def link(kind, href, label=None):
 
 def build():
     facts = "\n".join(
-        f'              <div><dt>{i18n(es, en)}</dt><dd>{value}</dd></div>'
-        for es, en, value in T["facts"]
+        f'              <div><dt>{i18n(es, en)}</dt><dd>{i18n(v_es, v_en)}</dd></div>'
+        for es, en, v_es, v_en in T["facts"]
     )
 
     pillars = "\n".join(
@@ -491,8 +484,8 @@ def build():
 
     evidence = "\n".join(
         f'            <div class="evidence-grid__item reveal">'
-        f"<dt>{i18n(es_k, en_k)}</dt><dd>{i18n(es_v, en_v)}</dd><p>{note}</p></div>"
-        for es_k, en_k, es_v, en_v, note in T["evidence"]
+        f"<dt>{i18n(es_k, en_k)}</dt><dd>{i18n(es_v, en_v)}</dd><p>{i18n(note_es, note_en)}</p></div>"
+        for es_k, en_k, es_v, en_v, note_es, note_en in T["evidence"]
     )
 
     projects = "\n".join(
@@ -515,15 +508,15 @@ def build():
         f'            <article class="project reveal">\n'
         f'              <img class="project__icon" src="{icon}" alt="" width="56" height="56">\n'
         f'              <div class="project__body">\n'
-        f'                <p class="project__type">{i18n(es_type, en_type)}</p>\n'
-        f'                <h3 class="project__title">{title}</h3>\n'
+        f'                <p class="project__type">{i18n(es_kicker, en_kicker)}</p>\n'
+        f'                <h3 class="project__title">{i18n(es_title, en_title)}</h3>\n'
         f'                <p class="project__text">{i18n(es, en)}</p>\n'
         f'                <div class="chip-list">'
         + "".join(chip(slug, name) for slug, name in stack_items)
         + "</div>\n"
         f"              </div>\n"
         f"            </article>"
-        for icon, es_type, en_type, title, es, en, stack_items in T["pro"]
+        for icon, es_kicker, en_kicker, es_title, en_title, es, en, stack_items in T["pro"]
     )
 
     stack = "\n".join(
@@ -596,7 +589,7 @@ def build():
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{i18n("Saltar al contenido", "Skip to content")}</a>
 
     <header class="site-header">
       <div class="shell site-header__inner">
