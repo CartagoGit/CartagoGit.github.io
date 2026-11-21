@@ -20,11 +20,11 @@ T = {
     ),
     "hero_lead": (
         "ERP, logística, inventario, personal: las mismas pantallas ocho horas al día, con "
-        "permisos que cambian según el rol y reglas que tienen que sobrevivir al trimestre. "
+        "permisos por rol y reglas de negocio que no pueden romperse entre versiones. "
         "<strong>Angular con SCSS</strong>, Ionic cuando hace falta Android, Material para el "
         "sistema de diseño.",
         "ERP, logistics, inventory, workforce: the same screens eight hours a day, with "
-        "permissions that shift by role and rules that have to survive the quarter. "
+        "role-based permissions and business rules that cannot break between releases. "
         "<strong>Angular with SCSS</strong>, Ionic when Android is needed, Material for the "
         "design system.",
     ),
@@ -58,13 +58,12 @@ T = {
             "01 · Business applications",
             "ERP, almacén y personal, en Angular",
             "ERP, warehouse and workforce, in Angular",
-            "Desarrollo front-end de aplicaciones operativas: permisos que cambian según el rol, "
-            "formularios que tienen que sobrevivir a un uso distinto cada turno y listados que "
-            "aguantan años sin volverse lentos. Con SCSS propio y Material para el sistema de "
-            "diseño.",
-            "Front-end development of operational applications: permissions that shift by role, "
-            "forms that have to survive a different way of working every shift, and listings "
-            "that stay quick after years. With my own SCSS and Material for the design system.",
+            "Desarrollo front-end de aplicaciones operativas: permisos por rol, formularios "
+            "complejos con validación y listados que siguen siendo rápidos con años de datos. "
+            "Con SCSS propio y Material para el sistema de diseño.",
+            "Front-end development of operational applications: role-based permissions, complex "
+            "forms with validation, and listings that stay fast with years of data. With my own "
+            "SCSS and Material for the design system.",
         ),
         (
             "02 · Móvil, tablet y quiosco",
@@ -83,12 +82,12 @@ T = {
             "03 · Architecture and mentoring",
             "Decidir antes de escribir, y que el equipo pueda seguir",
             "Decide before writing, and let the team carry on",
-            "Elijo el límite entre el front y el servicio, qué lleva una puerta de calidad y qué "
-            "lleva una decisión escrita. Reviso el código del equipo y mentorizo a quien se "
-            "incorpora.",
-            "I choose the boundary between the front-end and the service, and what gets a "
-            "quality gate and what gets a written decision. I review the team's code and "
-            "mentor whoever joins.",
+            "Elijo el límite entre el front-end y el servicio, qué se valida en CI con un gate "
+            "automático y qué se documenta como decisión de arquitectura (ADR). Reviso el "
+            "código del equipo y mentorizo a quien se incorpora.",
+            "I choose the boundary between the front-end and the service, what gets an "
+            "automated CI gate and what gets written down as an architecture decision record. "
+            "I review the team's code and mentor whoever joins.",
         ),
         (
             "04 · CI y contenedores",
@@ -115,16 +114,16 @@ T = {
             "a concrete need in my own work.",
         ),
         (
-            "06 · Lo que hay detrás",
-            "06 · What sits behind",
-            "Backend suficiente para no delegarlo",
-            "Enough backend to not delegate it away",
-            "NestJS y Bun para lo que necesita servidor. SQLite cuando el dato es local y "
-            "PostgreSQL cuando no. Lo justo para poder tocar el circuito entero sin tener que "
-            "pedir permiso a otro equipo.",
-            "NestJS and Bun for whatever needs a server. SQLite when the data is local and "
-            "PostgreSQL when it is not. Just enough to touch the whole circuit without asking "
-            "another team for permission.",
+            "06 · Backend",
+            "06 · Backend",
+            "El servicio detrás de la interfaz",
+            "The service behind the interface",
+            "NestJS y Bun para los servicios, SQLite cuando el dato es local y PostgreSQL "
+            "cuando no. Lo suficiente para desarrollar y probar la funcionalidad completa sin "
+            "depender de otro equipo.",
+            "NestJS and Bun for the services, SQLite when the data is local and PostgreSQL "
+            "when it is not. Enough to develop and test the full feature without depending on "
+            "another team.",
         ),
     ],
 
@@ -139,7 +138,7 @@ T = {
         ("Repos activos", "Active repositories", "26", "26", "publicados y mantenidos ahora", "published and maintained now"),
         ("Commits", "Commits", "22.638", "22,638", "en los repositorios públicos activos", "across the active public repositories"),
         ("Años en GitHub", "Years on GitHub", "5", "5", "publicando desde octubre de 2021", "publishing since October 2021"),
-        ("Capacidades", "Capabilities", "62", "62", "plugins aisladas en DelendAI", "isolated plugins in DelendAI"),
+        ("Capacidades", "Capabilities", "62", "62", "plugins aislados en DelendAI", "isolated plugins in DelendAI"),
         ("Puertas de CI", "CI gates", "18", "18", "cada una con su aserción", "each one with its own assertion"),
     ],
 
@@ -155,7 +154,7 @@ T = {
             "assets/delendai.svg", "Plataforma", "Platform",
             "DelendAI",
             "Un servidor MCP al que apuntas a un proyecto y le da exactamente las capacidades "
-            "que ese proyecto necesita: 62 plugins aisladas, una CLI, nueve presets y un ciclo "
+            "que ese proyecto necesita: 62 plugins aislados, una CLI, nueve presets y un ciclo "
             "de propuesta → implementación → revisión → release detrás de 18 puertas de CI. No "
             "sabe nada de tu stack, y se desarrolla con agentes usando el propio servidor.",
             "An MCP server you point at a project, and it hands that project exactly the "
@@ -181,10 +180,10 @@ T = {
             "assets/quickmodel.png", "Librería", "Library",
             "QuickModel",
             "Transformación automática de tipos y adaptadores de validación sobre una base "
-            "SOLID, con un servidor MCP encima. Los tests pesan más que el código fuente, y es "
-            "a propósito.",
+            "SOLID, con un servidor MCP encima. La suite de tests es más grande que el código "
+            "fuente, a propósito.",
             "Automatic type transformation and validation adapters over a SOLID base, with an "
-            "MCP server on top. The tests weigh more than the source, on purpose.",
+            "MCP server on top. The test suite is larger than the source code, on purpose.",
             [("repo", "https://github.com/CartagoGit/quickmodel", "QuickModel"),
              ("docs", "https://cartagogit.github.io/quickmodel/", "Docs")],
         ),
@@ -201,18 +200,18 @@ T = {
         (
             "assets/print-cv.svg", "Aplicación", "Application",
             "Print CV",
-            "El currículum como datos validados, en dos idiomas, con un modo de impresión "
-            "diseñado alrededor del papel real. Es la aplicación que vive en cartagogit.github.io.",
-            "A CV modelled as validated data, in two languages, with a print mode designed around "
-            "real paper. This is the application that lives at cartagogit.github.io.",
+            "El currículum como datos validados con Zod, en dos idiomas, con un modo de "
+            "impresión ajustado al papel real. Publicada en cartagogit.github.io/print-cv.",
+            "A CV modelled as Zod-validated data, in two languages, with a print mode tuned "
+            "for real paper. Published at cartagogit.github.io/print-cv.",
             [("repo", "https://github.com/CartagoGit/print-cv", "Print CV"),
              ("live", "https://cartagogit.github.io/print-cv/", "Live")],
         ),
         (
             "assets/cartago.svg", "Sitio", "Site",
             "Portfolio",
-            "El sitio que estas leyendo: una pagina estatica generada desde un script, en dos "
-            "idiomas y con el tema del sistema. El repositorio detras es una aplicacion Angular "
+            "El sitio que estás leyendo: una página estática generada desde un script, en dos "
+            "idiomas y con el tema del sistema. El repositorio detrás es una aplicación Angular "
             "con render en servidor.",
             "The site you are reading: a static page generated from a script, in two languages and "
             "following the system theme. The repository behind it is an Angular application with "
@@ -224,11 +223,11 @@ T = {
             "assets/docker.svg", "Infraestructura", "Infrastructure",
             "Imágenes de desarrollo",
             "Node/Bun, Angular, Ionic, NestJS y Zsh, con las versiones fijadas. El mismo "
-            "entorno en el portátil y en el runner, que es de donde salen casi todos los "
-            "problemas de «en mi máquina funciona».",
-            "Node/Bun, Angular, Ionic, NestJS and Zsh, with pinned versions. The same environment "
-            "on the laptop and on the runner, which is where most 'works on my machine' problems "
-            "come from.",
+            "entorno en el portátil y en el runner, para que no haya diferencias entre "
+            "desarrollo y CI.",
+            "Node/Bun, Angular, Ionic, NestJS and Zsh, with pinned versions. The same "
+            "environment on the laptop and on the runner, so development and CI do not drift "
+            "apart.",
             [("repo", "https://github.com/CartagoGit/DockerNodeBun", "DockerNodeBun"),
              ("live", "https://hub.docker.com/u/cartagodocker", "Docker Hub")],
         ),
@@ -245,9 +244,9 @@ T = {
             "assets/brand/mods.svg", "Mods y contenido", "Mods and content",
             "Fabricación de mods",
             "Herramientas y contenido para modificar juegos: formatos binarios, localización y "
-            "automatización de contenido. Un terreno abierto, con proyectos que van y vienen.",
+            "automatización de contenido. Proyectos en curso, en evolución constante.",
             "Tools and content for modding games: binary formats, localisation and content "
-            "automation. An open field, with projects that come and go.",
+            "automation. Work in progress, evolving constantly.",
             [("repo", "https://github.com/CartagoGit/aoe2-mods", "Aoe2 mods"),
              ("repo", "https://github.com/CartagoGit/pcfutbol6-mod", "PC Fútbol 6")],
         ),
@@ -260,11 +259,10 @@ T = {
         "What I have built for clients, described by function.",
     ),
     "pro_note": (
-        "El código de estos sistemas es de la empresa y los clientes tienen su nombre, así que "
-        "no hay enlaces. Sí hay cifras: los commits de cada repositorio llevan mi firma.",
-        "The code behind these systems belongs to the company and the clients have their name, "
-        "so there are no links. There are numbers though: the commits in each repository carry "
-        "my signature.",
+        "El código de estos sistemas es de la empresa, así que no se publica. Lo que sí puedo "
+        "mostrar es qué construí y con qué stack.",
+        "The code behind these systems belongs to the company, so it is not published. What I "
+        "can show is what I built and with which stack.",
     ),
     "pro": [
         (
@@ -310,8 +308,8 @@ T = {
             "Almacén", "Warehouse",
             "Lo que los operarios ven en las TVs",
             "What the operators see on the TVs",
-            "Las pantallas de Mesa, Ruta y Bultos-Ruta del sistema de gestión, replicadas en las "
-            " TVs del almacén para que el operario vea el estado sin volver al terminal.",
+            "Las pantallas de Mesa, Ruta y Bultos-Ruta del sistema de gestión, replicadas en "
+            "las TVs del almacén para que el operario vea el estado sin volver al terminal.",
             "The Table, Route and Parcels screens of the management system, replicated on the "
             "warehouse TVs so the operator sees the state without going back to the handheld.",
             [("angular", "Angular"), ("typescript", "TypeScript")],
@@ -370,10 +368,10 @@ T = {
     "eyebrow_contact": ("Contacto", "Contact"),
     "h_contact": ("Mario Cabrero Volarich", "Mario Cabrero Volarich"),
     "contact_text": (
-        "El código abierto y el contexto técnico están en GitHub y LinkedIn. Para cualquier "
-        "cosa, el correo es la vía directa.",
-        "The open-source work and the technical context are on GitHub and LinkedIn. For "
-        "anything else, email is the direct line.",
+        "El código abierto y el contexto técnico están en GitHub y LinkedIn. Para contactar, "
+        "el correo es la vía directa.",
+        "The open-source work and the technical context are on GitHub and LinkedIn. To get in "
+        "touch, email is the direct line.",
     ),
     "email_label": ("Correo", "Email"),
     "footer_meta": (
@@ -404,17 +402,17 @@ STACK_GROUPS = [
         ("postgresql", "PostgreSQL"), ("sqlite", "SQLite"),
         ("mongodb", "MongoDB"), ("zod", "Zod"), ("openapi", "OpenAPI"),
     ]),
-    ("Herramientas que construyo", "Tools I build", "Lo que sale de un problema mío", "What comes out of one of my problems", [
+    ("Herramientas que construyo", "Tools I build", "Construidas para mi propio trabajo", "Built for my own work", [
         ("model-context-protocol", "MCP"), ("tauri", "Tauri"), ("rust", "Rust"),
         ("godot", "Godot"), ("python", "Python"), ("storybook", "Storybook"),
         ("prime-ng", "PrimeNG"),
     ]),
-    ("Calidad y entrega", "Quality and delivery", "Lo que impide que rompa", "What stops it from breaking", [
+    ("Calidad y entrega", "Quality and delivery", "Tests, lint y despliegue", "Tests, lint and deployment", [
         ("vitest", "Vitest"), ("playwright", "Playwright"), ("eslint", "ESLint"),
         ("prettier", "Prettier"), ("docker", "Docker"), ("gitlab", "GitLab CI"),
         ("github-actions", "GitHub Actions"), ("linux", "Linux"),
     ]),
-    ("Con la IA", "With AI", "Quien propone y quien decide", "Who proposes and who decides", [
+    ("Con la IA", "With AI", "Asistentes que uso a diario", "Assistants I use daily", [
         ("claude", "Claude"), ("openai", "Codex"), ("minimax", "MiniMax"),
         ("grok", "Grok"),
     ]),
