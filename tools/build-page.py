@@ -5,10 +5,18 @@ The page is generated rather than hand-edited so the two languages cannot
 drift apart, every technology chip carries its real brand mark, and every
 destination link carries the icon of what it is.
 """
+import hashlib
 import pathlib
 
 SITE = pathlib.Path(__file__).resolve().parent.parent
 BRAND = SITE / "assets" / "brand"
+
+# The stylesheet link carries a hash of the file's content. GitHub Pages
+# serves styles.css with a long cache lifetime, so a visitor can end up
+# with the new HTML and the old CSS — which is exactly how an unstyled
+# mobile-menu button showed up on desktop. A content hash changes the URL
+# whenever the CSS changes, and only then.
+CSS_HASH = hashlib.sha1((SITE / "styles.css").read_bytes()).hexdigest()[:10]
 
 # Each entry: (es, en)
 T = {
@@ -715,7 +723,7 @@ def build():
     <meta property="og:image" content="https://cartagogit.github.io/assets/cartago-banner.png">
     <link rel="icon" type="image/svg+xml" href="assets/cartago.svg">
     <link rel="apple-touch-icon" href="assets/cartago.svg">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v={CSS_HASH}">
     <script>
       // Applied before the first paint so the page never flashes the wrong
       // theme or language. The visitor's own system settings decide, unless
