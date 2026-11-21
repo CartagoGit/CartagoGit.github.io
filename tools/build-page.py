@@ -452,8 +452,8 @@ def chip(slug, name):
     if not (BRAND / f"{slug}.svg").exists():
         return f"<span>{name}</span>"
     return (
-        f'<span class="chip"><img src="assets/brand/{slug}.svg?v=2" alt="" '
-        f'width="16" height="16" loading="lazy">{name}</span>'
+        f'<span class="chip"><img src="assets/brand/{slug}.svg?v=3" alt="" '
+        f'width="16" height="16">{name}</span>'
     )
 
 
@@ -468,7 +468,7 @@ def link(kind, href, label=None):
     return (
         f'<a class="link-pill" href="{href}" target="_blank" rel="noreferrer" '
         f'title="{title}">'
-        f'<img src="assets/brand/{slug}.svg?v=2" alt="" width="15" height="15" loading="lazy">'
+        f'<img src="assets/brand/{slug}.svg?v=3" alt="" width="15" height="15">'
         f"<span>{text}</span>"
         f"</a>"
     )
@@ -540,7 +540,7 @@ def build():
     social = "\n".join(
         f'            <li>\n'
         f'              <a href="{href}" target="_blank" rel="noreferrer">\n'
-        f'                <img src="assets/brand/{slug}.svg?v=2" alt="" width="18" height="18" loading="lazy">\n'
+        f'                <img src="assets/brand/{slug}.svg?v=3" alt="" width="18" height="18">\n'
         f"                <span>{label}</span>\n"
         f"              </a>\n"
         f"            </li>"
@@ -549,7 +549,7 @@ def build():
 
     header_links = "\n".join(
         f'          <a class="icon-link" href="{href}" target="_blank" rel="noreferrer" aria-label="{aria}">\n'
-        f'            <img src="assets/brand/{slug}.svg?v=2" alt="" width="17" height="17">\n'
+        f'            <img src="assets/brand/{slug}.svg?v=3" alt="" width="17" height="17">\n'
         f"          </a>"
         for slug, _label, href, aria in SOCIAL
     )
