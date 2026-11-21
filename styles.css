@@ -320,23 +320,26 @@ html[lang="en"] [data-lang="es"] { display: none; }
   height: auto;
   margin-inline: auto;
   max-width: 440px;
-  opacity: .85;
+  /* Embedded in the background: the artwork's own navy is lifted off it
+     with a screen blend, so only the lit mark remains — the rectangle
+     cannot show because its background colour adds nothing. A soft oval
+     mask fades what is left into the page. */
+  mix-blend-mode: screen;
+  opacity: .8;
   pointer-events: none;
   width: 100%;
-  /* The fade hugs the rectangle, not an ellipse: each edge dissolves on
-     its own axis and the corners fade on both, so the picture melts into
-     the page with no visible shape of its own. Long solid cores on each
-     axis keep the globe fully readable. */
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
-  mask-image:
-    linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  -webkit-mask-image: radial-gradient(ellipse 66% 60% at 50% 50%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 66% 60% at 50% 50%, #000 30%, transparent 80%);
 }
-html[data-theme="light"] .hero__banner { opacity: .92; }
+/* On a pale page a screen blend would wash out to white, so the light
+   theme keeps the normal composite at a low opacity with a tighter fade:
+   a faint print on the paper, no rectangle, the mark still readable. */
+html[data-theme="light"] .hero__banner {
+  mix-blend-mode: normal;
+  opacity: .32;
+  -webkit-mask-image: radial-gradient(ellipse 58% 52% at 50% 50%, #000 22%, transparent 72%);
+  mask-image: radial-gradient(ellipse 58% 52% at 50% 50%, #000 22%, transparent 72%);
+}
 
 .hero__inner {
   align-items: center;
@@ -863,6 +866,16 @@ html[data-theme="light"] .chip img[src*="linux"] { filter: brightness(.78); }
   padding-block: var(--s5);
 }
 .site-footer__meta { color: var(--text-dim); }
+.site-footer__mail {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color .18s var(--ease);
+}
+.site-footer__mail:hover { color: var(--brand); text-decoration: underline; text-underline-offset: .25rem; }
+
+/* The email icon is a pale blue mark; on the light theme it takes the
+   darker reading so it stays visible on the white contact card. */
+html[data-theme="light"] .social-links img[src*="email"] { filter: brightness(.62) saturate(1.4); }
 
 /* ====================================================== scroll reveal === */
 

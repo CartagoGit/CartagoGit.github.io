@@ -370,11 +370,12 @@ T = {
     "eyebrow_contact": ("Contacto", "Contact"),
     "h_contact": ("Mario Cabrero Volarich", "Mario Cabrero Volarich"),
     "contact_text": (
-        "El código abierto, el contexto técnico y los datos de contacto están en GitHub y "
-        "LinkedIn.",
-        "The open-source work, the technical context and the contact details are on GitHub and "
-        "LinkedIn.",
+        "El código abierto y el contexto técnico están en GitHub y LinkedIn. Para cualquier "
+        "cosa, el correo es la vía directa.",
+        "The open-source work and the technical context are on GitHub and LinkedIn. For "
+        "anything else, email is the direct line.",
     ),
+    "email_label": ("Correo", "Email"),
     "footer_meta": (
         "Front-end · Decisiones · Entrega",
         "Front-end · Decisions · Delivery",
@@ -733,6 +734,12 @@ def build():
             </div>
             <ul class="social-links">
 {social}
+              <li>
+                <a href="mailto:cv2mario@gmail.com">
+                  <img src="assets/brand/email.svg?v=3" alt="" width="18" height="18">
+                  <span>cv2mario@gmail.com</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -742,6 +749,7 @@ def build():
     <footer class="site-footer">
       <div class="shell site-footer__inner">
         <span>© Mario Cabrero Volarich</span>
+        <a class="site-footer__mail" href="mailto:cv2mario@gmail.com">cv2mario@gmail.com</a>
         <span class="site-footer__meta">{i18n(*T["footer_meta"])}</span>
       </div>
     </footer>
